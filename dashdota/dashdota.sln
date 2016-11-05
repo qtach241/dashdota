@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LatencyTester", "LatencyTester\LatencyTester.csproj", "{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelsLibrary", "ModelsLibrary\ModelsLibrary.csproj", "{13A5046C-0CA1-40FF-851C-B20CE261C1B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{635A3F72-53E8-45E8-911E-058386F997E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Endpoints", "Endpoints", "{96489356-CEE1-4903-81F5-D942905653AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{67087A00-BD93-45C0-A4B2-4361B184FA35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +23,16 @@ Global
 		{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A5046C-0CA1-40FF-851C-B20CE261C1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A5046C-0CA1-40FF-851C-B20CE261C1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A5046C-0CA1-40FF-851C-B20CE261C1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A5046C-0CA1-40FF-851C-B20CE261C1B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8} = {67087A00-BD93-45C0-A4B2-4361B184FA35}
+		{13A5046C-0CA1-40FF-851C-B20CE261C1B5} = {635A3F72-53E8-45E8-911E-058386F997E2}
 	EndGlobalSection
 EndGlobal
