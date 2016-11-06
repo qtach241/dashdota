@@ -601,7 +601,7 @@ namespace TableStorage.Models
             },
             { "item_solar_crest",
                 ItemPriceLevel1["item_medallion_of_courage"] +
-                ItemPriceLevel1["item_talisman_of_evasion"]
+                ComponentPrice["item_talisman_of_evasion"]
             },
             { "item_veil_of_discord",
                 ComponentPrice["item_helm_of_iron_will"] +

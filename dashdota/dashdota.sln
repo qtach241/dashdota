@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{6708
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorage", "TableStorage\TableStorage.csproj", "{6A32F8DA-E343-42A8-B16B-13685ADF4083}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelemetryEndpoint", "TelemetryEndpoint\TelemetryEndpoint.csproj", "{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6A32F8DA-E343-42A8-B16B-13685ADF4083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A32F8DA-E343-42A8-B16B-13685ADF4083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A32F8DA-E343-42A8-B16B-13685ADF4083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +47,6 @@ Global
 		{69F59A3F-2C53-48FD-99BB-C26DAB3BD4B8} = {67087A00-BD93-45C0-A4B2-4361B184FA35}
 		{13A5046C-0CA1-40FF-851C-B20CE261C1B5} = {635A3F72-53E8-45E8-911E-058386F997E2}
 		{6A32F8DA-E343-42A8-B16B-13685ADF4083} = {635A3F72-53E8-45E8-911E-058386F997E2}
+		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD} = {96489356-CEE1-4903-81F5-D942905653AA}
 	EndGlobalSection
 EndGlobal
