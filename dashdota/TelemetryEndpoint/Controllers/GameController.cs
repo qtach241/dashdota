@@ -16,8 +16,6 @@ namespace TelemetryEndpoint.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Index(GameState gs)
         {
-            var stream = await Request.Content.ReadAsStreamAsync();
-
             // Log gamestate in table storage.
             HostingEnvironment.QueueBackgroundWorkItem(ct =>
                 GameStateTable.AddEntityAsync(gs));
