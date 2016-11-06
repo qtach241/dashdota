@@ -23,7 +23,7 @@ namespace TableStorage
             try
             {
                 CancellationTokenSource source = new CancellationTokenSource(
-                    TimeSpan.FromMilliseconds(500));
+                    TimeSpan.FromMilliseconds(30000));
 
                 await client.AddEntityAsync(new GameStateEntity(gameState),
                     "GameStateTable",
