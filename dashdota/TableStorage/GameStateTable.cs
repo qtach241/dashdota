@@ -42,7 +42,7 @@ namespace TableStorage
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<GameStateEntity>> ReadRangeAsync(int userId,
+        public static async Task<IEnumerable<GameStateEntity>> ReadRangeAsync(string userId,
             string start, string end)
         {
             CloudTable table;
@@ -53,7 +53,7 @@ namespace TableStorage
                     .GenerateFilterCondition(
                         "PartitionKey",
                         QueryComparisons.Equal,
-                        userId.ToString());
+                        userId);
 
                 string rowKeyLowerFilter = TableQuery
                     .GenerateFilterCondition(
