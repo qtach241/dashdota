@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableStorage", "TableStorag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelemetryEndpoint", "TelemetryEndpoint\TelemetryEndpoint.csproj", "{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{A180B1F1-E76E-41FF-833F-59B5E4117207}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A180B1F1-E76E-41FF-833F-59B5E4117207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A180B1F1-E76E-41FF-833F-59B5E4117207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A180B1F1-E76E-41FF-833F-59B5E4117207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A180B1F1-E76E-41FF-833F-59B5E4117207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{13A5046C-0CA1-40FF-851C-B20CE261C1B5} = {635A3F72-53E8-45E8-911E-058386F997E2}
 		{6A32F8DA-E343-42A8-B16B-13685ADF4083} = {635A3F72-53E8-45E8-911E-058386F997E2}
 		{FB09A5DD-B4D9-4EBD-85CE-C2BD002E37FD} = {96489356-CEE1-4903-81F5-D942905653AA}
+		{A180B1F1-E76E-41FF-833F-59B5E4117207} = {96489356-CEE1-4903-81F5-D942905653AA}
 	EndGlobalSection
 EndGlobal

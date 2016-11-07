@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+<div>
+    Steam Id: <br />
+    Match Id: <br />
+    Gpm: <br />
+    Xpm: <br />
+    Networth: <br />
+</div>
+<div id="gsdata">
+    gsData goes here!
+</div>
+
+<script>
+    const TimeoutLengthMs = 500;
+
+    $.ajaxSetup({
+        timeout: 10000
+    });
+
+    $(document).ready(function () {
+        //Once everything else is loaded, start getting in real time information
+        setTimeout(Timeout, TimeoutLengthMs);
+    });
+
+    function Timeout() {
+        GetGameState();
+    }
+
+    function GetGameState() {
+        $.ajax({
+            method: "GET",
+            url: '@Url.Action("GetGameState", "Game")',
+            timeout: 10000,
+            data: {
+                key: "76561197983364518",
+            },
+        })
+        .done(function (data) {
+            //var gsObject = JSON.parse(data);
+            //UpdateDivs(gsObject);
+            $('#gsdata').html(data);
+        })
+        .fail(function (data) {
+
+        })
+        .always(function (data) {
+            setTimeout(Timeout, TimeoutLengthMs);
+        });
+    }
+
+</script>
