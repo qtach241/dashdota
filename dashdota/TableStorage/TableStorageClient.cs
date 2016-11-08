@@ -85,5 +85,35 @@ namespace TableStorage
 
             return entities;
         }
+
+        /// <summary>
+        /// Read a range of entities from a storage table and return only the
+        /// top entity.
+        /// </summary>
+        /// <param name="queryString"></param>
+        /// <returns></returns>
+        protected async Task<IEnumerable<T>> ReadEntityTopAsync(string queryString)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            TableQuery<T> rangeQuery = new TableQuery<T>()
+                .Where(queryString)
+                .Take(1);
+
+            List<T> entities = new List<T>();
+
+            TableQuerySegment<T> currentSegment = null;
+            
+            do
+            {
+                currentSegment = await table.ExecuteQuerySegmentedAsync(rangeQuery, 
+                    currentSegment != null ? currentSegment.ContinuationToken : null);
+
+                entities.AddRange(currentSegment.Results);
+
+            } while (entities.Count < rangeQuery.TakeCount && (currentSegment == null || currentSegment.ContinuationToken != null));
+
+            return entities;
+        }
     }
 }

@@ -77,6 +77,36 @@ namespace TableStorage
 
             return await Instance.ReadEntityRangeAsync(combinedFilter);
         }
+
+        /// <summary>
+        /// Query a range of entities from this table asynchronously. The query
+        /// will only return the top result.
+        /// </summary>
+        /// <param name="steamId">steam Id string</param>
+        /// <param name="matchId">match Id long</param>
+        /// <param name="rowKeyLower">lower rowkey bound</param>
+        /// <param name="rowKeyUpper">upper rowkey bound</param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<GameStateEntity>> ReadEntityTopAsync(string steamId,
+            long matchId, string rowKeyLower, string rowKeyUpper)
+        {
+            string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
+                QueryComparisons.Equal, GetPartitionKey(steamId, matchId));
+
+            string rowKeyFilterLower = TableQuery.GenerateFilterCondition("RowKey",
+                QueryComparisons.GreaterThanOrEqual, rowKeyLower);
+
+            string rowKeyFilterUpper = TableQuery.GenerateFilterCondition("RowKey",
+                QueryComparisons.LessThan, rowKeyUpper);
+
+            string combinedRowKeyFilter = TableQuery.CombineFilters(rowKeyFilterLower,
+                TableOperators.And, rowKeyFilterUpper);
+
+            string combinedFilter = TableQuery.CombineFilters(partitionKeyFilter,
+                TableOperators.And, combinedRowKeyFilter);
+
+            return await Instance.ReadEntityTopAsync(combinedFilter);
+        }
     }
 }
 

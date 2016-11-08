@@ -16,7 +16,7 @@ namespace Dashboard.Controllers
         public async Task<ActionResult> GetGameState(string key)
         {
             // TODO: Retrieve the last inserted entity in storage.
-            var query = await GameStateTable.ReadEntityRangeAsync(key, 0, "2519237194871412652", "2519237194890803761" );
+            var query = await GameStateTable.ReadEntityTopAsync(key, 0, "2519237194871412652", "2519237194890803761" );
 
             return new JsonNetResult(query);
         }
