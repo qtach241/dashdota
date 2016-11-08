@@ -9,98 +9,73 @@ using TableStorage.Models;
 
 namespace TableStorage
 {
-    public class GameStateTable
+    public class GameStateTable : TableStorageClient<GameStateEntity>
     {
-        private static readonly TableStorage client = new TableStorage();
+        public static GameStateTable Instance = new GameStateTable();
+
+        public GameStateTable() : base(TableStorageNamespace.GameStateTable)
+        {
+        }
 
         /// <summary>
-        /// Adds an entity to the specific table.
+        /// Format the storage table partition key.
         /// </summary>
-        /// <param name="gameState"></param>
+        /// <param name="steamId"></param>
+        /// <param name="matchId"></param>
         /// <returns></returns>
-        public static async Task AddEntityAsync(GameState gameState)
+        private static string GetPartitionKey(string steamId, long matchId)
+        {
+            return steamId + matchId.ToString();
+        }
+
+        /// <summary>
+        /// Insert a new entity into this table asynchronously.
+        /// </summary>
+        /// <param name="gs">GameState object</param>
+        /// <returns></returns>
+        public static async Task AddEntityAsync(GameState gs)
         {
             try
             {
-                CancellationTokenSource source = new CancellationTokenSource(
-                    TimeSpan.FromMilliseconds(30000));
-
-                await client.AddEntityAsync(new GameStateEntity(gameState),
-                    "GameStateTable",
-                    source.Token);
+                await Instance.AddEntityAsync(new GameStateEntity(gs)
+                {
+                    PartitionKey = GetPartitionKey(gs.Player.SteamID, gs.Map.MatchId),
+                    RowKey = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString(),
+                });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Log Exceptions.
+                //await ExceptionTable.AddEntityAsync(ex);
             }
         }
 
         /// <summary>
-        /// Read a range of entities from the specific table.
+        /// Query a range of entities from this table asynchronously.
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
+        /// <param name="steamId">steam Id string</param>
+        /// <param name="matchId">match Id long</param>
+        /// <param name="rowKeyLower">lower rowkey bound</param>
+        /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
-        public static async Task<IEnumerable<GameStateEntity>> ReadRangeAsync(string userId,
-            string start, string end)
+        public static async Task<IEnumerable<GameStateEntity>> ReadEntityRangeAsync(string steamId,
+            long matchId, string rowKeyLower, string rowKeyUpper)
         {
-            CloudTable table;
+            string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey", 
+                QueryComparisons.Equal, GetPartitionKey(steamId, matchId));
 
-            if (client.GetTableReference(out table, "GameStateTable"))
-            {
-                string partitionKeyFilter = TableQuery
-                    .GenerateFilterCondition(
-                        "PartitionKey",
-                        QueryComparisons.Equal,
-                        userId);
+            string rowKeyFilterLower = TableQuery.GenerateFilterCondition("RowKey", 
+                QueryComparisons.GreaterThanOrEqual, rowKeyLower);
 
-                string rowKeyLowerFilter = TableQuery
-                    .GenerateFilterCondition(
-                        "RowKey",
-                        QueryComparisons.GreaterThanOrEqual,
-                        start);
+            string rowKeyFilterUpper = TableQuery.GenerateFilterCondition("RowKey", 
+                QueryComparisons.LessThan, rowKeyUpper);
 
-                string rowKeyUpperFilter = TableQuery
-                    .GenerateFilterCondition(
-                        "RowKey",
-                        QueryComparisons.LessThan,
-                        end);
+            string combinedRowKeyFilter = TableQuery.CombineFilters(rowKeyFilterLower, 
+                TableOperators.And, rowKeyFilterUpper);
 
-                string combinedRowKeyFilter = TableQuery
-                    .CombineFilters(
-                        rowKeyLowerFilter,
-                        TableOperators.And,
-                        rowKeyUpperFilter);
+            string combinedFilter = TableQuery.CombineFilters(partitionKeyFilter, 
+                TableOperators.And, combinedRowKeyFilter);
 
-                string combinedFilter = TableQuery
-                    .CombineFilters(
-                        partitionKeyFilter,
-                        TableOperators.And,
-                        combinedRowKeyFilter);
-
-                TableQuery<GameStateEntity> rangeQuery = new TableQuery<GameStateEntity>()
-                    .Where(combinedFilter);
-
-                List<GameStateEntity> entities = new List<GameStateEntity>();
-
-                TableContinuationToken continuationToken = null;
-
-                do
-                {
-                    var queryResult = await table
-                        .ExecuteQuerySegmentedAsync(rangeQuery, continuationToken);
-
-                    continuationToken = queryResult.ContinuationToken;
-
-                    entities.AddRange(queryResult.Results);
-
-                } while (continuationToken != null);
-
-                return entities;
-            }
-
-            return null;
+            return await Instance.ReadEntityRangeAsync(combinedFilter);
         }
     }
 }
