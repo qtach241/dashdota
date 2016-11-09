@@ -20,6 +20,10 @@ namespace TelemetryEndpoint.Controllers
             HostingEnvironment.QueueBackgroundWorkItem(ct =>
                 GameStateTable.AddEntityAsync(gs));
 
+            // Log match info in table storage.
+            HostingEnvironment.QueueBackgroundWorkItem(ct =>
+                TeamTable.AddEntityAsync(gs));
+
             return Ok();
         }
     }

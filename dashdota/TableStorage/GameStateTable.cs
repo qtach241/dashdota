@@ -6,7 +6,6 @@ using Microsoft.WindowsAzure.Storage.Table;
 using ModelsLibrary;
 using TableStorage.Models;
 
-
 namespace TableStorage
 {
     public class GameStateTable : TableStorageClient<GameStateEntity>
@@ -18,14 +17,14 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Format the storage table partition key.
+        /// Format the table storage partition key.
         /// </summary>
         /// <param name="steamId"></param>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        private static string GetPartitionKey(string steamId, long matchId)
+        private static string GetPartitionKey(string steamId)
         {
-            return steamId + matchId.ToString();
+            return steamId;
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace TableStorage
             {
                 await Instance.AddEntityAsync(new GameStateEntity(gs)
                 {
-                    PartitionKey = GetPartitionKey(gs.Player.SteamID, gs.Map.MatchId),
+                    PartitionKey = GetPartitionKey(gs.Player.SteamID),
                     RowKey = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString(),
                 });
             }
@@ -58,10 +57,10 @@ namespace TableStorage
         /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
         public static async Task<IEnumerable<GameStateEntity>> ReadEntityRangeAsync(string steamId,
-            long matchId, string rowKeyLower, string rowKeyUpper)
+            string rowKeyLower, string rowKeyUpper)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey", 
-                QueryComparisons.Equal, GetPartitionKey(steamId, matchId));
+                QueryComparisons.Equal, GetPartitionKey(steamId));
 
             string rowKeyFilterLower = TableQuery.GenerateFilterCondition("RowKey", 
                 QueryComparisons.GreaterThanOrEqual, rowKeyLower);
@@ -88,10 +87,10 @@ namespace TableStorage
         /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
         public static async Task<IEnumerable<GameStateEntity>> ReadEntityTopAsync(string steamId,
-            long matchId, string rowKeyLower, string rowKeyUpper)
+            string rowKeyLower, string rowKeyUpper)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
-                QueryComparisons.Equal, GetPartitionKey(steamId, matchId));
+                QueryComparisons.Equal, GetPartitionKey(steamId));
 
             string rowKeyFilterLower = TableQuery.GenerateFilterCondition("RowKey",
                 QueryComparisons.GreaterThanOrEqual, rowKeyLower);

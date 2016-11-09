@@ -12,7 +12,7 @@ namespace TableStorage
     public static class TableStorageNamespace
     {
         public const string GameStateTable = "GameStateTable";
-        public const string GameStateKVTable = "GameStateKVTable";
+        public const string TeamTable = "TeamTable";
         public const string Exceptions = "Exceptions";
         public const string Latency = "Latency";
     }
