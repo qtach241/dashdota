@@ -57,6 +57,51 @@ namespace TableStorage
         }
 
         /// <summary>
+        /// Read a single entity (i.e. row) from a table.
+        /// </summary>
+        /// <param name="partitionKey"></param>
+        /// <param name="rowKey"></param>
+        /// <returns></returns>
+        protected async Task<T> ReadEntityAsync(string partitionKey, string rowKey)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            var cancellationTokenSource = new CancellationTokenSource(timeout);
+
+            TableResult retrievedResult = await table.ExecuteAsync(TableOperation.Retrieve<T>(partitionKey, rowKey), 
+                cancellationTokenSource.Token);
+
+            return (T)retrievedResult.Result;
+        }
+
+        /// <summary>
+        /// Completely replace an entire row, or add it if it does not exist.
+        /// This function is mainly intended for key value pairs (single property)
+        /// tables as there is no read-modify-write of individual properties.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        protected async Task AddOrReplaceEntityAsync(T entity)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            var cancellationTokenSource = new CancellationTokenSource(timeout);
+
+            TableResult retrievedResult = await table.ExecuteAsync(TableOperation.Retrieve<T>(entity.PartitionKey, entity.RowKey),
+                cancellationTokenSource.Token);
+
+            T updateEntity = (T)retrievedResult.Result;
+
+            if (updateEntity != null)
+            {
+                updateEntity = entity;
+
+                await table.ExecuteAsync(TableOperation.InsertOrReplace(updateEntity),
+                    cancellationTokenSource.Token);
+            }
+        }
+
+        /// <summary>
         /// Read a range of entities from a storage table.
         /// </summary>
         /// <param name="queryString"></param>
@@ -114,6 +159,30 @@ namespace TableStorage
             } while (entities.Count < rangeQuery.TakeCount && (currentSegment == null || currentSegment.ContinuationToken != null));
 
             return entities;
+        }
+
+        /// <summary>
+        /// Delete a single entity (i.e. row) from a table.
+        /// </summary>
+        /// <param name="partitionKey"></param>
+        /// <param name="rowKey"></param>
+        /// <returns></returns>
+        protected async Task DeleteEntityAsync(string partitionKey, string rowKey)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            var cancellationTokenSource = new CancellationTokenSource(timeout);
+
+            TableResult retrievedResult = await table.ExecuteAsync(TableOperation.Retrieve<T>(partitionKey, rowKey),
+                cancellationTokenSource.Token);
+
+            T deleteEntity = (T)retrievedResult.Result;
+
+            if (deleteEntity != null)
+            {
+                await table.ExecuteAsync(TableOperation.Delete(deleteEntity),
+                    cancellationTokenSource.Token);
+            }
         }
     }
 }

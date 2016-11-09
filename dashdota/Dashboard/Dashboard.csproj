@@ -287,6 +287,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModelsLibrary\ModelsLibrary.csproj">
+      <Project>{13a5046c-0ca1-40ff-851c-b20ce261c1b5}</Project>
+      <Name>ModelsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TableStorage\TableStorage.csproj">
       <Project>{6a32f8da-e343-42a8-b16b-13685adf4083}</Project>
       <Name>TableStorage</Name>
