@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Storage.Table;
 using ModelsLibrary;
 using TableStorage.Models;
+using System.Linq;
 
 namespace TableStorage
 {
@@ -86,7 +87,7 @@ namespace TableStorage
         /// <param name="rowKeyLower">lower rowkey bound</param>
         /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
-        public static async Task<IEnumerable<GameStateEntity>> ReadEntityTopAsync(string steamId,
+        public static async Task<GameStateEntity> GetLastGameState(string steamId,
             string rowKeyLower, string rowKeyUpper)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
@@ -104,7 +105,9 @@ namespace TableStorage
             string combinedFilter = TableQuery.CombineFilters(partitionKeyFilter,
                 TableOperators.And, combinedRowKeyFilter);
 
-            return await Instance.ReadEntityTopAsync(combinedFilter);
+            var entities = await Instance.ReadEntityTopAsync(combinedFilter, 1);
+
+            return entities.FirstOrDefault();
         }
     }
 }

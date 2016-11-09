@@ -42,7 +42,7 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Add a single entity (i.e. row) into a table.
+        /// Add a single entity into a table asynchronously.
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Read a single entity (i.e. row) from a table.
+        /// Read a single entity from a table asynchronously.
         /// </summary>
         /// <param name="partitionKey"></param>
         /// <param name="rowKey"></param>
@@ -102,7 +102,7 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Read a range of entities from a storage table.
+        /// Read a range of entities from a storage table asynchronously.
         /// </summary>
         /// <param name="queryString"></param>
         /// <returns></returns>
@@ -132,18 +132,19 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Read a range of entities from a storage table and return only the
-        /// top entity.
+        /// Read a range of entities from a storage table asynchronously and return
+        /// the top n entities.
         /// </summary>
-        /// <param name="queryString"></param>
+        /// <param name="queryString">The formatted table storage query string</param>
+        /// <param name="n">The query TakeCount</param>
         /// <returns></returns>
-        protected async Task<IEnumerable<T>> ReadEntityTopAsync(string queryString)
+        protected async Task<IEnumerable<T>> ReadEntityTopAsync(string queryString, int n)
         {
             CloudTable table = OpenOrCreateTable();
 
             TableQuery<T> rangeQuery = new TableQuery<T>()
                 .Where(queryString)
-                .Take(1);
+                .Take(n);
 
             List<T> entities = new List<T>();
 
@@ -162,7 +163,7 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Delete a single entity (i.e. row) from a table.
+        /// Delete a single entity from a table asynchronously.
         /// </summary>
         /// <param name="partitionKey"></param>
         /// <param name="rowKey"></param>
