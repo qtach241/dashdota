@@ -22,7 +22,7 @@ namespace TelemetryEndpoint.Controllers
 
             // Log match info in table storage.
             HostingEnvironment.QueueBackgroundWorkItem(ct =>
-                TeamTable.AddEntityAsync(gs));
+                TeamTable.AddOrReplaceEntityAsync(gs));
 
             return Ok();
         }

@@ -29,8 +29,7 @@ namespace Dashboard.Controllers
             // Set valid time range to 10 seconds in the past. Otherwise,
             // the game state is considered stale and won't be queried.
             var rowKeyLower = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString();
-            var rowKeyUpper = ((DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks)
-                + TimeSpan.FromSeconds(10).Ticks).ToString();
+            var rowKeyUpper = (DateTime.MaxValue.Ticks - (DateTime.UtcNow.Ticks - TimeSpan.FromSeconds(10).Ticks)).ToString();
 
             // Get the most recent game state from the steam Id passed in.
             var gameState = await GameStateTable.GetLastGameState(key, rowKeyLower, rowKeyUpper);

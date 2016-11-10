@@ -21,28 +21,24 @@ namespace TableStorage
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        private static string GetPartitionKey(long matchId)
+        private static string GetPartitionKey(string matchId)
         {
             // TODO: Need to somehow get the side (radiant/dire) and
             // concatenate with matchId to form partition key.
-            return matchId.ToString();
-        }
-
-        private static string GetPartitionKey(string matchId)
-        {
-            return matchId;
+            return matchId + "_" + "radiant";
         }
 
         /// <summary>
-        /// Insert a new entity into this table asynchronously.
+        /// Replace an entity in this table asynchronously, or create
+        /// the entity if it does not exist.
         /// </summary>
-        /// <param name="gs"></param>
+        /// <param name="gs">GameState object</param>
         /// <returns></returns>
-        public static async Task AddEntityAsync(GameState gs)
+        public static async Task AddOrReplaceEntityAsync(GameState gs)
         {
             try
             {
-                await Instance.AddEntityAsync(new TeamEntity()
+                await Instance.AddOrReplaceEntityAsync(new TeamEntity()
                 {
                     PartitionKey = GetPartitionKey(gs.Map.MatchId),
                     RowKey = gs.Player.SteamID,

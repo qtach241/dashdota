@@ -21,7 +21,6 @@ namespace TableStorage
         /// Format the table storage partition key.
         /// </summary>
         /// <param name="steamId"></param>
-        /// <param name="matchId"></param>
         /// <returns></returns>
         private static string GetPartitionKey(string steamId)
         {
@@ -50,40 +49,10 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Query a range of entities from this table asynchronously.
-        /// </summary>
-        /// <param name="steamId">steam Id string</param>
-        /// <param name="matchId">match Id long</param>
-        /// <param name="rowKeyLower">lower rowkey bound</param>
-        /// <param name="rowKeyUpper">upper rowkey bound</param>
-        /// <returns></returns>
-        public static async Task<IEnumerable<GameStateEntity>> ReadEntityRangeAsync(string steamId,
-            string rowKeyLower, string rowKeyUpper)
-        {
-            string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey", 
-                QueryComparisons.Equal, GetPartitionKey(steamId));
-
-            string rowKeyFilterLower = TableQuery.GenerateFilterCondition("RowKey", 
-                QueryComparisons.GreaterThanOrEqual, rowKeyLower);
-
-            string rowKeyFilterUpper = TableQuery.GenerateFilterCondition("RowKey", 
-                QueryComparisons.LessThan, rowKeyUpper);
-
-            string combinedRowKeyFilter = TableQuery.CombineFilters(rowKeyFilterLower, 
-                TableOperators.And, rowKeyFilterUpper);
-
-            string combinedFilter = TableQuery.CombineFilters(partitionKeyFilter, 
-                TableOperators.And, combinedRowKeyFilter);
-
-            return await Instance.ReadEntityRangeAsync(combinedFilter);
-        }
-
-        /// <summary>
         /// Query a range of entities from this table asynchronously. The query
         /// will only return the top result.
         /// </summary>
         /// <param name="steamId">steam Id string</param>
-        /// <param name="matchId">match Id long</param>
         /// <param name="rowKeyLower">lower rowkey bound</param>
         /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
@@ -111,7 +80,3 @@ namespace TableStorage
         }
     }
 }
-
-
-
-

@@ -57,6 +57,38 @@ namespace TableStorage
         }
 
         /// <summary>
+        /// Replace an existing entity in a table asynchronously, or add a new entity
+        /// if it does not exist.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        protected async Task AddOrReplaceEntityAsync(T entity)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            var cancellationTokenSource = new CancellationTokenSource(timeout);
+
+            await table.ExecuteAsync(TableOperation.InsertOrReplace(entity),
+                cancellationTokenSource.Token);
+        }
+
+        /// <summary>
+        /// Merge an entity's properties with an existing entity asynchronously, or add
+        /// a the new entity to a table if it does not exist.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        protected async Task AddOrMergeEntityAsync(T entity)
+        {
+            CloudTable table = OpenOrCreateTable();
+
+            var cancellationTokenSource = new CancellationTokenSource(timeout);
+
+            await table.ExecuteAsync(TableOperation.InsertOrMerge(entity),
+                cancellationTokenSource.Token);
+        }
+
+        /// <summary>
         /// Read a single entity from a table asynchronously.
         /// </summary>
         /// <param name="partitionKey"></param>
@@ -75,34 +107,7 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Completely replace an entire row, or add it if it does not exist.
-        /// This function is mainly intended for key value pairs (single property)
-        /// tables as there is no read-modify-write of individual properties.
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        protected async Task AddOrReplaceEntityAsync(T entity)
-        {
-            CloudTable table = OpenOrCreateTable();
-
-            var cancellationTokenSource = new CancellationTokenSource(timeout);
-
-            TableResult retrievedResult = await table.ExecuteAsync(TableOperation.Retrieve<T>(entity.PartitionKey, entity.RowKey),
-                cancellationTokenSource.Token);
-
-            T updateEntity = (T)retrievedResult.Result;
-
-            if (updateEntity != null)
-            {
-                updateEntity = entity;
-
-                await table.ExecuteAsync(TableOperation.InsertOrReplace(updateEntity),
-                    cancellationTokenSource.Token);
-            }
-        }
-
-        /// <summary>
-        /// Read a range of entities from a storage table asynchronously.
+        /// Read a range of entities from a table asynchronously.
         /// </summary>
         /// <param name="queryString"></param>
         /// <returns></returns>
