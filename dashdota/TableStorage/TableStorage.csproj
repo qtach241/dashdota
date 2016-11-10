@@ -73,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionTable.cs" />
     <Compile Include="GameStateTable.cs" />
+    <Compile Include="Models\ExceptionEntity.cs" />
     <Compile Include="Models\GameStateEntity.cs" />
     <Compile Include="Models\TeamEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
