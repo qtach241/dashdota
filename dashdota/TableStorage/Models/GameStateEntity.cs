@@ -13,10 +13,7 @@ namespace TableStorage.Models
 
         public GameStateEntity(GameState gs)
         {
-            PartitionKey = gs.Player.SteamID.ToString();
-            RowKey = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString();
-
-            MatchId = gs.Map.MatchId.ToString();
+            MatchId = gs.Map.MatchId;
             ClockTime = gs.Map.ClockTime;
             GoldPerMinute = gs.Player.GoldPerMinute;
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;

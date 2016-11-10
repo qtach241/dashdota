@@ -33,7 +33,7 @@ namespace ModelsLibrary
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
         [JsonProperty(PropertyName = "matchid")]
-        public long MatchId { get; set; }
+        public string MatchId { get; set; }
         [JsonProperty(PropertyName = "game_time")]
         public int GameTime { get; set; }
         [JsonProperty(PropertyName = "clock_time")]
