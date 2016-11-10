@@ -6,14 +6,12 @@
 @Scripts.Render("~/bundles/bootstrap")
 
 <div>
-    Steam Id: <br />
-    Match Id: <br />
-    Gpm: <br />
-    Xpm: <br />
-    Networth: <br />
-</div>
-<div id="gsdata">
-    gsData goes here!
+    Steam Id: <div id="steamid">-1</div><br />
+    Match Id: <div id="matchid">-1</div><br />
+    Clock Time: <div id="clocktime"></div><br />
+    Gold Per Minute: <div id="gpm">-1</div><br />
+    Experience Per Minute: <div id="xpm">-1</div><br />
+    Networth: <div id="networth">-1</div><br />
 </div>
 
 <script>
@@ -38,13 +36,18 @@
             url: '@Url.Action("GetGameState", "Game")',
             timeout: 10000,
             data: {
-                key: "76561197983364518",
+                id: "76561197983364518",
             },
         })
         .done(function (data) {
             //var gsObject = JSON.parse(data);
             //UpdateDivs(gsObject);
-            $('#gsdata').html(data);
+            $('#steamid').html(data[0].PartitionKey)
+            $('#matchid').html(data[0].MatchId)
+            $('#clocktime').html(data[0].ClockTime)
+            $('#gpm').html(data[0].GoldPerMinute)
+            $('#xpm').html(data[0].ExperiencePerMinute)
+            $('#networth').html(data[0].Networth)
         })
         .fail(function (data) {
 

@@ -21,7 +21,7 @@ namespace Dashboard.Controllers
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult> GetGameState(string key)
+        public async Task<ActionResult> GetGameState(string id)
         {
             // Create an empty list of game states.
             List<GameStateEntity> gameStates = new List<GameStateEntity>();
@@ -32,7 +32,7 @@ namespace Dashboard.Controllers
             var rowKeyUpper = (DateTime.MaxValue.Ticks - (DateTime.UtcNow.Ticks - TimeSpan.FromSeconds(10).Ticks)).ToString();
 
             // Get the most recent game state from the steam Id passed in.
-            var gameState = await GameStateTable.GetLastGameStateAsync(key, rowKeyLower, rowKeyUpper);
+            var gameState = await GameStateTable.GetLastGameStateAsync(id, rowKeyLower, rowKeyUpper);
 
             // If game state exists and valid for the current steam Id.
             if (gameState != null)
@@ -50,7 +50,7 @@ namespace Dashboard.Controllers
                     var steamId = member.RowKey;
 
                     // Skip the case when we're querying ourselves twice.
-                    if (steamId == key)
+                    if (steamId == id)
                     {
                         continue;
                     }
