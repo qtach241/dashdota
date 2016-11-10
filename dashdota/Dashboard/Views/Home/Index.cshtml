@@ -5,16 +5,29 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 
+<h1>Dash Dota Test</h1>
+<hr />
+
+<h3>Enter your steam Id:</h3>
+<div>
+    <form id="form" onsubmit="return false;">
+        <input type="text" id="userInput" />
+        <input type="submit" onclick="SetSteamId();" />
+    </form>
+</div> <br />
+
 <div>
     Steam Id: <div id="steamid">-1</div><br />
     Match Id: <div id="matchid">-1</div><br />
-    Clock Time: <div id="clocktime"></div><br />
+    Clock Time: <div id="clocktime">-1</div><br />
     Gold Per Minute: <div id="gpm">-1</div><br />
     Experience Per Minute: <div id="xpm">-1</div><br />
     Networth: <div id="networth">-1</div><br />
 </div>
 
+
 <script>
+    var steamId = 0;
     const TimeoutLengthMs = 500;
 
     $.ajaxSetup({
@@ -26,6 +39,11 @@
         setTimeout(Timeout, TimeoutLengthMs);
     });
 
+    function SetSteamId() {
+        steamId = document.getElementById("userInput").value;
+        alert("Steam Id has been set to: " + steamId);
+    }
+
     function Timeout() {
         GetGameState();
     }
@@ -36,18 +54,25 @@
             url: '@Url.Action("GetGameState", "Game")',
             timeout: 10000,
             data: {
-                id: "76561197983364518",
+                id: steamId,
             },
         })
         .done(function (data) {
             //var gsObject = JSON.parse(data);
             //UpdateDivs(gsObject);
-            $('#steamid').html(data[0].PartitionKey)
-            $('#matchid').html(data[0].MatchId)
-            $('#clocktime').html(data[0].ClockTime)
-            $('#gpm').html(data[0].GoldPerMinute)
-            $('#xpm').html(data[0].ExperiencePerMinute)
-            $('#networth').html(data[0].Networth)
+            if (data.length === 0)
+            {
+                console.log("no data found");
+            }
+            else
+            {
+                $('#steamid').html(data[0].PartitionKey)
+                $('#matchid').html(data[0].MatchId)
+                $('#clocktime').html(data[0].ClockTime)
+                $('#gpm').html(data[0].GoldPerMinute)
+                $('#xpm').html(data[0].ExperiencePerMinute)
+                $('#networth').html(data[0].Networth)
+            }
         })
         .fail(function (data) {
 
