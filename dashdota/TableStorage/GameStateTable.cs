@@ -42,9 +42,9 @@ namespace TableStorage
                     RowKey = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString(),
                 });
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //await ExceptionTable.AddEntityAsync(ex);
+                await ExceptionTable.AddEntityAsync(e);
             }
         }
 
@@ -56,7 +56,7 @@ namespace TableStorage
         /// <param name="rowKeyLower">lower rowkey bound</param>
         /// <param name="rowKeyUpper">upper rowkey bound</param>
         /// <returns></returns>
-        public static async Task<GameStateEntity> GetLastGameState(string steamId,
+        public static async Task<GameStateEntity> GetLastGameStateAsync(string steamId,
             string rowKeyLower, string rowKeyUpper)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",

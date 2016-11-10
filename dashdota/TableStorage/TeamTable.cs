@@ -44,9 +44,9 @@ namespace TableStorage
                     RowKey = gs.Player.SteamID,
                 });
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //await ExceptionTable.AddEntityAsync(ex);
+                await ExceptionTable.AddEntityAsync(e);
             }
         }
 
@@ -57,7 +57,7 @@ namespace TableStorage
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<TeamEntity>> GetTeamMembers(string matchId)
+        public static async Task<IEnumerable<TeamEntity>> GetTeamMembersAsync(string matchId)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
                 QueryComparisons.Equal, GetPartitionKey(matchId));

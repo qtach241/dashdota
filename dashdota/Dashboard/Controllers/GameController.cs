@@ -32,7 +32,7 @@ namespace Dashboard.Controllers
             var rowKeyUpper = (DateTime.MaxValue.Ticks - (DateTime.UtcNow.Ticks - TimeSpan.FromSeconds(10).Ticks)).ToString();
 
             // Get the most recent game state from the steam Id passed in.
-            var gameState = await GameStateTable.GetLastGameState(key, rowKeyLower, rowKeyUpper);
+            var gameState = await GameStateTable.GetLastGameStateAsync(key, rowKeyLower, rowKeyUpper);
 
             // If game state exists and valid for the current steam Id.
             if (gameState != null)
@@ -42,7 +42,7 @@ namespace Dashboard.Controllers
 
                 // Use the current game state's MatchId to see if any other
                 // users are sending game sense telemetry within the same match.
-                var team = await TeamTable.GetTeamMembers(gameState.MatchId);
+                var team = await TeamTable.GetTeamMembersAsync(gameState.MatchId);
 
                 foreach (var member in team)
                 {
@@ -56,7 +56,7 @@ namespace Dashboard.Controllers
                     }
 
                     // Get the most recent game state for each member found.
-                    var memberGameState = await GameStateTable.GetLastGameState(steamId, rowKeyLower, rowKeyUpper);
+                    var memberGameState = await GameStateTable.GetLastGameStateAsync(steamId, rowKeyLower, rowKeyUpper);
 
                     if (memberGameState != null)
                     {
