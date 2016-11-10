@@ -15,11 +15,8 @@ namespace TableStorage
         protected TimeSpan timeout = TimeSpan.FromMilliseconds(500);
         protected string tableName;
 
-        //private static CloudStorageAccount _account = CloudStorageAccount
-        //    .Parse(ConfigurationManager.ConnectionStrings["storage"].ConnectionString);
-
         private static CloudStorageAccount _account = CloudStorageAccount
-            .Parse(CloudConfigurationManager.GetSetting("AzureStorageEmulator"));
+            .Parse(ConfigurationManager.ConnectionStrings["storage"].ConnectionString);
 
         protected TableStorageClient(string tableName)
         {
