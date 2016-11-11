@@ -47,6 +47,7 @@
     <Compile Include="GameState\Abilities.cs" />
     <Compile Include="GameState\Ability.cs" />
     <Compile Include="GameState\Attributes.cs" />
+    <Compile Include="GameState\Auth.cs" />
     <Compile Include="GameState\GameState.cs" />
     <Compile Include="GameState\Hero.cs" />
     <Compile Include="GameState\Item.cs" />

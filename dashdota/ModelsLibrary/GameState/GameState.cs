@@ -22,5 +22,7 @@ namespace ModelsLibrary
         public Items Items { get; set; }
         [JsonProperty(PropertyName = "previously")]
         public GameState Previously { get; set; }
+        [JsonProperty(PropertyName = "auth")]
+        public Auth Auth { get; set; }
     }
 }
