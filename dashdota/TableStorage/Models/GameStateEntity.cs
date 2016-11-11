@@ -198,7 +198,7 @@ namespace TableStorage.Models
                 ComponentPrice["item_chainmail"] +
                 ComponentPrice["item_robe"]
             },
-            { "item_travel_boots_1",
+            { "item_travel_boots",
                 ComponentPrice["item_boots"] +
                 ComponentPrice["item_recipe_travel_boots"]
             },
@@ -232,7 +232,7 @@ namespace TableStorage.Models
                 ComponentPrice["item_mithril_hammer"] +
                 ComponentPrice["item_blight_stone"]
             },
-            { "item_diffusal_blade_1",
+            { "item_diffusal_blade",
                 ComponentPrice["item_blade_of_alacrity"] +
                 ComponentPrice["item_blade_of_alacrity"] +
                 ComponentPrice["item_robe"] +
@@ -332,7 +332,7 @@ namespace TableStorage.Models
                 ComponentPrice["item_hyperstone"] +
                 ComponentPrice["item_hyperstone"]
             },
-            { "item_necronomicon_1",
+            { "item_necronomicon",
                 ComponentPrice["item_staff_of_wizardry"] +
                 ComponentPrice["item_belt_of_strength"] +
                 ComponentPrice["item_recipe_necronomicon"]
@@ -490,7 +490,7 @@ namespace TableStorage.Models
                 ComponentPrice["item_demon_edge"] +
                 ComponentPrice["item_recipe_greater_crit"]
             },
-            { "item_dagon_1",
+            { "item_dagon",
                 ComponentPrice["item_staff_of_wizardry"] +
                 ItemPriceLevel1["item_null_talisman"] +
                 ComponentPrice["item_recipe_dagon"]
@@ -766,7 +766,7 @@ namespace TableStorage.Models
             { "item_blade_mail", ItemPriceLevel1["item_blade_mail"] },
             { "item_bloodstone", ItemPriceLevel2["item_bloodstone"] },
             { "item_bloodthorn", ItemPriceLevel3["item_bloodthorn"] },
-            { "item_travel_boots_1", ItemPriceLevel1["item_travel_boots_1"] },
+            { "item_travel_boots", ItemPriceLevel1["item_travel_boots"] },
             { "item_travel_boots_2", ItemPriceLevel1["item_travel_boots_2"] },
             { "item_bracer", ItemPriceLevel1["item_bracer"] },
             { "item_buckler", ItemPriceLevel1["item_buckler"] },
@@ -774,13 +774,13 @@ namespace TableStorage.Models
             { "item_crimson_guard", ItemPriceLevel2["item_crimson_guard"] },
             { "item_lesser_crit", ItemPriceLevel1["item_lesser_crit"] },
             { "item_greater_crit", ItemPriceLevel2["item_greater_crit"] },
-            { "item_dagon_1", ItemPriceLevel2["item_dagon_1"] },
+            { "item_dagon", ItemPriceLevel2["item_dagon"] },
             { "item_dagon_2", ItemPriceLevel2["item_dagon_2"] },
             { "item_dagon_3", ItemPriceLevel2["item_dagon_3"] },
             { "item_dagon_4", ItemPriceLevel2["item_dagon_4"] },
             { "item_dagon_5", ItemPriceLevel2["item_dagon_5"] },
             { "item_desolator", ItemPriceLevel1["item_desolator"] },
-            { "item_diffusal_blade_1", ItemPriceLevel1["item_diffusal_blade_1"] },
+            { "item_diffusal_blade", ItemPriceLevel1["item_diffusal_blade"] },
             { "item_diffusal_blade_2", ItemPriceLevel1["item_diffusal_blade_2"] },
             { "item_dragon_lance", ItemPriceLevel1["item_dragon_lance"] },
             { "item_ancient_janggo", ItemPriceLevel2["item_ancient_janggo"] },
@@ -810,7 +810,7 @@ namespace TableStorage.Models
             { "item_mjollnir", ItemPriceLevel2["item_mjollnir"] },
             { "item_monkey_king_bar", ItemPriceLevel1["item_monkey_king_bar"] },
             { "item_moon_shard", ItemPriceLevel1["item_moon_shard"] },
-            { "item_necronomicon_1", ItemPriceLevel1["item_necronomicon_1"] },
+            { "item_necronomicon", ItemPriceLevel1["item_necronomicon"] },
             { "item_necronomicon_2", ItemPriceLevel1["item_necronomicon_2"] },
             { "item_necronomicon_3", ItemPriceLevel1["item_necronomicon_3"] },
             { "item_null_talisman", ItemPriceLevel1["item_null_talisman"] },
