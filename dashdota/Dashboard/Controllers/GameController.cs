@@ -40,9 +40,9 @@ namespace Dashboard.Controllers
                 // Add the current game state to the list.
                 gameStates.Add(gameState);
 
-                // Use the current game state's MatchId to see if any other
-                // users are sending game sense telemetry within the same match.
-                var team = await TeamTable.GetTeamMembersAsync(gameState.MatchId);
+                // Use the current game state's MatchId and Team name to see if any other
+                // players are sending game sense telemetry within the same team.
+                var team = await TeamTable.GetTeamMembersAsync(gameState.MatchId, gameState.Team);
 
                 foreach (var member in team)
                 {

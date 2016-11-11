@@ -21,11 +21,9 @@ namespace TableStorage
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        private static string GetPartitionKey(string matchId)
+        private static string GetPartitionKey(string matchId, PlayerTeam team)
         {
-            // TODO: Need to somehow get the side (radiant/dire) and
-            // concatenate with matchId to form partition key.
-            return matchId + "_" + "radiant";
+            return matchId + "_" + team;
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace TableStorage
             {
                 await Instance.AddOrReplaceEntityAsync(new TeamEntity()
                 {
-                    PartitionKey = GetPartitionKey(gs.Map.MatchId),
+                    PartitionKey = GetPartitionKey(gs.Map.MatchId, gs.Player.Team),
                     RowKey = gs.Player.SteamID,
                 });
             }
@@ -52,15 +50,13 @@ namespace TableStorage
 
         /// <summary>
         /// Get a list of steamIds that are in the specified match.
-        /// TODO: Currently gets all steamIds regardless of team, need to
-        /// implement separation of teams.
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<TeamEntity>> GetTeamMembersAsync(string matchId)
+        public static async Task<IEnumerable<TeamEntity>> GetTeamMembersAsync(string matchId, PlayerTeam team)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
-                QueryComparisons.Equal, GetPartitionKey(matchId));
+                QueryComparisons.Equal, GetPartitionKey(matchId, team));
 
             return await Instance.ReadEntityRangeAsync(partitionKeyFilter);
         }
