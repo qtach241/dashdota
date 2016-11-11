@@ -67,7 +67,7 @@ namespace Dashboard.Controllers
             }
 
             // Return the game state list in Json format.
-            return new JsonNetResult(gameStates);
+            return new JsonNetResult(gameStates.OrderByDescending(o => o.Networth));
         }
     }
 }
