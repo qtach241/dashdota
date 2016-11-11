@@ -21,7 +21,7 @@ namespace TableStorage
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        private static string GetPartitionKey(string matchId, PlayerTeam team)
+        private static string GetPartitionKey(string matchId, string team)
         {
             return matchId + "_" + team;
         }
@@ -38,7 +38,7 @@ namespace TableStorage
             {
                 await Instance.AddOrReplaceEntityAsync(new TeamEntity()
                 {
-                    PartitionKey = GetPartitionKey(gs.Map.MatchId, gs.Player.Team),
+                    PartitionKey = GetPartitionKey(gs.Map.MatchId, gs.Player.Team.ToString()),
                     RowKey = gs.Player.SteamID,
                 });
             }
@@ -53,7 +53,7 @@ namespace TableStorage
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
-        public static async Task<IEnumerable<TeamEntity>> GetTeamMembersAsync(string matchId, PlayerTeam team)
+        public static async Task<IEnumerable<TeamEntity>> GetTeamMembersAsync(string matchId, string team)
         {
             string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
                 QueryComparisons.Equal, GetPartitionKey(matchId, team));
