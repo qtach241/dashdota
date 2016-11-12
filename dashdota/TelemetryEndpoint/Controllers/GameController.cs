@@ -22,14 +22,13 @@ namespace TelemetryEndpoint.Controllers
                 return BadRequest();
             }
 
-            // Valid game state must be authenticated.
-            // TODO: Generate a unique token for each user at login.
-            if (gs.Auth.Token != "placeholder")
-            {
-                return BadRequest();
-            }
+            // Check if this game state was sent by a valid client.
+            //if (gs.Auth.Token != "placeholder")
+            //{
+            //    return BadRequest();
+            //}
 
-            // Wait until we load into the map before taking game state.
+            // Wait until we load into the map before logging game state.
             if (gs.Map == null)
             {
                 return Ok();

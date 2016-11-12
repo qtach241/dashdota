@@ -73,8 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthTokenTable.cs" />
     <Compile Include="ExceptionTable.cs" />
     <Compile Include="GameStateTable.cs" />
+    <Compile Include="Models\AuthTokenEntity.cs" />
     <Compile Include="Models\ExceptionEntity.cs" />
     <Compile Include="Models\GameStateEntity.cs" />
     <Compile Include="Models\TeamEntity.cs" />

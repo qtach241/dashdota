@@ -1,30 +1,50 @@
 ﻿@{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = "Dash Dota";
 }
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-
-<h1>Dash Dota Test</h1>
+<h1>Dash Dota Alpha Test</h1>
 <hr />
 
-<h3>Enter your steam Id:</h3>
+<h3>Step 1: Enter your steam Id:</h3>
 <div>
     <form id="form" onsubmit="return false;">
         <input type="text" id="userInput" />
         <input type="submit" onclick="SetSteamId();" />
     </form>
-</div> <br />
+</div> 
+<br />
+
+<h3>Step 2: Download the config file:</h3>
+
+@using (Html.BeginForm("DownloadConfig", "Game", new { id = 6666 }, FormMethod.Post, new { @target = "_Blank" }))
+{
+    <button type="submit" class="btn btn-default">Download Cfg</button>
+}
+<br />
+
+Make sure the above file is placed in the location: <br />
+\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_dashdota.cfg <br /><br />
+
+Note: You may have to manually create the "gamestate_integration" folder in the above path. <br /><br />
+
+<h3>Step 3: View real-time stats!</h3>
+<hr />
 
 <div>
-    Steam Id: <div id="steamid">-1</div><br />
-    Match Id: <div id="matchid">-1</div><br />
-    Clock Time: <div id="clocktime">-1</div><br />
-    Gold Per Minute: <div id="gpm">-1</div><br />
-    Experience Per Minute: <div id="xpm">-1</div><br />
-    Networth: <div id="networth">-1</div><br />
+    <b>Steam Id: </b><div id="steamid" style="display:inline-block">-1</div><br />
+    <b>Steam Name: </b><div id="steamname" style="display:inline-block">-1</div><br />
+    <b>Match Id: </b><div id="matchid" style="display:inline-block">-1</div><br />
+    <b>Team: </b><div id="team" style="display:inline-block">-1</div><br />
+    <b>Hero: </b><div id="hero" style="display:inline-block">-1</div><br />
+    <b>Clock Time: </b><div id="clocktime" style="display:inline-block">-1</div><br />
+    <b>Gold Per Minute: </b><div id="gpm" style="display:inline-block">-1</div><br />
+    <b>Experience Per Minute: </b><div id="xpm" style="display:inline-block">-1</div><br />
+    <b>Networth: </b><div id="networth" style="display:inline-block">-1</div><br />
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
 
 <script>
     var steamId = 0;
@@ -67,7 +87,10 @@
             else
             {
                 $('#steamid').html(data[0].PartitionKey)
+                $('#steamname').html(data[0].Name)
                 $('#matchid').html(data[0].MatchId)
+                $('#team').html(data[0].Team)
+                $('#hero').html(data[0].Hero)
                 $('#clocktime').html(data[0].ClockTime)
                 $('#gpm').html(data[0].GoldPerMinute)
                 $('#xpm').html(data[0].ExperiencePerMinute)
@@ -83,3 +106,5 @@
     }
 
 </script>
+}
+

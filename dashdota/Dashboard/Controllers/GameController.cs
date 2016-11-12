@@ -1,14 +1,15 @@
-﻿using Dashboard.Models;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using ModelsLibrary;
 using TableStorage;
 using TableStorage.Models;
+using Dashboard.Models;
 
 namespace Dashboard.Controllers
 {
@@ -18,7 +19,7 @@ namespace Dashboard.Controllers
         /// AJAX handler that returns a list of game state objects in Json form,
         /// one for each team member.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="id">steam Id</param>
         /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> GetGameState(string id)
@@ -67,7 +68,59 @@ namespace Dashboard.Controllers
             }
 
             // Return the game state list in Json format.
-            return new JsonNetResult(gameStates);
+            return new JsonNetResult(gameStates.OrderByDescending(o => o.Networth));
+        }
+
+        /// <summary>
+        /// Action handler that generates and downloads the game sense integration
+        /// configuration file.
+        /// </summary>
+        /// <param name="id">steam Id</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> DownloadConfig(string id)
+        {
+            // Check if this user already has an auth token.
+            var token = await AuthTokenTable.GetAuthTokenAsync(id);
+
+            if (string.IsNullOrEmpty(token))
+            {
+                // Generate a new auth token.
+                token = Guid.NewGuid().ToString();
+
+                // Store the steam Id and auth token.
+                await AuthTokenTable.AddEntityAsync(id, token);
+            }
+
+            // Generate and download the config file.
+            MemoryStream memoryStream = new MemoryStream();
+            TextWriter tw = new StreamWriter(memoryStream);
+
+            tw.WriteLine("\"Dota 2 Integration Configuration\"");
+            tw.WriteLine("{");
+            tw.WriteLine("    \"uri\"           \"http://dashdota-api.azurewebsites.net/api/game\"");
+            tw.WriteLine("    \"timeout\"       \"5.0\"");
+            tw.WriteLine("    \"buffer\"        \"0.1\"");
+            tw.WriteLine("    \"throttle\"      \"0.1\"");
+            tw.WriteLine("    \"heartbeat\"     \"50.0\"");
+            tw.WriteLine("    \"auth\"");
+            tw.WriteLine("    {");
+            tw.WriteLine("        \"token\"         \"{0}\"", token);
+            tw.WriteLine("    }");
+            tw.WriteLine("    \"data\"");
+            tw.WriteLine("    {");
+            tw.WriteLine("        \"provider\"      \"1\"");
+            tw.WriteLine("        \"map\"           \"1\"");
+            tw.WriteLine("        \"player\"        \"1\"");
+            tw.WriteLine("        \"hero\"          \"1\"");
+            tw.WriteLine("        \"abilities\"     \"1\"");
+            tw.WriteLine("        \"items\"         \"1\"");
+            tw.WriteLine("    }");
+            tw.WriteLine("}");
+            tw.Flush();
+            tw.Close();
+
+            return File(memoryStream.GetBuffer(), "text/plain", "gamestate_integration_dashdota.cfg");
         }
     }
 }

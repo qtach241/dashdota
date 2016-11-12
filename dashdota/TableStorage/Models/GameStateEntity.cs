@@ -14,8 +14,10 @@ namespace TableStorage.Models
         public GameStateEntity(GameState gs)
         {
             MatchId = gs.Map.MatchId;
+            Name = gs.Player.Name;
             Team = gs.Player.Team.ToString();
             ClockTime = gs.Map.ClockTime;
+            Hero = gs.Hero.Name;
             GoldPerMinute = gs.Player.GoldPerMinute;
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;
 
@@ -35,7 +37,9 @@ namespace TableStorage.Models
         }
 
         public string MatchId { get; set; }
+        public string Name { get; set; }
         public string Team { get; set; }
+        public string Hero { get; set; }
         public int ClockTime { get; set; }
         public int GoldPerMinute { get; set; }
         public int ExperiencePerMinute { get; set; }
