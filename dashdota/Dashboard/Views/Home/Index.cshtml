@@ -87,7 +87,10 @@ Note: You may have to manually create the "gamestate_integration" folder in the 
             else
             {
                 $('#steamid').html(data[0].PartitionKey)
+                $('#steamname').html(data[0].Name)
                 $('#matchid').html(data[0].MatchId)
+                $('#team').html(data[0].Team)
+                $('#hero').html(data[0].Hero)
                 $('#clocktime').html(data[0].ClockTime)
                 $('#gpm').html(data[0].GoldPerMinute)
                 $('#xpm').html(data[0].ExperiencePerMinute)
