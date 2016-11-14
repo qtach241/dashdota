@@ -27,6 +27,12 @@ namespace Dashboard.Controllers
             // Create an empty list of game states.
             List<GameStateEntity> gameStates = new List<GameStateEntity>();
 
+            // Return immediately if Id is empty.
+            if (string.IsNullOrEmpty(id))
+            {
+                return new JsonNetResult(gameStates);
+            }
+
             // Set valid time range to 10 seconds in the past. Otherwise,
             // the game state is considered stale and won't be queried.
             var rowKeyLower = (DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks).ToString();
