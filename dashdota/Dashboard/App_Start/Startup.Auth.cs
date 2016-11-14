@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Owin.Security.Providers.Steam;
 using Dashboard.Models;
+using System.Configuration;
 
 namespace Dashboard
 {
@@ -46,7 +47,7 @@ namespace Dashboard
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            app.UseSteamAuthentication("AE2A3D992D39E49CFF1F1B38FD5654C8");
+            app.UseSteamAuthentication(ConfigurationManager.AppSettings["SteamApiKey"]);
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(

@@ -1,24 +1,22 @@
-﻿@{
+﻿@model Dashboard.Models.DashboardViewModel
+@{
     ViewBag.Title = "Dash Dota";
 }
 
 <h1>Dash Dota Alpha Test</h1>
 <hr />
 
-<h3>Step 1: Enter your steam Id:</h3>
-<div>
-    <form id="form" onsubmit="return false;">
-        <input type="text" id="userInput" />
-        <input type="submit" onclick="SetSteamId();" />
-    </form>
-</div> 
+<h3>Step 1: Sign in with Steam</h3>
 <br />
 
-<h3>Step 2: Download the config file:</h3>
+<h3>Step 2: Download the config file</h3>
 
-@using (Html.BeginForm("DownloadConfig", "Game", new { id = 6666 }, FormMethod.Post, new { @target = "_Blank" }))
+@if (!string.IsNullOrEmpty(Model.steamId))
 {
-    <button type="submit" class="btn btn-default">Download Cfg</button>
+    using (Html.BeginForm("DownloadConfig", "Game", new { id = Model.steamId }, FormMethod.Post, new { @target = "_Blank" }))
+    {
+        <button type="submit" class="btn btn-default">Download Cfg</button>
+    }
 }
 <br />
 
@@ -74,7 +72,7 @@ Note: You may have to manually create the "gamestate_integration" folder in the 
             url: '@Url.Action("GetGameState", "Game")',
             timeout: 10000,
             data: {
-                id: steamId,
+                id: '@(Model.steamId)',
             },
         })
         .done(function (data) {
