@@ -22,6 +22,12 @@ namespace TelemetryEndpoint.Controllers
                 return BadRequest();
             }
 
+            // Failed to bind player's steam Id. Cannot proceed.
+            if (gs.Player?.SteamID == null)
+            {
+                return BadRequest();
+            }
+
             // Check if this game state was sent by a valid client.
             //if (gs.Auth.Token != "placeholder")
             //{
