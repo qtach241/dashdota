@@ -3,11 +3,7 @@
     ViewBag.Title = "Dash Dota";
 }
 
-<h1>Dash Dota Alpha Test</h1>
-<hr />
-
 <h3>Step 1: Sign in with Steam</h3>
-<br />
 
 <h3>Step 2: Download the config file</h3>
 
@@ -23,29 +19,29 @@
 Make sure the above file is placed in the location: <br />
 \steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_dashdota.cfg <br /><br />
 
-Note: You may have to manually create the "gamestate_integration" folder in the above path. <br /><br />
+Note: You may have to manually create the "gamestate_integration" folder in the above path. <br />
 
-<h3>Step 3: View real-time stats!</h3>
+<h3>Step 3: Your networth will appear below</h3>
 <hr />
 
-<div>
-    <b>Steam Id: </b><div id="steamid" style="display:inline-block">-1</div><br />
-    <b>Steam Name: </b><div id="steamname" style="display:inline-block">-1</div><br />
-    <b>Match Id: </b><div id="matchid" style="display:inline-block">-1</div><br />
-    <b>Team: </b><div id="team" style="display:inline-block">-1</div><br />
-    <b>Hero: </b><div id="hero" style="display:inline-block">-1</div><br />
-    <b>Clock Time: </b><div id="clocktime" style="display:inline-block">-1</div><br />
-    <b>Gold Per Minute: </b><div id="gpm" style="display:inline-block">-1</div><br />
-    <b>Experience Per Minute: </b><div id="xpm" style="display:inline-block">-1</div><br />
-    <b>Networth: </b><div id="networth" style="display:inline-block">-1</div><br />
-</div>
+<div id="networthWidgetArea"></div>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/Scripts/Dashdota/Widgets/NetworthBarWidget.js")
+    @Scripts.Render("~/Scripts/Dashdota/Widgets/NetworthWidget.js")
+    @Scripts.Render("~/Scripts/Dashdota/NetworthScript.js")
+    @Scripts.Render("~/Scripts/Dashdota/GameStateScript.js")
 
 <script>
-    var steamId = 0;
+    GetGameStateUrl = "@Url.Action("GetGameState", "Game")";
+    BaseImageDirectoryUrl = "@Url.Content("~/Content/Images/")";
+    HeroImageDirectoryUrl = "@Url.Content("~/Content/Images/Heroes/")";
+    NetworthImageDirectoryUrl = "@Url.Content("~/Content/Images/Networth/")";
+
+    var steamId = "@(Model.steamId)";
+
     const TimeoutLengthMs = 500;
 
     $.ajaxSetup({
@@ -57,52 +53,9 @@ Note: You may have to manually create the "gamestate_integration" folder in the 
         setTimeout(Timeout, TimeoutLengthMs);
     });
 
-    function SetSteamId() {
-        steamId = document.getElementById("userInput").value;
-        alert("Steam Id has been set to: " + steamId);
-    }
-
     function Timeout() {
-        GetGameState();
+        GetGameState(steamId, GetGameStateUrl);
     }
-
-    function GetGameState() {
-        $.ajax({
-            method: "GET",
-            url: '@Url.Action("GetGameState", "Game")',
-            timeout: 10000,
-            data: {
-                id: '@(Model.steamId)',
-            },
-        })
-        .done(function (data) {
-            //var gsObject = JSON.parse(data);
-            //UpdateDivs(gsObject);
-            if (data.length === 0)
-            {
-                console.log("no data found");
-            }
-            else
-            {
-                $('#steamid').html(data[0].PartitionKey)
-                $('#steamname').html(data[0].Name)
-                $('#matchid').html(data[0].MatchId)
-                $('#team').html(data[0].Team)
-                $('#hero').html(data[0].Hero)
-                $('#clocktime').html(data[0].ClockTime)
-                $('#gpm').html(data[0].GoldPerMinute)
-                $('#xpm').html(data[0].ExperiencePerMinute)
-                $('#networth').html(data[0].Networth)
-            }
-        })
-        .fail(function (data) {
-
-        })
-        .always(function (data) {
-            setTimeout(Timeout, TimeoutLengthMs);
-        });
-    }
-
 </script>
 }
 
