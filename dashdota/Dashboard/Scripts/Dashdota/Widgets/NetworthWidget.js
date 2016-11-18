@@ -55,14 +55,14 @@
     gpmNumberBox.className = "smallNumberBox";
     gpmNumberBox.style.zIndex = 1;
     gpmNumberBox.style.left = "162px";
-    gpmNumberBox.style.top = "57px";
+    gpmNumberBox.style.top = "56px";
     container.appendChild(gpmNumberBox);
 
     var xpmNumberBox = document.createElement("div");
     xpmNumberBox.className = "smallNumberBox";
     xpmNumberBox.style.zIndex = 1;
     xpmNumberBox.style.left = "230px";
-    xpmNumberBox.style.top = "57px";
+    xpmNumberBox.style.top = "56px";
     container.appendChild(xpmNumberBox);
 
     var networthBarWidget = new NetworthBarWidget(container, "127px", "26px", 0);
