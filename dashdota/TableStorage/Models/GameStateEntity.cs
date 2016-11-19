@@ -21,6 +21,7 @@ namespace TableStorage.Models
             Level = gs.Hero.Level;
             GoldPerMinute = gs.Player.GoldPerMinute;
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;
+            WardCooldown = gs.Map.WardPurchaseCooldown;
 
             Networth = gs.Player.Gold +
                 ItemPrice[gs.Items.Slot0.Name] +
@@ -52,6 +53,7 @@ namespace TableStorage.Models
         public int ClockTime { get; set; }
         public int GoldPerMinute { get; set; }
         public int ExperiencePerMinute { get; set; }
+        public int WardCooldown { get; set; }
         public int Networth { get; set; }
         public string Item0 { get; set; }
         public string Item1 { get; set; }
