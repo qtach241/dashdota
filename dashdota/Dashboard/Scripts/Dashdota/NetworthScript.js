@@ -64,6 +64,10 @@ function UpdateNetworthWidget(widget, gameState, topNetworth) {
         widget.SetHero(gameState.Hero);
     }
 
+    if (gameState.hasOwnProperty("Level")) {
+        widget.SetLevel(gameState.Level);
+    }
+
     // Set the gold per minute.
     if (gameState.hasOwnProperty("GoldPerMinute")) {
         widget.SetGpm(gameState.GoldPerMinute);
@@ -77,6 +81,31 @@ function UpdateNetworthWidget(widget, gameState, topNetworth) {
     // Set the networth value.
     if (gameState.hasOwnProperty("Networth")) {
         widget.SetNetworth(gameState.Networth);
+    }
+
+    // Set item slots.
+    if (gameState.hasOwnProperty("Item0")) {
+        widget.SetItemSlot0(gameState.Item0);
+    }
+
+    if (gameState.hasOwnProperty("Item1")) {
+        widget.SetItemSlot1(gameState.Item1);
+    }
+
+    if (gameState.hasOwnProperty("Item2")) {
+        widget.SetItemSlot2(gameState.Item2);
+    }
+
+    if (gameState.hasOwnProperty("Item3")) {
+        widget.SetItemSlot3(gameState.Item3);
+    }
+
+    if (gameState.hasOwnProperty("Item4")) {
+        widget.SetItemSlot4(gameState.Item4);
+    }
+
+    if (gameState.hasOwnProperty("Item5")) {
+        widget.SetItemSlot5(gameState.Item5);
     }
 
     // Set the networth percentage relative to top networth.

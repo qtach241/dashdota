@@ -18,6 +18,7 @@ namespace TableStorage.Models
             Team = gs.Player.Team.ToString();
             ClockTime = gs.Map.ClockTime;
             Hero = gs.Hero.Name;
+            Level = gs.Hero.Level;
             GoldPerMinute = gs.Player.GoldPerMinute;
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;
 
@@ -34,16 +35,30 @@ namespace TableStorage.Models
                 ItemPrice[gs.Items.Stash3.Name] +
                 ItemPrice[gs.Items.Stash4.Name] +
                 ItemPrice[gs.Items.Stash5.Name];
+
+            Item0 = gs.Items.Slot0.Name;
+            Item1 = gs.Items.Slot1.Name;
+            Item2 = gs.Items.Slot2.Name;
+            Item3 = gs.Items.Slot3.Name;
+            Item4 = gs.Items.Slot4.Name;
+            Item5 = gs.Items.Slot5.Name;
         }
 
         public string MatchId { get; set; }
         public string Name { get; set; }
         public string Team { get; set; }
         public string Hero { get; set; }
+        public int Level { get; set; }
         public int ClockTime { get; set; }
         public int GoldPerMinute { get; set; }
         public int ExperiencePerMinute { get; set; }
         public int Networth { get; set; }
+        public string Item0 { get; set; }
+        public string Item1 { get; set; }
+        public string Item2 { get; set; }
+        public string Item3 { get; set; }
+        public string Item4 { get; set; }
+        public string Item5 { get; set; }
 
         private static readonly Dictionary<string, int> ComponentPrice = new Dictionary<string, int>()
         {
