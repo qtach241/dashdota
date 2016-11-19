@@ -64,6 +64,10 @@ function UpdateNetworthWidget(widget, gameState, topNetworth) {
         widget.SetHero(gameState.Hero);
     }
 
+    if (gameState.hasOwnProperty("Level")) {
+        widget.SetLevel(gameState.Level);
+    }
+
     // Set the gold per minute.
     if (gameState.hasOwnProperty("GoldPerMinute")) {
         widget.SetGpm(gameState.GoldPerMinute);

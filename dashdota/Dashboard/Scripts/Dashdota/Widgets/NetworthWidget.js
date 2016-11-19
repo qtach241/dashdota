@@ -6,7 +6,7 @@
     container.style.zIndex = 0;
 
     var background = document.createElement("img");
-    background.src = BaseImageDirectoryUrl + "networth_background.png"
+    background.src = BaseImageDirectoryUrl + "networth_background.png";
     background.style.position = "absolute";
     background.style.zIndex = 0;
     background.style.left = "0px";
@@ -19,6 +19,23 @@
     heroPortrait.style.left = "1px";
     heroPortrait.style.top = "2px";
     container.appendChild(heroPortrait);
+
+    var levelBackground = document.createElement("img");
+    levelBackground.src = BaseImageDirectoryUrl + "gold_shield.png";
+    levelBackground.style.position = "absolute";
+    levelBackground.style.zIndex = 2;
+    levelBackground.style.width = "28px";
+    levelBackground.style.height = "35px";
+    levelBackground.style.left = "0px";
+    levelBackground.style.top = "0px";
+    container.appendChild(levelBackground);
+
+    var levelNumberBox = document.createElement("div");
+    levelNumberBox.className = "levelNumberBox";
+    levelNumberBox.style.zIndex = 3;
+    levelNumberBox.style.left = "2px";
+    levelNumberBox.style.top = "5px";
+    container.appendChild(levelNumberBox);
 
     var networthNumberBox = document.createElement("div");
     networthNumberBox.className = "networthNumberBox";
@@ -35,6 +52,7 @@
     nameTextBox.style.top = "54px";
     container.appendChild(nameTextBox);
 
+    // Xpm and Gpm
     var gpmLabelBox = document.createElement("div");
     gpmLabelBox.className = "smallLabelBox";
     gpmLabelBox.innerHTML = "gpm:";
@@ -74,6 +92,10 @@
 
     container.SetHero = function (value) {
         heroPortrait.src = HeroImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetLevel = function (value) {
+        levelNumberBox.innerHTML = value;
     }
 
     container.SetGpm = function (value) {
