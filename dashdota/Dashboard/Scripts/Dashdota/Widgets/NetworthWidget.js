@@ -87,51 +87,43 @@
     var itemSlot0 = document.createElement("img");
     itemSlot0.className = "itemSlot";
     itemSlot0.style.position = "absolute";
-    itemSlot0.style.zIndex = 1;
-    itemSlot0.style.width = "26px";
-    itemSlot0.style.height = "20px";
-    itemSlot0.style.left = "500px";
-    itemSlot0.style.top = "53px";
+    itemSlot0.style.left = "270px";
+    itemSlot0.style.top = "2px";
     container.appendChild(itemSlot0);
 
     var itemSlot1 = document.createElement("img");
     itemSlot1.className = "itemSlot";
     itemSlot1.style.position = "absolute";
-    itemSlot1.style.zIndex = 1;
-    itemSlot1.style.left = "528px";
-    itemSlot1.style.top = "53px";
+    itemSlot1.style.left = "323px";
+    itemSlot1.style.top = "2px";
     container.appendChild(itemSlot1);
 
     var itemSlot2 = document.createElement("img");
     itemSlot2.className = "itemSlot";
     itemSlot2.style.position = "absolute";
-    itemSlot2.style.zIndex = 1;
-    itemSlot2.style.left = "556px";
-    itemSlot2.style.top = "53px";
+    itemSlot2.style.left = "376px";
+    itemSlot2.style.top = "2px";
     container.appendChild(itemSlot2);
 
     var itemSlot3 = document.createElement("img");
     itemSlot3.className = "itemSlot";
     itemSlot3.style.position = "absolute";
-    itemSlot3.style.zIndex = 1;
-    itemSlot3.style.left = "584px";
-    itemSlot3.style.top = "53px";
+    itemSlot3.style.left = "429px";
+    itemSlot3.style.top = "2px";
     container.appendChild(itemSlot3);
 
     var itemSlot4 = document.createElement("img");
     itemSlot4.className = "itemSlot";
     itemSlot4.style.position = "absolute";
-    itemSlot4.style.zIndex = 1;
-    itemSlot4.style.left = "612px";
-    itemSlot4.style.top = "53px";
+    itemSlot4.style.left = "482px";
+    itemSlot4.style.top = "2px";
     container.appendChild(itemSlot4);
 
     var itemSlot5 = document.createElement("img");
     itemSlot5.className = "itemSlot";
     itemSlot5.style.position = "absolute";
-    itemSlot5.style.zIndex = 1;
-    itemSlot5.style.left = "640px";
-    itemSlot5.style.top = "53px";
+    itemSlot5.style.left = "535px";
+    itemSlot5.style.top = "2px";
     container.appendChild(itemSlot5);
 
     var networthBarWidget = new NetworthBarWidget(container, "127px", "26px", 0);

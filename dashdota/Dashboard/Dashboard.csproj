@@ -372,6 +372,7 @@
     <Content Include="Content\Images\Heroes\npc_dota_hero_wisp.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_witch_doctor.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_zuus.png" />
+    <Content Include="Content\Images\Items\empty.png" />
     <Content Include="Content\Images\Items\item_abyssal_blade.png" />
     <Content Include="Content\Images\Items\item_aether_lens.png" />
     <Content Include="Content\Images\Items\item_ancient_janggo.png" />
