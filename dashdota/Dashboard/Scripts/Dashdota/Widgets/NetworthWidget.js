@@ -83,6 +83,57 @@
     xpmNumberBox.style.top = "56px";
     container.appendChild(xpmNumberBox);
 
+    // Item Slots
+    var itemSlot0 = document.createElement("img");
+    itemSlot0.className = "itemSlot";
+    itemSlot0.style.position = "absolute";
+    itemSlot0.style.zIndex = 1;
+    itemSlot0.style.width = "26px";
+    itemSlot0.style.height = "20px";
+    itemSlot0.style.left = "500px";
+    itemSlot0.style.top = "53px";
+    container.appendChild(itemSlot0);
+
+    var itemSlot1 = document.createElement("img");
+    itemSlot1.className = "itemSlot";
+    itemSlot1.style.position = "absolute";
+    itemSlot1.style.zIndex = 1;
+    itemSlot1.style.left = "528px";
+    itemSlot1.style.top = "53px";
+    container.appendChild(itemSlot1);
+
+    var itemSlot2 = document.createElement("img");
+    itemSlot2.className = "itemSlot";
+    itemSlot2.style.position = "absolute";
+    itemSlot2.style.zIndex = 1;
+    itemSlot2.style.left = "556px";
+    itemSlot2.style.top = "53px";
+    container.appendChild(itemSlot2);
+
+    var itemSlot3 = document.createElement("img");
+    itemSlot3.className = "itemSlot";
+    itemSlot3.style.position = "absolute";
+    itemSlot3.style.zIndex = 1;
+    itemSlot3.style.left = "584px";
+    itemSlot3.style.top = "53px";
+    container.appendChild(itemSlot3);
+
+    var itemSlot4 = document.createElement("img");
+    itemSlot4.className = "itemSlot";
+    itemSlot4.style.position = "absolute";
+    itemSlot4.style.zIndex = 1;
+    itemSlot4.style.left = "612px";
+    itemSlot4.style.top = "53px";
+    container.appendChild(itemSlot4);
+
+    var itemSlot5 = document.createElement("img");
+    itemSlot5.className = "itemSlot";
+    itemSlot5.style.position = "absolute";
+    itemSlot5.style.zIndex = 1;
+    itemSlot5.style.left = "640px";
+    itemSlot5.style.top = "53px";
+    container.appendChild(itemSlot5);
+
     var networthBarWidget = new NetworthBarWidget(container, "127px", "26px", 0);
 
     // External Functions
@@ -108,6 +159,30 @@
 
     container.SetNetworth = function (value) {
         networthNumberBox.innerHTML = value;
+    }
+
+    container.SetItemSlot0 = function (value) {
+        itemSlot0.src = ItemImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetItemSlot1 = function (value) {
+        itemSlot1.src = ItemImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetItemSlot2 = function (value) {
+        itemSlot2.src = ItemImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetItemSlot3 = function (value) {
+        itemSlot3.src = ItemImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetItemSlot4 = function (value) {
+        itemSlot4.src = ItemImageDirectoryUrl + value + ".png";
+    }
+
+    container.SetItemSlot5 = function (value) {
+        itemSlot5.src = ItemImageDirectoryUrl + value + ".png";
     }
 
     container.SetNetworthPercentage = function (value) {
