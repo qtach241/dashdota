@@ -64,6 +64,7 @@ function UpdateNetworthWidget(widget, gameState, topNetworth) {
         widget.SetHero(gameState.Hero);
     }
 
+    // Set the hero level.
     if (gameState.hasOwnProperty("Level")) {
         widget.SetLevel(gameState.Level);
     }

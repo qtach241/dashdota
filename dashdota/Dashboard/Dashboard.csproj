@@ -250,6 +250,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\GameStateModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JsonNetResult.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -652,6 +653,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Dashdota\GameStateScript.js" />
     <Content Include="Scripts\Dashdota\NetworthScript.js" />
+    <Content Include="Scripts\Dashdota\Widgets\AlertWidget.js" />
     <Content Include="Scripts\Dashdota\Widgets\NetworthBarWidget.js" />
     <Content Include="Scripts\Dashdota\Widgets\NetworthWidget.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -21,7 +21,6 @@ namespace TableStorage.Models
             Level = gs.Hero.Level;
             GoldPerMinute = gs.Player.GoldPerMinute;
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;
-            WardCooldown = gs.Map.WardPurchaseCooldown;
 
             Networth = gs.Player.Gold +
                 ItemPrice[gs.Items.Slot0.Name] +
@@ -43,6 +42,36 @@ namespace TableStorage.Models
             Item3 = gs.Items.Slot3.Name;
             Item4 = gs.Items.Slot4.Name;
             Item5 = gs.Items.Slot5.Name;
+
+            NoTp = ((Item0 != "item_tpscroll") && (Item0 != "item_travel_boots") && (Item0 != "item_travel_boots_2")
+                && (Item1 != "item_tpscroll") && (Item1 != "item_travel_boots") && (Item1 != "item_travel_boots_2")
+                && (Item2 != "item_tpscroll") && (Item2 != "item_travel_boots") && (Item2 != "item_travel_boots_2")
+                && (Item3 != "item_tpscroll") && (Item3 != "item_travel_boots") && (Item3 != "item_travel_boots_2")
+                && (Item4 != "item_tpscroll") && (Item4 != "item_travel_boots") && (Item4 != "item_travel_boots_2")
+                && (Item5 != "item_tpscroll") && (Item5 != "item_travel_boots") && (Item5 != "item_travel_boots_2"));
+
+            NoUlt = ((gs.Hero.Level >= 6) && 
+                (((gs.Abilities.Ability3 == null ? false : true) && (gs.Abilities.Ability3.IsUltimate) && (!gs.Abilities.Ability3.CanCast))
+                || ((gs.Abilities.Ability4 == null ? false : true) && (gs.Abilities.Ability4.IsUltimate) && (!gs.Abilities.Ability4.CanCast))
+                || ((gs.Abilities.Ability5 == null ? false : true) && (gs.Abilities.Ability5.IsUltimate) && (!gs.Abilities.Ability5.CanCast))));
+
+            NoDetection = ((Item0 != "item_dust") && (Item0 != "item_ward_sentry") && (Item0 != "item_ward_dispenser") && (Item0 != "item_gem")
+                && (Item1 != "item_dust") && (Item1 != "item_ward_sentry") && (Item1 != "item_ward_dispenser") && (Item1 != "item_gem")
+                && (Item2 != "item_dust") && (Item2 != "item_ward_sentry") && (Item2 != "item_ward_dispenser") && (Item2 != "item_gem")
+                && (Item3 != "item_dust") && (Item3 != "item_ward_sentry") && (Item3 != "item_ward_dispenser") && (Item3 != "item_gem")
+                && (Item4 != "item_dust") && (Item4 != "item_ward_sentry") && (Item4 != "item_ward_dispenser") && (Item4 != "item_gem")
+                && (Item5 != "item_dust") && (Item5 != "item_ward_sentry") && (Item5 != "item_ward_dispenser") && (Item5 != "item_gem"));
+
+            LowHealth = (gs.Hero.HealthPercent < 50);
+
+            ObsOffCooldown = (gs.Map.WardPurchaseCooldown == 0);
+
+            MidasOffCooldown = (((gs.Items.Slot0.Name == "item_hand_of_midas") && (gs.Items.Slot0.CanCast))
+                || ((gs.Items.Slot1.Name == "item_hand_of_midas") && (gs.Items.Slot1.CanCast))
+                || ((gs.Items.Slot2.Name == "item_hand_of_midas") && (gs.Items.Slot2.CanCast))
+                || ((gs.Items.Slot3.Name == "item_hand_of_midas") && (gs.Items.Slot3.CanCast))
+                || ((gs.Items.Slot4.Name == "item_hand_of_midas") && (gs.Items.Slot4.CanCast))
+                || ((gs.Items.Slot5.Name == "item_hand_of_midas") && (gs.Items.Slot5.CanCast)));
         }
 
         public string MatchId { get; set; }
@@ -53,7 +82,6 @@ namespace TableStorage.Models
         public int ClockTime { get; set; }
         public int GoldPerMinute { get; set; }
         public int ExperiencePerMinute { get; set; }
-        public int WardCooldown { get; set; }
         public int Networth { get; set; }
         public string Item0 { get; set; }
         public string Item1 { get; set; }
@@ -61,6 +89,14 @@ namespace TableStorage.Models
         public string Item3 { get; set; }
         public string Item4 { get; set; }
         public string Item5 { get; set; }
+
+        // Stored Alerts
+        public bool NoTp { get; set; } = false;
+        public bool NoUlt { get; set; } = false;
+        public bool NoDetection { get; set; } = false;
+        public bool LowHealth { get; set; } = false;
+        public bool ObsOffCooldown { get; set; } = false;
+        public bool MidasOffCooldown { get; set; } = false;
 
         private static readonly Dictionary<string, int> ComponentPrice = new Dictionary<string, int>()
         {
