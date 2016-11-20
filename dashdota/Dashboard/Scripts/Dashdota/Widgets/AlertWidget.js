@@ -1,10 +1,10 @@
 ﻿// Icons further left are more common/relevant.
 const Position1 = "0px";
-const Position2 = "70px";
-const Position3 = "140px";
-const Position4 = "210px";
-const Position5 = "280px";
-const Position6 = "350px";
+const Position2 = "90px";
+const Position3 = "180px";
+const Position4 = "270px";
+const Position5 = "360px";
+const Position6 = "450px";
 
 function AlertWidget(parent, left, top, zIndex) {
 
