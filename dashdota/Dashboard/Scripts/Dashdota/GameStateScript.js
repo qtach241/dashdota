@@ -15,7 +15,7 @@ function GetGameState(steamId, url, callback) {
         // TODO: There is only one widget at the moment, so having a
         // a callback here doesn't really accomplish anything useful.
         // Just call the update function directly.
-        UpdateNetworthWidgets(gameStateObjects);
+        UpdateNetworthWidgets(gameStateObjects, teamWideAlerts);
 
         if (callback != null) {
             callback(gameStateObjects);

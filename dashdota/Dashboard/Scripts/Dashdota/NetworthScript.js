@@ -1,10 +1,10 @@
 ﻿// Update all networth widgets (for up to 5 players).
-function UpdateNetworthWidgets(gameStateObjects) {
+function UpdateNetworthWidgets(gameStateObjects, teamWideAlerts) {
     // Currently, the Networth widget is the only widget available, so just
     // call Create and Update directly instead of routing through callbacks.
     //UpdateWidgets(gameStateObjects, "networthWidget", CreateNetworthWidget, UpdateNetworthWidget);
 
-    if (!gameStateObjects) {
+    if (!gameStateObjects || !teamWideAlerts) {
         return;
     }
 
@@ -43,13 +43,13 @@ function UpdateNetworthWidgets(gameStateObjects) {
                 topNetworth = gameStateObjects[i].Networth;
             }
         }
-        // Update widget with new data.
-        UpdateNetworthWidget(targetWidgets[i], gameStateObjects[i], topNetworth);
+        // Update widget and any sub-widgets with new data.
+        UpdateNetworthWidget(targetWidgets[i], gameStateObjects[i], teamWideAlerts, topNetworth);
     }
 }
 
 // Update a single networth widget (for only one player).
-function UpdateNetworthWidget(widget, gameState, topNetworth) {
+function UpdateNetworthWidget(widget, gameState, teamWideAlerts, topNetworth) {
     if (!widget || !gameState) {
         return;
     }
@@ -107,6 +107,31 @@ function UpdateNetworthWidget(widget, gameState, topNetworth) {
 
     if (gameState.hasOwnProperty("Item5")) {
         widget.SetItemSlot5(gameState.Item5);
+    }
+
+    // Set Alerts sub-widget.
+    if (teamWideAlerts.hasOwnProperty("NoDetection")) {
+        widget.SetDetectionAlert(teamWideAlerts.NoDetection);
+    }
+
+    if (teamWideAlerts.hasOwnProperty("ObsOffCooldown")) {
+        widget.SetWardAlert(teamWideAlerts.ObsOffCooldown);
+    }
+
+    if (gameState.hasOwnProperty("NoTp")) {
+        widget.SetTpAlert(gameState.NoTp);
+    }
+
+    if (gameState.hasOwnProperty("NoUlt")) {
+        widget.SetUltAlert(gameState.NoUlt);
+    }
+
+    if (gameState.hasOwnProperty("MidasOffCooldown")) {
+        widget.SetMidasAlert(gameState.MidasOffCooldown);
+    }
+    
+    if (gameState.hasOwnProperty("LowHealth")) {
+        widget.SetHealthAlert(gameState.LowHealth);
     }
 
     // Set the networth percentage relative to top networth.

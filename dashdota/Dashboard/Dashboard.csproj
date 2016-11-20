@@ -260,10 +260,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Alerts\alert_detection.png" />
     <Content Include="Content\Images\Alerts\alert_detection_text.png" />
+    <Content Include="Content\Images\Alerts\alert_health.png" />
+    <Content Include="Content\Images\Alerts\alert_midas.png" />
     <Content Include="Content\Images\Alerts\alert_midas_text.png" />
+    <Content Include="Content\Images\Alerts\alert_tp.png" />
     <Content Include="Content\Images\Alerts\alert_tp_text.png" />
+    <Content Include="Content\Images\Alerts\alert_ult.png" />
     <Content Include="Content\Images\Alerts\alert_ult_text.png" />
+    <Content Include="Content\Images\Alerts\alert_wards.png" />
     <Content Include="Content\Images\Alerts\alert_wards_text.png" />
     <Content Include="Content\Images\gold_shield.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_abaddon.png" />
