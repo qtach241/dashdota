@@ -9,12 +9,13 @@ function GetGameState(steamId, url, callback) {
         },
     })
     .done(function (data) {
-        var gameStateObjects = data;
+        var gameStateObjects = data.GameStates;
+        var teamWideAlerts = data.Alerts;
 
         // TODO: There is only one widget at the moment, so having a
         // a callback here doesn't really accomplish anything useful.
         // Just call the update function directly.
-        UpdateNetworthWidgets(gameStateObjects);
+        UpdateNetworthWidgets(gameStateObjects, teamWideAlerts);
 
         if (callback != null) {
             callback(gameStateObjects);

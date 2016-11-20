@@ -128,6 +128,8 @@
 
     var networthBarWidget = new NetworthBarWidget(container, "127px", "26px", 0);
 
+    var alertWidget = new AlertWidget(container, "700px", "0px", 0);
+
     // External Functions
     container.SetName = function (value) {
         nameTextBox.innerHTML = value;
@@ -179,6 +181,31 @@
 
     container.SetNetworthPercentage = function (value) {
         networthBarWidget.SetNetworthPercentage(value);
+    }
+
+    // Alert sub-widget functions
+    container.SetDetectionAlert = function (enabled) {
+        alertWidget.SetDetectionAlert(enabled);
+    }
+
+    container.SetWardAlert = function (enabled) {
+        alertWidget.SetWardAlert(enabled);
+    }
+
+    container.SetTpAlert = function (enabled) {
+        alertWidget.SetTpAlert(enabled);
+    }
+
+    container.SetUltAlert = function (enabled) {
+        alertWidget.SetUltAlert(enabled);
+    }
+
+    container.SetMidasAlert = function (enabled) {
+        alertWidget.SetMidasAlert(enabled);
+    }
+
+    container.SetHealthAlert = function (enabled) {
+        alertWidget.SetHealthAlert(enabled);
     }
 
     return container;

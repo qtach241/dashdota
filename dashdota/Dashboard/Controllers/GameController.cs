@@ -30,7 +30,7 @@ namespace Dashboard.Controllers
             // Return immediately if Id is empty.
             if (string.IsNullOrEmpty(id))
             {
-                return new JsonNetResult(gameStates);
+                return new JsonNetResult(new GameStateModel());
             }
 
             // Set valid time range to 10 seconds in the past. Otherwise,
@@ -73,8 +73,11 @@ namespace Dashboard.Controllers
                 }
             }
 
-            // Return the game state list in Json format.
-            return new JsonNetResult(gameStates.OrderByDescending(o => o.Networth));
+            // Order the complete list of game states by networth.
+            gameStates.OrderByDescending(o => o.Networth);
+
+            // Return the game state model in Json format.
+            return new JsonNetResult(new GameStateModel(gameStates));
         }
 
         /// <summary>
