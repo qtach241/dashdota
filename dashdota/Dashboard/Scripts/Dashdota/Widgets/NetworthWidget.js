@@ -128,7 +128,7 @@
 
     var networthBarWidget = new NetworthBarWidget(container, "127px", "26px", 0);
 
-    var alertWidget = new AlertWidget(container, "700px", "0px", 0);
+    var alertWidget = new AlertWidget(container, "700px", "4px", 0);
 
     // External Functions
     container.SetName = function (value) {
