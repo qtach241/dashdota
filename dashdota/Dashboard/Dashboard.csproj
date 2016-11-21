@@ -490,6 +490,7 @@
     <Content Include="Content\Images\Items\item_radiance.png" />
     <Content Include="Content\Images\Items\item_rapier.png" />
     <Content Include="Content\Images\Items\item_reaver.png" />
+    <Content Include="Content\Images\Items\item_recipe.png" />
     <Content Include="Content\Images\Items\item_refresher.png" />
     <Content Include="Content\Images\Items\item_relic.png" />
     <Content Include="Content\Images\Items\item_ring_of_aquila.png" />

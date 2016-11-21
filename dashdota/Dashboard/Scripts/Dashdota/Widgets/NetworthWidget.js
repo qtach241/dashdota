@@ -156,27 +156,27 @@
     }
 
     container.SetItemSlot0 = function (value) {
-        itemSlot0.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot0.src = GetItemImage(value);
     }
 
     container.SetItemSlot1 = function (value) {
-        itemSlot1.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot1.src = GetItemImage(value);
     }
 
     container.SetItemSlot2 = function (value) {
-        itemSlot2.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot2.src = GetItemImage(value);
     }
 
     container.SetItemSlot3 = function (value) {
-        itemSlot3.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot3.src = GetItemImage(value);
     }
 
     container.SetItemSlot4 = function (value) {
-        itemSlot4.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot4.src = GetItemImage(value);
     }
 
     container.SetItemSlot5 = function (value) {
-        itemSlot5.src = ItemImageDirectoryUrl + value + ".png";
+        itemSlot5.src = GetItemImage(value);
     }
 
     container.SetNetworthPercentage = function (value) {
@@ -209,4 +209,14 @@
     }
 
     return container;
+}
+
+function GetItemImage(value) {
+    var itemSubString = value.substring(0, 11);
+    if (itemSubString == "item_recipe") {
+        return ItemImageDirectoryUrl + "item_recipe.png";
+    }
+    else {
+        return ItemImageDirectoryUrl + value + ".png";
+    }
 }

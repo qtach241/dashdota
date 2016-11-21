@@ -111,7 +111,7 @@ namespace Dashboard.Controllers
             tw.WriteLine("    \"timeout\"       \"5.0\"");
             tw.WriteLine("    \"buffer\"        \"0.1\"");
             tw.WriteLine("    \"throttle\"      \"0.1\"");
-            tw.WriteLine("    \"heartbeat\"     \"50.0\"");
+            tw.WriteLine("    \"heartbeat\"     \"5.0\"");
             tw.WriteLine("    \"auth\"");
             tw.WriteLine("    {");
             tw.WriteLine("        \"token\"         \"{0}\"", token);
