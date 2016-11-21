@@ -74,7 +74,7 @@ namespace Dashboard.Controllers
             }
 
             // Order the complete list of game states by networth.
-            gameStates.OrderByDescending(o => o.Networth);
+            gameStates = gameStates.OrderByDescending(o => o.Networth).ToList();
 
             // Return the game state model in Json format.
             return new JsonNetResult(new GameStateModel(gameStates));
