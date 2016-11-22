@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.WindowsAzure.Storage.Table;
 using TableStorage.Models;
 
@@ -45,6 +46,22 @@ namespace TableStorage
             {
                 await ExceptionTable.AddEntityAsync(e);
             }
+        }
+
+        /// <summary>
+        /// Read the authentication token associated with steam Id asynchronously,
+        /// which is stored as the row key. Return null if doesn't exist.
+        /// </summary>
+        /// <param name="steamId"></param>
+        /// <returns>Token string as Rowkey</returns>
+        public static async Task<string> GetAuthTokenAsync(string steamId)
+        {
+            string partitionKeyFilter = TableQuery.GenerateFilterCondition("PartitionKey",
+                QueryComparisons.Equal, GetPartitionKey(steamId));
+
+            var entities = await Instance.ReadEntityRangeAsync(partitionKeyFilter);
+
+            return entities.FirstOrDefault()?.RowKey;
         }
 
         /// <summary>
