@@ -10,6 +10,7 @@ using ModelsLibrary;
 using TableStorage;
 using TableStorage.Models;
 using Dashboard.Models;
+using Dashboard.Helpers;
 
 namespace Dashboard.Controllers
 {
@@ -95,7 +96,7 @@ namespace Dashboard.Controllers
             if (string.IsNullOrEmpty(token))
             {
                 // Generate a new auth token.
-                token = Guid.NewGuid().ToString();
+                token = KeyGenerator.GetUniqueKey(20);
 
                 // Store the steam Id and auth token.
                 await AuthTokenTable.AddEntityAsync(id, token);
