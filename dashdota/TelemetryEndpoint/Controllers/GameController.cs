@@ -22,32 +22,35 @@ namespace TelemetryEndpoint.Controllers
                 return BadRequest();
             }
 
-            // Failed to bind player's steam Id. Cannot proceed.
-            if (gs.Player?.SteamID == null)
+            // Failed to bind player's steam Id or authentication token. Cannot proceed
+            // with validiating the request.
+            if ((gs.Player?.SteamID == null) || (gs.Auth?.Token == null))
             {
                 return Ok();
             }
 
-            // Check if this game state was sent by a valid client.
-            //if (gs.Auth.Token != "placeholder")
-            //{
-            //    return BadRequest();
-            //}
-
-            // Wait until we load into the map before logging game state.
+            // Prevent logging gamestate if the map has not yet loaded.
             if (gs.Map == null)
             {
                 return Ok();
             }
 
-            // Valid game state must have a non-zero match Id.
-            if (gs.Map.MatchId == "0")
+            // Prevent logging game state for local lobbies or custom maps.
+            if ((gs.Map.MatchId == "0") || (!string.IsNullOrEmpty(gs.Map.CustomeGameName)))
             {
                 return Ok();
             }
 
-            // Only start logging game state if game is in progress.
+            // Prevent logging game state if the game is not in-progress.
             if (gs.Map.GameState != DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS)
+            {
+                return Ok();
+            }
+
+            // Check if the authentication token provided in the request is valid for
+            // the user sending it.
+            // TODO: We really need cache-aside for this.
+            if (!await AuthTokenTable.IsTokenValidAsync(gs.Player.SteamID, gs.Auth.Token))
             {
                 return Ok();
             }
