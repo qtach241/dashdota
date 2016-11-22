@@ -19,9 +19,9 @@ namespace TableStorage
         /// Format the table storage partition key.
         /// </summary>
         /// <returns></returns>
-        private static string GetPartitionKey()
+        private static string GetPartitionKey(string steamId)
         {
-            return "Token";
+            return steamId;
         }
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace TableStorage
         {
             try
             {
-                await Instance.AddEntityAsync(new AuthTokenEntity(token)
+                await Instance.AddEntityAsync(new AuthTokenEntity(true)
                 {
-                    PartitionKey = GetPartitionKey(),
-                    RowKey = steamId,
+                    PartitionKey = GetPartitionKey(steamId),
+                    RowKey = token,
                 });
             }
             catch (Exception e)
@@ -48,16 +48,22 @@ namespace TableStorage
         }
 
         /// <summary>
-        /// Read the authentication token associated with steam Id asynchronously.
-        /// Return null if doesn't exist.
+        /// Check if the auth token associated with the steam Id is valid. Returns true if
+        /// valid. Returns false if invalid or null.
         /// </summary>
         /// <param name="steamId"></param>
-        /// <returns>Token string</returns>
-        public static async Task<string> GetAuthTokenAsync(string steamId)
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static async Task<bool> IsTokenValidAsync(string steamId, string token)
         {
-            AuthTokenEntity entity = await Instance.ReadEntityAsync(GetPartitionKey(), steamId);
+            AuthTokenEntity entity = await Instance.ReadEntityAsync(GetPartitionKey(steamId), token);
 
-            return entity?.Token;
+            if (entity == null)
+            {
+                return false;
+            }
+
+            return entity.IsValid;
         }
     }
 }

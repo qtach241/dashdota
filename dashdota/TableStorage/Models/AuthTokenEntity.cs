@@ -11,11 +11,11 @@ namespace TableStorage.Models
         {
         }
 
-        public AuthTokenEntity(string token)
+        public AuthTokenEntity(bool isValid)
         {
-            Token = token;
+            IsValid = isValid;
         }
 
-        public string Token { get; set; }
+        public bool IsValid { get; set; } = false;
     }
 }
