@@ -65,5 +65,34 @@ namespace TableStorage
 
             return entity.IsValid;
         }
+
+        /// <summary>
+        /// Look up the table entity for a particular steam Id and auth token and modify
+        /// the isValid property to the specified value.
+        /// </summary>
+        /// <param name="steamId"></param>
+        /// <param name="token"></param>
+        /// <param name="isValid"></param>
+        /// <returns></returns>
+        public static async Task ModifyTokenValidAsync(string steamId, string token, bool isValid)
+        {
+            AuthTokenEntity entity = await Instance.ReadEntityAsync(GetPartitionKey(steamId), token);
+
+            if (entity == null)
+            {
+                return;
+            }
+
+            entity.IsValid = isValid;
+
+            try
+            {
+                await Instance.AddOrReplaceEntityAsync(entity);
+            }
+            catch (Exception e)
+            {
+                await ExceptionTable.AddEntityAsync(e);
+            }
+        }
     }
 }
