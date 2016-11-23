@@ -520,6 +520,7 @@
     <Content Include="Content\Images\Items\item_stout_shield.png" />
     <Content Include="Content\Images\Items\item_talisman_of_evasion.png" />
     <Content Include="Content\Images\Items\item_tango.png" />
+    <Content Include="Content\Images\Items\item_tango_single.png" />
     <Content Include="Content\Images\Items\item_tome_of_knowledge.png" />
     <Content Include="Content\Images\Items\item_tpscroll.png" />
     <Content Include="Content\Images\Items\item_tranquil_boots.png" />
