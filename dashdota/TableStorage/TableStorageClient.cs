@@ -12,7 +12,7 @@ namespace TableStorage
     public abstract class TableStorageClient<T>
         where T : ITableEntity, new()
     {
-        protected TimeSpan timeout = TimeSpan.FromMilliseconds(500);
+        protected TimeSpan timeout = TimeSpan.FromMilliseconds(1000);
         protected string tableName;
 
         private static CloudStorageAccount _account = CloudStorageAccount
