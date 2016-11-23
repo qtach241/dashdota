@@ -7,6 +7,7 @@ namespace Dashboard.Models
 {
     public class DashboardViewModel
     {
-        public string steamId { get; set; }
+        public string SteamId { get; set; }
+        public bool DeveloperView { get; set; } = false;
     }
 }

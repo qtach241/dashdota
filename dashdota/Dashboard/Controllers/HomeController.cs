@@ -39,7 +39,12 @@ namespace Dashboard.Controllers
                     var steamId = new Uri(login.ProviderKey).Segments[3];
 
                     // Populate the view model with steam Id.
-                    viewModel.steamId = steamId;
+                    viewModel.SteamId = steamId;
+
+                    // TODO: Should really create a "dev" or "admin" user role in ASP.NET user database
+                    // and check if the user is assigned to said role. Perhaps someday when I'm not the only
+                    // person working on this...
+                    viewModel.DeveloperView = (steamId == "76561197983364518" ? true : false);
 
                     long steamIdL;
                     if (long.TryParse(steamId, out steamIdL))
@@ -60,20 +65,6 @@ namespace Dashboard.Controllers
             }
 
             return View(viewModel);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

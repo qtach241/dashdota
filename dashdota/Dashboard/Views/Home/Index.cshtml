@@ -3,25 +3,45 @@
     ViewBag.Title = "Dash Dota";
 }
 
-<h3>Step 1: Sign in with Steam</h3>
+<h3>1. Sign in with Steam</h3>
 
-<h3>Step 2: Download the config file</h3>
-
-@if (!string.IsNullOrEmpty(Model.steamId))
+@if (Model.DeveloperView)
 {
-    using (Html.BeginForm("DownloadConfig", "Game", new { id = Model.steamId }, FormMethod.Post, new { @target = "_Blank" }))
+    <p>Enter steam Id (developer only):</p>
+    <div>
+        <form id="form" onsubmit="return false;">
+            <input type="text" id="userInput" />
+            <input type="submit" onclick="SetSteamId();" />
+        </form>
+    </div> <br />
+
+    <script>
+        function SetSteamId() {
+            steamId = document.getElementById("userInput").value;
+            alert("Steam Id has been changed to: " + steamId);
+        }
+    </script>
+}
+
+<h3>2. Download the config file</h3>
+
+@if (!string.IsNullOrEmpty(Model.SteamId))
+{
+    using (Html.BeginForm("DownloadConfig", "Game", new { id = Model.SteamId }, FormMethod.Post, new { @target = "_Blank" }))
     {
-        <button type="submit" class="btn btn-default">Download Cfg</button>
+        <button type="submit" class="btn btn-default">Download</button>
     }
 }
 <br />
 
-Make sure the above file is placed in the location: <br />
-\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_dashdota.cfg <br /><br />
+<p>
+    Make sure the above file is placed in the location: <br />
+    \steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\gamestate_integration_dashdota.cfg <br /><br />
 
-Note: You may have to manually create the "gamestate_integration" folder in the above path. <br />
+    Note: You may have to manually create the "gamestate_integration" folder in the above path. <br />
+</p>
 
-<h3>Step 3: Stuff will appear below</h3>
+<h3>3. Stuff will appear below</h3>
 <hr />
 
 <div id="networthWidgetArea"></div>
@@ -43,7 +63,7 @@ Note: You may have to manually create the "gamestate_integration" folder in the 
     AlertImageDirectoryUrl = "@Url.Content("~/Content/Images/Alerts/")";
     NetworthImageDirectoryUrl = "@Url.Content("~/Content/Images/Networth/")";
 
-    var steamId = "@(Model.steamId)";
+    var steamId = "@(Model.SteamId)";
 
     const TimeoutLengthMs = 500;
 
