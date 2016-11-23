@@ -23,18 +23,18 @@ namespace TableStorage.Models
             ExperiencePerMinute = gs.Player.ExperiencePerMinute;
 
             Networth = gs.Player.Gold +
-                ItemPrice[gs.Items.Slot0.Name] +
-                ItemPrice[gs.Items.Slot1.Name] +
-                ItemPrice[gs.Items.Slot2.Name] +
-                ItemPrice[gs.Items.Slot3.Name] +
-                ItemPrice[gs.Items.Slot4.Name] +
-                ItemPrice[gs.Items.Slot5.Name] +
-                ItemPrice[gs.Items.Stash0.Name] +
-                ItemPrice[gs.Items.Stash1.Name] +
-                ItemPrice[gs.Items.Stash2.Name] +
-                ItemPrice[gs.Items.Stash3.Name] +
-                ItemPrice[gs.Items.Stash4.Name] +
-                ItemPrice[gs.Items.Stash5.Name];
+                GetItemPrice(gs.Items.Slot0) +
+                GetItemPrice(gs.Items.Slot1) +
+                GetItemPrice(gs.Items.Slot2) +
+                GetItemPrice(gs.Items.Slot3) +
+                GetItemPrice(gs.Items.Slot4) +
+                GetItemPrice(gs.Items.Slot5) +
+                GetItemPrice(gs.Items.Stash0) +
+                GetItemPrice(gs.Items.Stash1) +
+                GetItemPrice(gs.Items.Stash2) +
+                GetItemPrice(gs.Items.Stash3) +
+                GetItemPrice(gs.Items.Stash4) +
+                GetItemPrice(gs.Items.Stash5);
 
             Item0 = gs.Items.Slot0.Name;
             Item1 = gs.Items.Slot1.Name;
@@ -98,6 +98,25 @@ namespace TableStorage.Models
         public bool ObsOffCooldown { get; set; } = false;
         public bool MidasOffCooldown { get; set; } = false;
 
+        private int GetItemPrice(Item item)
+        {
+            switch(item.Name)
+            {
+                case "item_clarity":
+                case "item_flask":
+                case "item_smoke_of_deceit":
+                case "item_tpscroll":
+                case "item_dust":
+                case "item_ward_observer":
+                case "item_ward_sentry":
+                    return (ItemPrice[item.Name] * item.Charges);
+                case "item_tango":
+                    return (ItemPrice[item.Name] * (int)Math.Ceiling((double)item.Charges / 4));
+                default:
+                    return ItemPrice[item.Name];
+            }
+        }
+
         private static readonly Dictionary<string, int> ComponentPrice = new Dictionary<string, int>()
         {
             // Basic Items
@@ -117,7 +136,7 @@ namespace TableStorage.Models
             { "item_claymore", 1400 },
             { "item_cloak", 550 },
             { "item_demon_edge", 2400 },
-            { "item_dust", 180 },
+            { "item_dust", 90 }, /* 180/2 */
             { "item_eagle", 3200 },
             { "item_enchanted_mango", 125 },
             { "item_energy_booster", 900 },
@@ -152,7 +171,7 @@ namespace TableStorage.Models
             { "item_robe", 450 },
             { "item_relic", 3800 },
             { "item_sobi_mask", 325 },
-            { "item_ward_sentry", 200 },
+            { "item_ward_sentry", 100 }, /* 200/2 */
             { "item_shadow_amulet", 1300 },
             { "item_slippers", 150 },
             { "item_smoke_of_deceit", 50 },
