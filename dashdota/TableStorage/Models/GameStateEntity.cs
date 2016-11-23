@@ -50,10 +50,10 @@ namespace TableStorage.Models
                 && (Item4 != "item_tpscroll") && (Item4 != "item_travel_boots") && (Item4 != "item_travel_boots_2")
                 && (Item5 != "item_tpscroll") && (Item5 != "item_travel_boots") && (Item5 != "item_travel_boots_2"));
 
-            NoUlt = ((gs.Hero.Level >= 6) && 
-                (((gs.Abilities.Ability3 == null ? false : true) && (gs.Abilities.Ability3.IsUltimate) && (!gs.Abilities.Ability3.CanCast))
-                || ((gs.Abilities.Ability4 == null ? false : true) && (gs.Abilities.Ability4.IsUltimate) && (!gs.Abilities.Ability4.CanCast))
-                || ((gs.Abilities.Ability5 == null ? false : true) && (gs.Abilities.Ability5.IsUltimate) && (!gs.Abilities.Ability5.CanCast))));
+            NoUlt = ((gs.Hero.Level >= 6) &&
+                (((gs.Abilities.Ability3 == null ? false : true) && (gs.Abilities.Ability3.IsUltimate) && (!gs.Abilities.Ability3.IsPassive) && (!gs.Abilities.Ability3.CanCast))
+                || ((gs.Abilities.Ability4 == null ? false : true) && (gs.Abilities.Ability4.IsUltimate) && (!gs.Abilities.Ability4.IsPassive) && (!gs.Abilities.Ability4.CanCast))
+                || ((gs.Abilities.Ability5 == null ? false : true) && (gs.Abilities.Ability5.IsUltimate) && (!gs.Abilities.Ability5.IsPassive) && (!gs.Abilities.Ability5.CanCast))));
 
             NoDetection = ((Item0 != "item_dust") && (Item0 != "item_ward_sentry") && (Item0 != "item_ward_dispenser") && (Item0 != "item_gem")
                 && (Item1 != "item_dust") && (Item1 != "item_ward_sentry") && (Item1 != "item_ward_dispenser") && (Item1 != "item_gem")
