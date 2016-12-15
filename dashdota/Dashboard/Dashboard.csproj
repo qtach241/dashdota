@@ -323,6 +323,7 @@
     <Content Include="Content\Images\Heroes\npc_dota_hero_medusa.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_meepo.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_mirana.png" />
+    <Content Include="Content\Images\Heroes\npc_dota_hero_monkey_king.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_morphling.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_naga_siren.png" />
     <Content Include="Content\Images\Heroes\npc_dota_hero_necrolyte.png" />
