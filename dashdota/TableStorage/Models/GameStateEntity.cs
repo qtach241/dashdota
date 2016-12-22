@@ -29,6 +29,9 @@ namespace TableStorage.Models
                 GetItemPrice(gs.Items.Slot3) +
                 GetItemPrice(gs.Items.Slot4) +
                 GetItemPrice(gs.Items.Slot5) +
+                GetItemPrice(gs.Items.Slot6) +
+                GetItemPrice(gs.Items.Slot7) +
+                GetItemPrice(gs.Items.Slot8) +
                 GetItemPrice(gs.Items.Stash0) +
                 GetItemPrice(gs.Items.Stash1) +
                 GetItemPrice(gs.Items.Stash2) +

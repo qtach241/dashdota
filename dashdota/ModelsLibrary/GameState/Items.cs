@@ -21,6 +21,12 @@ namespace ModelsLibrary
         public Item Slot4 { get; set; }
         [JsonProperty(PropertyName = "slot5")]
         public Item Slot5 { get; set; }
+        [JsonProperty(PropertyName = "slot6")]
+        public Item Slot6 { get; set; }
+        [JsonProperty(PropertyName = "slot7")]
+        public Item Slot7 { get; set; }
+        [JsonProperty(PropertyName = "slot8")]
+        public Item Slot8 { get; set; }
         [JsonProperty(PropertyName = "stash0")]
         public Item Stash0 { get; set; }
         [JsonProperty(PropertyName = "stash1")]
