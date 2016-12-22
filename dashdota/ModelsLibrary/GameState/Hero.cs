@@ -49,5 +49,21 @@ namespace ModelsLibrary
         public bool IsBreak { get; set; }
         [JsonProperty(PropertyName = "has_debuff")]
         public bool HasDebuff { get; set; }
+        [JsonProperty(PropertyName = "talent_1")]
+        public bool HasTalent1 { get; set; }
+        [JsonProperty(PropertyName = "talent_2")]
+        public bool HasTalent2 { get; set; }
+        [JsonProperty(PropertyName = "talent_3")]
+        public bool HasTalent3 { get; set; }
+        [JsonProperty(PropertyName = "talent_4")]
+        public bool HasTalent4 { get; set; }
+        [JsonProperty(PropertyName = "talent_5")]
+        public bool HasTalent5 { get; set; }
+        [JsonProperty(PropertyName = "talent_6")]
+        public bool HasTalent6 { get; set; }
+        [JsonProperty(PropertyName = "talent_7")]
+        public bool HasTalent7 { get; set; }
+        [JsonProperty(PropertyName = "talent_8")]
+        public bool HasTalent8 { get; set; }
     }
 }
