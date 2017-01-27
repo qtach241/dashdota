@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dota2GSI, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dota2GSI.1.0.4\lib\Dota2GSI.dll</HintPath>
@@ -51,14 +54,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\GameStateCache.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Scripts\ahk_default.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
+    <None Include="Scripts\Compiler\BuildAllScripts.cmd" />
+    <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
+    <None Include="Scripts\_common.ahk" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Sounds\jensen_countdown.wav" />
+    <Content Include="Sounds\jensen_ready.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(ProjectDir)Scripts\Compiler\BuildAllScriptsVS.cmd" "$(ProjectDir)Scripts\Compiler\" "$(ProjectDir)Scripts\" "$(ProjectDir)Scripts\bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

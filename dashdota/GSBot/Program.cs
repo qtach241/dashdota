@@ -4,22 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
 using Dota2GSI;
+using GSBot.Models;
 
 namespace GSBot
 {
     class Program
     {
         static GameStateListener _gsl;
+        static GameStateCache gameStateCache = new GameStateCache();
+
+        public delegate void HeroProfile(GameStateCache gs);
+
+        static string versionStr = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        static string buildStr = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
+        static string scriptsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Scripts/bin/";
+        static string soundsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Sounds/";
 
         static string heroNameLast;
+        static bool flag_ready;
+        static bool flag_countdown;
 
         static void Initialize()
         {
-            Console.WriteLine("Initializing GSBot v1.0.0");
+            ConsoleLog("Initializing GSBot version " + versionStr);
+            ConsoleLog("Date built: " + buildStr);
 
             CfgCreateIfNotExists();
 
@@ -27,13 +40,13 @@ namespace GSBot
 
             if (processName.Length == 0)
             {
-                Console.WriteLine("Dota 2 is not running. Please start Dota 2 and relaunch the program.");
+                ConsoleLog("Dota 2 is not running. Please start Dota 2 and relaunch the program.");
                 Console.ReadLine();
                 Environment.Exit(0);
             }
             else
             {
-                Console.WriteLine("Dota 2 is currently running. Starting GameState Listener...");
+                ConsoleLog("Dota 2 is currently running. Starting GameState Listener...");
             }
 
             _gsl = new GameStateListener(4000);
@@ -41,30 +54,12 @@ namespace GSBot
 
             if (!_gsl.Start())
             {
-                Console.WriteLine("GameState Listener could not start. Try running this program as Administrator. Exiting.");
+                ConsoleLog("GameState Listener could not start. Try running this program as Administrator. Exiting.");
                 Console.ReadLine();
                 Environment.Exit(0);
             }
 
-            Console.WriteLine("GSBot successfully initialized. Listening for GameState data...");
-        }
-
-        static void OnNewGameState(GameState gs)
-        {
-
-            string heroName = gs?.Hero?.Name;
-
-            if (!string.IsNullOrEmpty(heroName) && heroName != heroNameLast)
-            {
-                heroNameLast = heroName;
-                Console.WriteLine("New hero detected... Loading profile for {0}", heroNameLast);
-
-                switch (heroNameLast)
-                {
-                    case "dota_npc_hero_bristleback":
-                        break;
-                }
-            }
+            ConsoleLog("GSBot successfully initialized. Listening for GameState data...");
         }
 
         static void CfgCreateIfNotExists()
@@ -83,11 +78,11 @@ namespace GSBot
 
                 if (File.Exists(gsFile))
                 {
-                    Console.WriteLine("Configuration file found.");
+                    ConsoleLog("Configuration file found.");
                     return;
                 }
 
-                Console.WriteLine("Creating configuration file.");
+                ConsoleLog("Creating configuration file.");
 
                 string[] gsFileContents =
                 {
@@ -108,30 +103,103 @@ namespace GSBot
                     "        \"items\"         \"1\"",
                     "    }",
                     "}",
-
                 };
 
                 File.WriteAllLines(gsFile, gsFileContents);
             }
             else
             {
-                Console.WriteLine("Registry key for steam not found, cannot create Gamestate Integration file.");
+                ConsoleLog("Registry key for steam not found, cannot create Gamestate Integration file.");
                 Console.ReadLine();
                 Environment.Exit(0);
             }
+        }
+
+        static void OnNewGameState(GameState gs)
+        {
+            gameStateCache.UpdateCache(gs);
         }
 
         static void Main(string[] args)
         {
             Initialize();
 
+            //HeroProfile profile = delegate (GameStateCache gs)
+            //{
+            //    Console.WriteLine("Initializing hero profile delegate...");
+            //};
+
             do
             {
                 while (!Console.KeyAvailable)
                 {
-                    Thread.Sleep(1000);
+                    // Detected a new hero in our game state cache.
+                    if (!string.IsNullOrEmpty(gameStateCache.HeroName) && gameStateCache.HeroName != heroNameLast)
+                    {
+                        ConsoleLog("New hero detected...");
+
+                        // Kill any hero scripts currently running.
+                        List<Process> script_process = Process.GetProcessesByName("ahk_" + heroNameLast).ToList();
+                        script_process.AddRange(Process.GetProcessesByName("ahk_default").ToList());
+
+                        foreach (Process s in script_process)
+                        {
+                            ConsoleLog("Unloading: " + s.ProcessName);
+                            s.Kill();
+                        }
+
+                        // Store the new hero.
+                        heroNameLast = gameStateCache.HeroName;
+
+                        // Load new hero script.
+                        switch (heroNameLast)
+                        {
+                            case "npc_dota_hero_magnataur":
+                                Process.Start(scriptsDir + "ahk_" + heroNameLast);
+                                break;
+                            default:
+                                Process.Start(scriptsDir + "ahk_default");
+                                break;
+                        }
+
+                        ConsoleLog("New hero script loaded for: " + heroNameLast);
+                        ConsoleLog("Total session packet count is at: " + gameStateCache.SessionPackets);
+                    }
+
+                    //profile(gameStateCache);
+                    PullTimers(gameStateCache);
+
+                    Thread.Sleep(100);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+        }
+
+        static void PullTimers(GameStateCache gameStateCache)
+        {
+            if (!flag_ready && gameStateCache.PullReadyFlag)
+            {
+                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundsDir + "jensen_ready.wav"))
+                {
+                    player.Play();
+                }
+            }
+
+            if (!flag_countdown && gameStateCache.PullCountdownFlag)
+            {
+                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundsDir + "jensen_countdown.wav"))
+                {
+                    player.Play();
+                }
+            }
+
+            flag_ready = gameStateCache.PullReadyFlag;
+            flag_countdown = gameStateCache.PullCountdownFlag;
+        }
+
+        static void ConsoleLog(string msg)
+        {
+            msg = "[" + DateTime.Now.ToShortTimeString() + "] " + msg;
+            Console.WriteLine(msg);
         }
     }
 }
