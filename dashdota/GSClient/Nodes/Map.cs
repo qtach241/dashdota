@@ -63,7 +63,12 @@
         /// <summary>
         /// Game is in hero showcase
         /// </summary>
-        DOTA_GAMERULES_STATE_TEAM_SHOWCASE
+        DOTA_GAMERULES_STATE_TEAM_SHOWCASE,
+
+        /// <summary>
+        /// Waiting for the map to load
+        /// </summary>
+        DOTA_GAMERULES_STATE_WAIT_FOR_MAP_TO_LOAD
     }
 
     /// <summary>
