@@ -41,7 +41,7 @@ QueueBottleCrow()
 }
 
 ;; Come Mein Chicken
-F5::
+F1::
 SendInput z
 Click Right
 QueueBottleCrow()
@@ -49,7 +49,7 @@ QueueBottleCrow()
 return
 
 ;; Go Mein Chicken
-F6::
+F2::
 SendInput z
 QueueBottleCrow()
 ;;SendInput {Home}
@@ -65,15 +65,42 @@ Click Right
 SendInput {n Up}
 return
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Center Camera Allies
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Auto Directional Self Force Staff
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-F1::
-SendInput {n Down}
-Click Right
-SendInput {n Up}
-Sleep, 250
-SendInput {XButton1}
-SendInput {XButton1}
+!WheelUp::
+MouseGetPos, xPos_1, yPos_1
+return
+
+!F6::
+MouseGetPos, xPos_2, yPos_2
+return
+
+!F7::
+MouseGetPos, xPos_3, yPos_3
+return
+
+WheelUp::
+MouseGetPos, xCurPos, yCurPos
+MouseMove, xPos_1, yPos_1, 0
+Click
+Click
+MouseMove, xCurPos, yCurPos, 0
+return
+
+F6::
+MouseGetPos, xCurPos, yCurPos
+MouseMove, xPos_2, yPos_2, 0
+Click
+Click
+MouseMove, xCurPos, yCurPos, 0
+return
+
+F7::
+MouseGetPos, xCurPos, yCurPos
+MouseMove, xPos_3, yPos_3, 0
+Click
+Click
+MouseMove, xCurPos, yCurPos, 0
 return
