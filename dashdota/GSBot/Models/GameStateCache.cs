@@ -12,7 +12,7 @@ namespace GSBot.Models
         {
         }
 
-        public void UpdateCache(Dota2GSI.GameState gs)
+        public void UpdateCache(GSClient.GameState gs)
         {
             SessionPackets++;
 

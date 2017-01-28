@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7CD46626-D8B2-4090-B9BC-AAB8FE2A1891}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{570EBDCE-AA6B-4553-85BB-7B62CCBF182D}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GSBot</RootNamespace>
-    <AssemblyName>GSBot</AssemblyName>
+    <RootNamespace>GSClient</RootNamespace>
+    <AssemblyName>GSClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -50,37 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\GameStateCache.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="GameStateListener.cs" />
+    <Compile Include="Nodes\Abilities.cs" />
+    <Compile Include="Nodes\Ability.cs" />
+    <Compile Include="Nodes\Attributes.cs" />
+    <Compile Include="Nodes\Auth.cs" />
+    <Compile Include="Nodes\Hero.cs" />
+    <Compile Include="Nodes\Item.cs" />
+    <Compile Include="Nodes\Items.cs" />
+    <Compile Include="Nodes\Map.cs" />
+    <Compile Include="Nodes\Node.cs" />
+    <Compile Include="Nodes\Player.cs" />
+    <Compile Include="Nodes\Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Scripts\ahk_default.ahk" />
-    <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
-    <None Include="Scripts\Compiler\BuildAllScripts.cmd" />
-    <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
-    <None Include="Scripts\_common.ahk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GSClient\GSClient.csproj">
-      <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
-      <Name>GSClient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Sounds\jensen_countdown.wav" />
-    <Content Include="Sounds\jensen_ready.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>call "$(ProjectDir)Scripts\Compiler\BuildAllScriptsVS.cmd" "$(ProjectDir)Scripts\Compiler\" "$(ProjectDir)Scripts\" "$(ProjectDir)Scripts\bin\"</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
