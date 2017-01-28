@@ -36,10 +36,6 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dota2GSI, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dota2GSI.1.0.4\lib\Dota2GSI.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -67,7 +63,12 @@
     <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
     <None Include="Scripts\_common.ahk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GSClient\GSClient.csproj">
+      <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
+      <Name>GSClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Sounds\jensen_countdown.wav" />
     <Content Include="Sounds\jensen_ready.wav" />

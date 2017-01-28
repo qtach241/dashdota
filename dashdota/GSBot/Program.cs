@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
-using Dota2GSI;
+using GSClient;
 using GSBot.Models;
 
 namespace GSBot
