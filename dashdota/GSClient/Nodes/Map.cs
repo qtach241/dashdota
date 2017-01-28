@@ -58,7 +58,12 @@
         /// <summary>
         /// Game is a custom game
         /// </summary>
-        DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP
+        DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP,
+
+        /// <summary>
+        /// Game is in hero showcase
+        /// </summary>
+        DOTA_GAMERULES_STATE_TEAM_SHOWCASE
     }
 
     /// <summary>
