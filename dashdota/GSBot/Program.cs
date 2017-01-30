@@ -134,10 +134,8 @@ namespace GSBot
                 while (!Console.KeyAvailable)
                 {
                     // Detected a new hero in our game state cache.
-                    if (!string.IsNullOrEmpty(gameStateCache.HeroName) && gameStateCache.HeroName != heroNameLast)
+                    if (gameStateCache.HeroName != heroNameLast)
                     {
-                        ConsoleLog("New hero detected...");
-
                         // Kill any hero scripts currently running.
                         List<Process> script_process = Process.GetProcessesByName("ahk_" + heroNameLast).ToList();
                         script_process.AddRange(Process.GetProcessesByName("ahk_default").ToList());
@@ -151,19 +149,19 @@ namespace GSBot
                         // Store the new hero.
                         heroNameLast = gameStateCache.HeroName;
 
-                        // Load new hero script.
-                        switch (heroNameLast)
+                        if (!string.IsNullOrEmpty(heroNameLast))
                         {
-                            case "npc_dota_hero_magnataur":
-                                Process.Start(scriptsDir + "ahk_" + heroNameLast);
-                                break;
-                            default:
-                                Process.Start(scriptsDir + "ahk_default");
-                                break;
+                            ConsoleLog("Loading hero script: " + heroNameLast);
+                            switch (heroNameLast)
+                            {
+                                case "npc_dota_hero_magnataur":
+                                    Process.Start(scriptsDir + "ahk_" + heroNameLast);
+                                    break;
+                                default:
+                                    Process.Start(scriptsDir + "ahk_default");
+                                    break;
+                            }
                         }
-
-                        ConsoleLog("New hero script loaded for: " + heroNameLast);
-                        ConsoleLog("Total session packet count is at: " + gameStateCache.SessionPackets);
                     }
 
                     //profile(gameStateCache);
