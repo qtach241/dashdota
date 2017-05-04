@@ -1,106 +1,83 @@
+#NoEnv
+#If WinActive("Dota 2")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Auto close shop when Capslock released
+;; Globals/Helpers (Must be the first section in all scripts)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#Include Include/_globals.ahk
+#Include Include/_helpers.ahk
+#Include Include/_helpers_backpack.ahk
+#Include Include/_helpers_camera.ahk
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Common binds
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+!PgUp::
+SelectTeamDire()
+return
+
+!PgDn::
+SelectTeamRadiant()
+return
 
 Capslock::
-SetCapsLockState, on
-keywait, CapsLock
-SetCapsLockState, off
+CapslockShop()
 return
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Auto right-click + stop while holding Mbutton
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 *Mbutton::
-Click right
-Sleep 200
-SetKeyDelay 50
-Loop 
-{
-	if (GetKeyState("Mbutton","P") = 0)
-	{
-		break
-	}
-	Send s
-	Click right
-}
+AttackCancel()
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Auto Courier
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-QueueBottleCrow()
-{
-	SendInput {Shift Down}
-	;;SendInput {LAlt Down}
-	SendInput rqtg
-	;;SendInput {LAlt Up}
-	SendInput {Shift Up}
-}
-
-;; Come Mein Chicken
 F1::
-SendInput z
-Click Right
-QueueBottleCrow()
-;;SendInput {Home}
+BottleCrowGround()
 return
 
-;; Go Mein Chicken
 F2::
-SendInput z
-QueueBottleCrow()
-;;SendInput {Home}
+BottleCrow()
 return
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Directional Move
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 F8::
-SendInput {n Down}
-Click Right
-SendInput {n Up}
+DirectionalMove(1)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Center Camera Allies
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-!WheelUp::
-MouseGetPos, xPos_1, yPos_1
+F10::
+CycleFocusUp()
 return
 
-!F6::
-MouseGetPos, xPos_2, yPos_2
+End::
+DirectionalForce()
 return
 
-!F7::
-MouseGetPos, xPos_3, yPos_3
+!End::
+DirectionalForceTp()
 return
 
-WheelUp::
-MouseGetPos, xCurPos, yCurPos
-MouseMove, xPos_1, yPos_1, 0
-Click
-Click
-MouseMove, xCurPos, yCurPos, 0
+!1::
+SaveMousePos(xPos_1, yPos_1)
 return
 
-F6::
-MouseGetPos, xCurPos, yCurPos
-MouseMove, xPos_2, yPos_2, 0
-Click
-Click
-MouseMove, xCurPos, yCurPos, 0
+1::
+MoveClickMouse(xPos_1, yPos_1, 2)
 return
 
-F7::
-MouseGetPos, xCurPos, yCurPos
-MouseMove, xPos_3, yPos_3, 0
-Click
-Click
-MouseMove, xCurPos, yCurPos, 0
+!2::
+SaveMousePos(xPos_2, yPos_2)
+return
+
+2::
+MoveClickMouse(xPos_2, yPos_2, 2)
+return
+
+!3::
+SaveMousePos(xPos_3, yPos_3)
+return
+
+3::
+MoveClickMouse(xPos_3, yPos_3, 2)
+return
+
+4::
+SwapTranquils()
 return

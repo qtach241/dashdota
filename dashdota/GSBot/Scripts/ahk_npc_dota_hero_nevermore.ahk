@@ -1,25 +1,28 @@
-#Include _common.ahk
+﻿#Include _common.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Spam click Q ability
+;; Q: Directional Raze
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-~q::
-SpamClickOn("q", 200, 20)
+$q::
+DirectionalMove(1)
+SendInput q
 return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; W: Spam click W ability
+;; W: Directional Raze
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-~w::
-SpamClickOn("w", 200, 20)
+$w::
+DirectionalMove(1)
+SendInput w
 return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Spam click E ability
+;; E: Directional Raze
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-~e::
-SpamClickOn("e", 200, 20)
+$e::
+DirectionalMove(1)
+SendInput e
 return
