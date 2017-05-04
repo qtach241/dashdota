@@ -154,7 +154,14 @@ namespace GSBot
                             ConsoleLog("Loading hero script: " + heroNameLast);
                             switch (heroNameLast)
                             {
+                                case "npc_dota_hero_centaur":
                                 case "npc_dota_hero_magnataur":
+                                case "npc_dota_hero_nevermore":
+                                case "npc_dota_hero_omniknight":
+                                case "npc_dota_hero_skywrath_mage":
+                                case "npc_dota_hero_slardar":
+                                case "npc_dota_hero_slark":
+                                case "npc_dota_hero_treant":
                                     Process.Start(scriptsDir + "ahk_" + heroNameLast);
                                     break;
                                 default:
@@ -165,7 +172,7 @@ namespace GSBot
                     }
 
                     //profile(gameStateCache);
-                    PullTimers(gameStateCache);
+                    //PullTimers(gameStateCache);
 
                     Thread.Sleep(100);
                 }
@@ -193,6 +200,14 @@ namespace GSBot
             flag_ready = gameStateCache.PullReadyFlag;
             flag_countdown = gameStateCache.PullCountdownFlag;
         }
+
+        //static void TreantTimer(GameStateCache gameStateCache)
+        //{
+        //    if (gameStateCache.Abilities[2].Cooldown == 0)
+        //    {
+        //        // Alert Living Armor is off cooldown
+        //    }
+        //}
 
         static void ConsoleLog(string msg)
         {

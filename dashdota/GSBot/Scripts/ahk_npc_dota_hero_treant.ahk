@@ -1,23 +1,29 @@
 #Include _common.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; R: Cancel RP on release
+;; Q: Heal the highest priority core
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;~r::
-;;CancelOnRelease("r", 300)
-;;return
+q::
+SendInput e
+MoveClickMouse(xPos_1, yPos_1, 1)
+return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; T: Turn, RP, Skewer
+;; G: Plant Branch + Enchant + Aghs Tree Ult
+;; Tree must be in the "d" item slot
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-t::
-DirectionalMove(5)
-SendInput rrrrr
+g::
 Loop, 10
 {
-	SendInput e
+	SendInput d
 	Click
 }
+Loop, 10
+{
+	SendInput t
+	Click
+}
+SendInput rrrrr
 return

@@ -58,10 +58,21 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Scripts\ahk_default.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_centaur.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_nevermore.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_omniknight.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_slardar.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_slark.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_treant.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_skywrath_mage.ahk" />
     <None Include="Scripts\Compiler\BuildAllScripts.cmd" />
     <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
     <None Include="Scripts\_common.ahk" />
+    <None Include="Scripts\Include\_helpers.ahk" />
+    <None Include="Scripts\Include\_globals.ahk" />
+    <None Include="Scripts\Include\_helpers_backpack.ahk" />
+    <None Include="Scripts\Include\_helpers_camera.ahk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GSClient\GSClient.csproj">
