@@ -236,6 +236,26 @@ SaveMousePos(ByRef xPos, ByRef yPos)
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Name: SaveMouseCameraPos(xPos, yPos)
+;; Args: [xPos] Variable to hold the cursors current x position.
+;;       [yPos] Variable to hold the cursors current y position.
+;; Description: Saves the current mouse position (x, y) as well as current
+;; camera position.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+SaveMouseCameraPos(ByRef xPos, ByRef yPos)
+{
+	MouseGetPos, xPos, yPos
+	SendInput {LControl down}
+	SendInput {F1}
+	SendInput {LControl up}
+	SendInput {Space down}
+	Click
+	SendInput {Space up}
+	return
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Name: MoveClickMouse(xPos, yPos, clickCount)
 ;; Args: [xPos] Variable that holds the x position to move cursor to.
 ;;       [yPos] Variable that holds the y position to move cursor to.

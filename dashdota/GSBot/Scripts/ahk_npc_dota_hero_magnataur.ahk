@@ -1,23 +1,26 @@
 #Include _common.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; R: Cancel RP on release
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;~r::
-;;CancelOnRelease("r", 300)
-;;return
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; T: Turn, RP, Skewer
+;; T: Directional Move to Saved Location + RP Skewer Combo
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 t::
-DirectionalMove(5)
-SendInput rrrrr
+SendInput {F1}
+MouseMove, xMagnus, yMagnus, 0
+DirectionalMove(1)
+SendInput rrrrrrr
 Loop, 10
 {
 	SendInput e
+	Sleep, 20
 	Click
 }
+return
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; G: Save Current Mouse and Camera Position
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+g::
+SaveMouseCameraPos(xMagnus, yMagnus)
 return
