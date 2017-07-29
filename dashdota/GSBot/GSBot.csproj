@@ -58,6 +58,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Scripts\ahk_default.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_axe.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_bristleback.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_centaur.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_nevermore.ahk" />

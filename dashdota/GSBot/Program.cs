@@ -154,6 +154,8 @@ namespace GSBot
                             ConsoleLog("Loading hero script: " + heroNameLast);
                             switch (heroNameLast)
                             {
+                                case "npc_dota_hero_axe":
+                                case "npc_dota_hero_bristleback":
                                 case "npc_dota_hero_centaur":
                                 case "npc_dota_hero_magnataur":
                                 case "npc_dota_hero_nevermore":
