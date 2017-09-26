@@ -8,6 +8,8 @@ namespace GSBot.Models
 {
     public class GameStateCache
     {
+        private readonly int chunkDamageThreshold = 10;
+
         public GameStateCache()
         {
             // Initialize ability array.
@@ -20,6 +22,7 @@ namespace GSBot.Models
         public void UpdateCache(GSClient.GameState gs)
         {
             SessionPackets++;
+            PacketsSinceLastChunked++;
 
             ClockTime = gs?.Map?.ClockTime;
             HeroName = gs?.Hero?.Name;
@@ -28,9 +31,6 @@ namespace GSBot.Models
             {
                 GameClock = TimeSpan.FromSeconds(gs.Map.ClockTime);
             }
-
-            PullReadyFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 38));
-            PullCountdownFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 43));
 
             for (int i = 0; i < gs.Abilities.Count; i++)
             {
@@ -41,6 +41,33 @@ namespace GSBot.Models
                 Abilities[i].Cooldown = gs.Abilities[i].Cooldown;
                 Abilities[i].IsUltimate = gs.Abilities[i].IsUltimate;
             }
+
+            // If new health is less than 500, start keeping track of damage taken.
+            LastDamageTaken = gs.Hero.Health < 500 ? (LastHealth - gs.Hero.Health) : 0;
+
+            if (LastDamageTaken > chunkDamageThreshold)
+            {
+                //LastChunkDamageTaken = LastDamageTaken;
+                LastChunkDamageTaken = gs.Hero.Health > 2 ? LastDamageTaken : 0;
+                PacketsSinceLastChunked = 0;
+            }
+
+            HasArmlet = gs.Items.GetInventoryAt(3).Name == "item_armlet";
+
+            ArmletToggleIsAble = HasArmlet && (gs.Items.GetInventoryAt(3).CanCast == true) && gs.Hero.IsAlive && !(gs.Hero.IsStunned || gs.Hero.IsHexed || gs.Hero.IsMuted);
+
+            ArmletToggleFlag = ((gs.Hero.Health < LastChunkDamageTaken) || (gs.Hero.Health < 100 && PacketsSinceLastChunked == 0)) || gs.Hero.Health <= 2;
+
+            LastHealth = gs.Hero.Health;
+
+            /* Update Flags */
+            PullReadyFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 38));
+            PullCountdownFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 43));
+        }
+
+        public void ResetChunkDamage()
+        {
+            LastChunkDamageTaken = 0;
         }
 
         private static bool IsEven(int value)
@@ -54,7 +81,15 @@ namespace GSBot.Models
         public TimeSpan GameClock { get; set; }
         public bool PullReadyFlag { get; set; } = false;
         public bool PullCountdownFlag { get; set; } = false;
+        public bool HasArmlet { get; set; } = false;
+        public bool ArmletToggleIsAble { get; set; } = false;
+        public bool ArmletToggleFlag { get; set; } = false;
+        public bool WasHit { get; set; } = false;
+        public int PacketsSinceLastChunked { get; set; }
         public Ability[] Abilities { get; set; } = new Ability[6];
+        public int LastHealth { get; set; }
+        public int LastDamageTaken { get; set; }
+        public int LastChunkDamageTaken { get; set; }
 
         public class Ability
         {

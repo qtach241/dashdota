@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Reflection;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
 using GSClient;
 using GSBot.Models;
+using SIClass;
 
 namespace GSBot
 {
@@ -26,6 +25,7 @@ namespace GSBot
         static string soundsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Sounds/";
 
         static string heroNameLast;
+        static int lastArmletToggle;
         static bool flag_ready;
         static bool flag_countdown;
 
@@ -118,6 +118,9 @@ namespace GSBot
         static void OnNewGameState(GameState gs)
         {
             gameStateCache.UpdateCache(gs);
+
+            if (gameStateCache.ArmletToggleIsAble)
+                ArmletToggle(gameStateCache);
         }
 
         static void Main(string[] args)
@@ -154,12 +157,19 @@ namespace GSBot
                             ConsoleLog("Loading hero script: " + heroNameLast);
                             switch (heroNameLast)
                             {
+                                case "npc_dota_hero_alchemist":
                                 case "npc_dota_hero_axe":
                                 case "npc_dota_hero_bristleback":
                                 case "npc_dota_hero_centaur":
+                                case "npc_dota_hero_chaos_knight":
+                                case "npc_dota_hero_dragon_knight":
+                                case "npc_dota_hero_huskar":
+                                case "npc_dota_hero_legion_commander":
+                                case "npc_dota_hero_life_stealer":
                                 case "npc_dota_hero_magnataur":
                                 case "npc_dota_hero_nevermore":
                                 case "npc_dota_hero_omniknight":
+                                case "npc_dota_hero_skeleton_king":
                                 case "npc_dota_hero_skywrath_mage":
                                 case "npc_dota_hero_slardar":
                                 case "npc_dota_hero_slark":
@@ -201,6 +211,19 @@ namespace GSBot
 
             flag_ready = gameStateCache.PullReadyFlag;
             flag_countdown = gameStateCache.PullCountdownFlag;
+        }
+
+        static void ArmletToggle(GameStateCache gameStateCache)
+        {
+            ConsoleLog($"H: {gameStateCache.LastHealth}, D: {gameStateCache.LastDamageTaken}, C: {gameStateCache.LastChunkDamageTaken}, PSLC: {gameStateCache.PacketsSinceLastChunked}");
+
+            if (gameStateCache.ArmletToggleFlag && (gameStateCache.SessionPackets > (lastArmletToggle + 10)))
+            {
+                SendGameInput.T();
+                ConsoleLog("Toggling Armlet");
+                //gameStateCache.ResetChunkDamage();
+                lastArmletToggle = gameStateCache.SessionPackets;
+            }
         }
 
         //static void TreantTimer(GameStateCache gameStateCache)
