@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\Armlet.cs" />
+    <Compile Include="Helpers\SupportHelper.cs" />
     <Compile Include="Models\GameStateCache.cs" />
+    <Compile Include="Models\MasterState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,9 +101,7 @@
     <Content Include="Sounds\jensen_countdown.wav" />
     <Content Include="Sounds\jensen_ready.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Profiles\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(ProjectDir)Scripts\Compiler\BuildAllScriptsVS.cmd" "$(ProjectDir)Scripts\Compiler\" "$(ProjectDir)Scripts\" "$(ProjectDir)Scripts\bin\"</PostBuildEvent>

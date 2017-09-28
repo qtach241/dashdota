@@ -7,27 +7,21 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
 using GSClient;
+using GSBot.Helpers;
 using GSBot.Models;
-using SIClass;
 
 namespace GSBot
 {
     class Program
     {
         static GameStateListener _gsl;
-        static GameStateCache gameStateCache = new GameStateCache();
+        static MasterState state = new MasterState();
 
-        public delegate void HeroProfile(GameStateCache gs);
+        public delegate void HeroProfile(MasterState state);
 
         static string versionStr = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static string buildStr = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
         static string scriptsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Scripts/bin/";
-        static string soundsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Sounds/";
-
-        static string heroNameLast;
-        static int lastArmletToggle;
-        static bool flag_ready;
-        static bool flag_countdown;
 
         static void Initialize()
         {
@@ -117,31 +111,31 @@ namespace GSBot
 
         static void OnNewGameState(GameState gs)
         {
-            gameStateCache.UpdateCache(gs);
+            state.UpdateCache(gs);
 
-            if (gameStateCache.ArmletToggleIsAble)
-                ArmletToggle(gameStateCache);
+            if (state.ArmletToggleIsAble)
+                Armlet.ToggleArmlet(state);
         }
 
         static void Main(string[] args)
         {
             Initialize();
 
-            //HeroProfile profile = delegate (GameStateCache gs)
-            //{
-            //    Console.WriteLine("Initializing hero profile delegate...");
-            //};
+            HeroProfile profile = delegate { };
 
             do
             {
                 while (!Console.KeyAvailable)
                 {
                     // Detected a new hero in our game state cache.
-                    if (gameStateCache.HeroName != heroNameLast)
+                    if (state.HeroName != state.sPreviousHeroName)
                     {
                         // Kill any hero scripts currently running.
-                        List<Process> script_process = Process.GetProcessesByName("ahk_" + heroNameLast).ToList();
+                        List<Process> script_process = Process.GetProcessesByName("ahk_" + state.sPreviousHeroName).ToList();
                         script_process.AddRange(Process.GetProcessesByName("ahk_default").ToList());
+
+                        // Reset delegate
+                        profile = delegate { };
 
                         foreach (Process s in script_process)
                         {
@@ -150,12 +144,12 @@ namespace GSBot
                         }
 
                         // Store the new hero.
-                        heroNameLast = gameStateCache.HeroName;
+                        state.sPreviousHeroName = state.HeroName;
 
-                        if (!string.IsNullOrEmpty(heroNameLast))
+                        if (!string.IsNullOrEmpty(state.sPreviousHeroName))
                         {
-                            ConsoleLog("Loading hero script: " + heroNameLast);
-                            switch (heroNameLast)
+                            ConsoleLog("Loading hero script: " + state.sPreviousHeroName);
+                            switch (state.sPreviousHeroName)
                             {
                                 case "npc_dota_hero_alchemist":
                                 case "npc_dota_hero_axe":
@@ -174,7 +168,8 @@ namespace GSBot
                                 case "npc_dota_hero_slardar":
                                 case "npc_dota_hero_slark":
                                 case "npc_dota_hero_treant":
-                                    Process.Start(scriptsDir + "ahk_" + heroNameLast);
+                                    profile += new HeroProfile(SupportHelper.PullTimers);
+                                    Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
                                     break;
                                 default:
                                     Process.Start(scriptsDir + "ahk_default");
@@ -183,56 +178,12 @@ namespace GSBot
                         }
                     }
 
-                    //profile(gameStateCache);
-                    //PullTimers(gameStateCache);
+                    //profile(state);
 
                     Thread.Sleep(100);
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
-
-        static void PullTimers(GameStateCache gameStateCache)
-        {
-            if (!flag_ready && gameStateCache.PullReadyFlag)
-            {
-                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundsDir + "jensen_ready.wav"))
-                {
-                    player.Play();
-                }
-            }
-
-            if (!flag_countdown && gameStateCache.PullCountdownFlag)
-            {
-                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundsDir + "jensen_countdown.wav"))
-                {
-                    player.Play();
-                }
-            }
-
-            flag_ready = gameStateCache.PullReadyFlag;
-            flag_countdown = gameStateCache.PullCountdownFlag;
-        }
-
-        static void ArmletToggle(GameStateCache gameStateCache)
-        {
-            ConsoleLog($"H: {gameStateCache.LastHealth}, D: {gameStateCache.LastDamageTaken}, C: {gameStateCache.LastChunkDamageTaken}, PSLC: {gameStateCache.PacketsSinceLastChunked}");
-
-            if (gameStateCache.ArmletToggleFlag && (gameStateCache.SessionPackets > (lastArmletToggle + 10)))
-            {
-                SendGameInput.T();
-                ConsoleLog("Toggling Armlet");
-                //gameStateCache.ResetChunkDamage();
-                lastArmletToggle = gameStateCache.SessionPackets;
-            }
-        }
-
-        //static void TreantTimer(GameStateCache gameStateCache)
-        //{
-        //    if (gameStateCache.Abilities[2].Cooldown == 0)
-        //    {
-        //        // Alert Living Armor is off cooldown
-        //    }
-        //}
 
         static void ConsoleLog(string msg)
         {
