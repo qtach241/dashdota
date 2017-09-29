@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Armlet.cs" />
-    <Compile Include="Helpers\SupportHelper.cs" />
+    <Compile Include="Helpers\AudioAlerts.cs" />
     <Compile Include="Models\GameStateCache.cs" />
     <Compile Include="Models\MasterState.cs" />
     <Compile Include="Program.cs" />

@@ -184,7 +184,7 @@ namespace GSBot
                                 case "npc_dota_hero_slardar":
                                 case "npc_dota_hero_slark":
                                 case "npc_dota_hero_treant":
-                                    profile += new HeroProfile(SupportHelper.PullTimers);
+                                    profile += new HeroProfile(AudioAlerts.StackCamps);
                                     Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
                                     break;
                                 default:
