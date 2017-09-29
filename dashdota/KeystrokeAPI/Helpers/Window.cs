@@ -1,7 +1,7 @@
-﻿using KeystrokeAPI;
+﻿using KeystrokeClient;
 using System.Text;
 
-namespace KeystrokeAPI.Helpers
+namespace KeystrokeClient.Helpers
 {
     internal class Window
     {

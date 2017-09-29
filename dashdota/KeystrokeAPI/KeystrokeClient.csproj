@@ -7,8 +7,8 @@
     <ProjectGuid>{C668C307-FB24-4C6C-A025-526EC30AB6CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KeystrokeAPI</RootNamespace>
-    <AssemblyName>KeystrokeAPI</AssemblyName>
+    <RootNamespace>KeystrokeClient</RootNamespace>
+    <AssemblyName>KeystrokeClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

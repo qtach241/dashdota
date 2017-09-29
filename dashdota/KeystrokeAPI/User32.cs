@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace KeystrokeAPI
+namespace KeystrokeClient
 {
     /// <summary>
     /// Class to wrap the dependencies for the User32.dll
