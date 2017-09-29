@@ -23,6 +23,9 @@ namespace GSBot
         static string buildStr = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
         static string scriptsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Scripts/bin/";
 
+        /// <summary>
+        /// Main initialization routine.
+        /// </summary>
         static void Initialize()
         {
             ConsoleLog("Initializing GSBot version " + versionStr);
@@ -56,6 +59,9 @@ namespace GSBot
             ConsoleLog("GSBot successfully initialized. Listening for GameState data...");
         }
 
+        /// <summary>
+        /// Helper function that creates the cfg file.
+        /// </summary>
         static void CfgCreateIfNotExists()
         {
             // TODO: Fix for multipe steam install paths.
@@ -109,6 +115,11 @@ namespace GSBot
             }
         }
 
+        /// <summary>
+        /// Event handler when we receive a new gamestate.
+        /// Update all state variables and do some actions if needed.
+        /// </summary>
+        /// <param name="gs"></param>
         static void OnNewGameState(GameState gs)
         {
             state.UpdateCache(gs);
@@ -117,6 +128,11 @@ namespace GSBot
                 Armlet.ToggleArmlet(state);
         }
 
+        /// <summary>
+        /// Main program entry.
+        /// Runs init routine and monitors state for a new hero.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Initialize();
@@ -185,6 +201,10 @@ namespace GSBot
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
 
+        /// <summary>
+        /// Print message in console window with timestamp.
+        /// </summary>
+        /// <param name="msg"></param>
         static void ConsoleLog(string msg)
         {
             msg = "[" + DateTime.Now.ToShortTimeString() + "] " + msg;
