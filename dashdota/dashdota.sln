@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSClient", "GSClient\GSClie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIClass", "SIClass\SIClass.csproj", "{C397B2AD-AAA2-4E58-9254-37CA68189FA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeystrokeAPI", "KeystrokeAPI\KeystrokeAPI.csproj", "{C668C307-FB24-4C6C-A025-526EC30AB6CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeystrokeClient", "KeystrokeAPI\KeystrokeClient.csproj", "{C668C307-FB24-4C6C-A025-526EC30AB6CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,8 @@
-﻿using KeystrokeAPI;
+﻿using KeystrokeClient;
 using System;
 using System.Globalization;
 
-namespace KeystrokeAPI.Helpers
+namespace KeystrokeClient.Helpers
 {
     internal class KeyboardLayout
     {

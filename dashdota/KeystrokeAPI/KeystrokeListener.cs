@@ -1,11 +1,11 @@
-﻿using KeystrokeAPI.CallbackObjects;
-using KeystrokeAPI.Helpers;
+﻿using KeystrokeClient.CallbackObjects;
+using KeystrokeClient.Helpers;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace KeystrokeAPI
+namespace KeystrokeClient
 {
     public class KeystrokeListener : IDisposable
     {
