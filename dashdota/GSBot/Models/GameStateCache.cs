@@ -65,11 +65,6 @@ namespace GSBot.Models
             PullCountdownFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 43));
         }
 
-        public void ResetChunkDamage()
-        {
-            LastChunkDamageTaken = 0;
-        }
-
         private static bool IsEven(int value)
         {
             return value % 2 == 0;
