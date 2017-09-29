@@ -18,7 +18,6 @@ namespace GSBot.Helpers
             {
                 SendGameInput.T();
                 //Console.WriteLine("Toggling Armlet");
-                //gameStateCache.ResetChunkDamage();
                 state.sPreviousTogglePacket = state.SessionPackets;
             }
         }
