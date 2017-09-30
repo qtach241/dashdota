@@ -100,7 +100,7 @@ namespace GSBot.Helpers
             InvokeSunstrike();
         }
 
-        private static void CastDeafeningBlast(MasterState state)
+        public static void CastDeafeningBlast(MasterState state)
         {
             var Slot1 = state.Abilities[3];
             var Slot2 = state.Abilities[4];
@@ -199,7 +199,7 @@ namespace GSBot.Helpers
             SendGameInput.R();
         }
 
-        private static void InvokeDeafeningBlast()
+        public static void InvokeDeafeningBlast()
         {
             SendGameInput.Q();
             SendGameInput.W();
