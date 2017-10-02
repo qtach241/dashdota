@@ -178,6 +178,7 @@ namespace GSBot
                                 case "npc_dota_hero_life_stealer":
                                 case "npc_dota_hero_magnataur":
                                 case "npc_dota_hero_nevermore":
+                                case "npc_dota_hero_night_stalker":
                                 case "npc_dota_hero_omniknight":
                                 case "npc_dota_hero_skeleton_king":
                                 case "npc_dota_hero_skywrath_mage":

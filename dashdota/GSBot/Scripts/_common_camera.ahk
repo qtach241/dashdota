@@ -1,6 +1,3 @@
-#NoEnv
-#If WinActive("Dota 2")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Globals/Helpers (Must be the first section in all scripts)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -11,39 +8,33 @@
 #Include Include/_helpers_camera.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Panic Button
+;; Common camera related binds
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Esc::ExitApp
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Common binds
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-!PgUp::
-SelectTeamDire()
+F10::
+CycleFocusUp()
 return
 
-!PgDn::
-SelectTeamRadiant()
+!1::
+SaveMousePos(xPos_1, yPos_1)
 return
 
-Capslock::
-CapslockShop()
+1::
+MoveClickMouse(xPos_1, yPos_1, 2)
 return
 
-*Mbutton::
-AttackCancel()
+!2::
+SaveMousePos(xPos_2, yPos_2)
 return
 
-F8::
-DirectionalMove(1)
+2::
+MoveClickMouse(xPos_2, yPos_2, 2)
 return
 
-End::
-DirectionalForce()
+!3::
+SaveMousePos(xPos_3, yPos_3)
 return
 
-!End::
-DirectionalForceTp()
+3::
+MoveClickMouse(xPos_3, yPos_3, 2)
 return

@@ -1,4 +1,6 @@
 #Include _common.ahk
+#Include _common_bottlecrow.ahk
+#Include _common_camera.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Q: Spam click Q ability

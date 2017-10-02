@@ -13,6 +13,7 @@ if not exist %~f3 mkdir %~f3
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_chaos_knight.ahk /out %~f3ahk_npc_dota_hero_chaos_knight.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_dragon_knight.ahk /out %~f3ahk_npc_dota_hero_dragon_knight.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_huskar.ahk /out %~f3ahk_npc_dota_hero_huskar.exe
+%~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_invoker.ahk /out %~f3ahk_npc_dota_hero_invoker.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_legion_commander.ahk /out %~f3ahk_npc_dota_hero_legion_commander.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_life_stealer.ahk /out %~f3ahk_npc_dota_hero_life_stealer.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_magnataur.ahk /out %~f3ahk_npc_dota_hero_magnataur.exe

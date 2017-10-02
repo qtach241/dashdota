@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,6 +70,7 @@
     <None Include="Scripts\ahk_npc_dota_hero_chaos_knight.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_dragon_knight.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_huskar.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_invoker.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_legion_commander.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_life_stealer.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
@@ -87,11 +89,17 @@
     <None Include="Scripts\Include\_globals.ahk" />
     <None Include="Scripts\Include\_helpers_backpack.ahk" />
     <None Include="Scripts\Include\_helpers_camera.ahk" />
+    <None Include="Scripts\_common_bottlecrow.ahk" />
+    <None Include="Scripts\_common_camera.ahk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GSClient\GSClient.csproj">
       <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
       <Name>GSClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeystrokeAPI\KeystrokeClient.csproj">
+      <Project>{c668c307-fb24-4c6c-a025-526ec30ab6cf}</Project>
+      <Name>KeystrokeClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\SIClass\SIClass.csproj">
       <Project>{c397b2ad-aaa2-4e58-9254-37ca68189fa2}</Project>
