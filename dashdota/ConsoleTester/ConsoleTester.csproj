@@ -59,10 +59,6 @@
       <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
       <Name>GSClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KeystrokeAPI\KeystrokeClient.csproj">
-      <Project>{c668c307-fb24-4c6c-a025-526ec30ab6cf}</Project>
-      <Name>KeystrokeClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SIClass\SIClass.csproj">
       <Project>{c397b2ad-aaa2-4e58-9254-37ca68189fa2}</Project>
       <Name>SIClass</Name>
