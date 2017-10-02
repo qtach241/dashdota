@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC061656-6218-4F4E-ADD0-D6DB24CC0E99}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{44122093-9CC4-4572-A602-0E4AF527C258}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleTester</RootNamespace>
-    <AssemblyName>ConsoleTester</AssemblyName>
+    <RootNamespace>KeystrokeClient</RootNamespace>
+    <AssemblyName>KeystrokeClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,30 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Entities\CallbackObjects\KeyPressed.cs" />
+    <Compile Include="Entities\KeyCode.cs" />
+    <Compile Include="Helpers\KeyboardLayout.cs" />
+    <Compile Include="Helpers\Window.cs" />
+    <Compile Include="KeystrokeListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User32.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GSBot\GSBot.csproj">
-      <Project>{7cd46626-d8b2-4090-b9bc-aab8fe2a1891}</Project>
-      <Name>GSBot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GSClient\GSClient.csproj">
-      <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
-      <Name>GSClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KeystrokeClient\KeystrokeClient.csproj">
-      <Project>{44122093-9cc4-4572-a602-0e4af527c258}</Project>
-      <Name>KeystrokeClient</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SIClass\SIClass.csproj">
-      <Project>{c397b2ad-aaa2-4e58-9254-37ca68189fa2}</Project>
-      <Name>SIClass</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

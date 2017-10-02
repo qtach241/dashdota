@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{861F4407
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{AC061656-6218-4F4E-ADD0-D6DB24CC0E99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeystrokeClient", "KeystrokeClient\KeystrokeClient.csproj", "{44122093-9CC4-4572-A602-0E4AF527C258}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{AC061656-6218-4F4E-ADD0-D6DB24CC0E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC061656-6218-4F4E-ADD0-D6DB24CC0E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC061656-6218-4F4E-ADD0-D6DB24CC0E99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44122093-9CC4-4572-A602-0E4AF527C258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44122093-9CC4-4572-A602-0E4AF527C258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44122093-9CC4-4572-A602-0E4AF527C258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44122093-9CC4-4572-A602-0E4AF527C258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{570EBDCE-AA6B-4553-85BB-7B62CCBF182D} = {5A6528D6-A03B-44E8-A329-39CA61C202DB}
 		{C397B2AD-AAA2-4E58-9254-37CA68189FA2} = {5A6528D6-A03B-44E8-A329-39CA61C202DB}
 		{AC061656-6218-4F4E-ADD0-D6DB24CC0E99} = {861F4407-69CF-49BE-9217-9C2A4A55D255}
+		{44122093-9CC4-4572-A602-0E4AF527C258} = {5A6528D6-A03B-44E8-A329-39CA61C202DB}
 	EndGlobalSection
 EndGlobal

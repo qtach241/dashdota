@@ -1,11 +1,9 @@
-﻿using KeystrokeClient;
-using System;
+﻿using System;
 using System.Windows.Forms;
 using GSBot.Helpers;
-using SIClass;
-using System.Threading;
 using GSBot.Models;
 using GSClient;
+using KeystrokeClient;
 
 namespace ConsoleApplicationTest
 {
