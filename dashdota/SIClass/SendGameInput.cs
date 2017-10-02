@@ -53,137 +53,23 @@ namespace SIClass
             return SendInput(2, pInputs, Marshal.SizeOf(structure));
         }
 
-        public static uint Q()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.Q);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.Q);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
-        public static uint W()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.W);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.W);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
-        public static uint E()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.E);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.E);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
-        public static uint R()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.R);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.R);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
-        public static uint T()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.T);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.T);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
-        public static uint G()
-        {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.G);
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT input2 = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = VkKeyScan((char)System.Windows.Forms.Keys.G);
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
-            input2.ki.dwExtraInfo = GetMessageExtraInfo();
-
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
-
-            return SendInput(2, pInputs, Marshal.SizeOf(structure));
-        }
-
         public static void SendKeyAsInput(System.Windows.Forms.Keys key)
         {
-            INPUT structure = new INPUT();
-            structure.type = (int)InputType.INPUT_KEYBOARD;
-            structure.ki.wVk = (short)key;
-            structure.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
-            structure.ki.dwExtraInfo = GetMessageExtraInfo();
+            INPUT input1 = new INPUT();
+            input1.type = (int)InputType.INPUT_KEYBOARD;
+            input1.ki.wVk = (short)key;
+            input1.ki.dwFlags = (int)KEYEVENTF.KEYDOWN;
+            input1.ki.dwExtraInfo = GetMessageExtraInfo();
 
             INPUT input2 = new INPUT();
             input2.type = (int)InputType.INPUT_KEYBOARD;
             input2.ki.wVk = (short)key;
-            input2.mi.dwFlags = (int)KEYEVENTF.KEYUP;
+            input2.ki.dwFlags = (int)KEYEVENTF.KEYUP;
             input2.ki.dwExtraInfo = GetMessageExtraInfo();
 
-            INPUT[] pInputs = new INPUT[] { structure, input2 };
+            INPUT[] pInputs = new INPUT[] { input1, input2 };
 
-            SendInput(2, pInputs, Marshal.SizeOf(structure));
+            SendInput(2, pInputs, Marshal.SizeOf(input1));
         }
 
         public static void SendKeyAsInput(System.Windows.Forms.Keys key, int HoldTime)

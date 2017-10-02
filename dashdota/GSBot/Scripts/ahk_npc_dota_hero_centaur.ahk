@@ -7,3 +7,7 @@
 ;;~q::
 ;;CancelOnRelease("q", 500)
 ;;return
+
+4::
+SwapTranquils()
+return

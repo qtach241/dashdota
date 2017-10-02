@@ -1,4 +1,5 @@
-﻿using GSBot.Models;
+﻿using System.Windows.Forms;
+using GSBot.Models;
 using SIClass;
 
 namespace GSBot.Helpers
@@ -23,9 +24,13 @@ namespace GSBot.Helpers
         private enum ComboState
         {
             Waiting,
-            Invoke,
-            Cast,
-            WaitForCastFinish,
+            CastMeteor,
+            WaitForMeteorCastFinish,
+            CastDeafeningBlast,
+            WaitForDeafeningBlastFinish,
+            InvokeSunstrike,
+            CastSunstrike,
+            WaitForSunstrikeFinish,
         }
 
         static Spells SpellSlot1 = Spells.None;
@@ -41,59 +46,237 @@ namespace GSBot.Helpers
         {
             switch (comboState)
             {
-                case ComboState.Waiting:
-                    break;
-
-                case ComboState.Cast:
-                    CastSunstrike(state);
-                    break;
-
-                case ComboState.WaitForCastFinish:
-
-                    break;
             }
         }
 
-        private static void CastGhostwalk(MasterState state)
+        public static void CastColdsnap(MasterState state)
         {
             var Slot1 = state.Abilities[3];
             var Slot2 = state.Abilities[4];
 
-            if (Slot1.Name.Equals("ability_ghost_walk"))
+            if (Slot1.Name.Equals("invoker_cold_snap"))
             {
                 if (Slot1.Cooldown > 0)
                     return;
 
-                SendGameInput.T();
+                CastSpellSlot1();
                 return;
             }
 
-            if (Slot2.Name.Equals("ability_ghost_walk"))
+            if (Slot2.Name.Equals("invoker_cold_snap"))
             {
                 if (Slot2.Cooldown > 0)
                     return;
 
-                SendGameInput.G();
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeColdsnap();
+        }
+
+        public static void CastGhostwalk(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_ghost_walk"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_ghost_walk"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
                 return;
             }
 
             InvokeGhostwalk();
-            CastGhostwalk(state);
         }
 
-        private static void CastSunstrike(MasterState state)
+        public static void CastIcewall(MasterState state)
         {
-            if (state.Abilities[3].Name.Equals("ability_sunstrike"))
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_ice_wall"))
             {
-                SendGameInput.T();
-                comboState = ComboState.WaitForCastFinish;
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
                 return;
             }
 
-            if (state.Abilities[4].Name.Equals("ability_sunstrike"))
+            if (Slot2.Name.Equals("invoker_ice_wall"))
             {
-                SendGameInput.G();
-                comboState = ComboState.WaitForCastFinish;
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeIcewall();
+        }
+
+        public static void CastTornado(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_tornado"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_tornado"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeTornado();
+        }
+
+        public static void CastEmp(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_emp"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_emp"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeEmp();
+        }
+
+        public static void CastAlacrity(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_alacrity"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_alacrity"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeAlacrity();
+        }
+
+        public static void CastForgeSpirit(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_forge_spirit"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_forge_spirit"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeForgeSpirit();
+        }
+
+        public static void CastMeteor(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_chaos_meteor"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_chaos_meteor"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
+                return;
+            }
+
+            InvokeMeteor();
+        }
+
+        public static void CastSunstrike(MasterState state)
+        {
+            var Slot1 = state.Abilities[3];
+            var Slot2 = state.Abilities[4];
+
+            if (Slot1.Name.Equals("invoker_sun_strike"))
+            {
+                if (Slot1.Cooldown > 0)
+                    return;
+
+                CastSpellSlot1();
+                return;
+            }
+
+            if (Slot2.Name.Equals("invoker_sun_strike"))
+            {
+                if (Slot2.Cooldown > 0)
+                    return;
+
+                CastSpellSlot2();
                 return;
             }
 
@@ -105,106 +288,85 @@ namespace GSBot.Helpers
             var Slot1 = state.Abilities[3];
             var Slot2 = state.Abilities[4];
 
-            if (Slot1.Name.Equals("ability_deafening_blast"))
+            if (Slot1.Name.Equals("invoker_deafening_blast"))
             {
                 if (Slot1.Cooldown > 0)
                     return;
 
-                SendGameInput.T();
+                CastSpellSlot1();
                 return;
             }
 
-            if (Slot2.Name.Equals("ability_deafening_blast"))
+            if (Slot2.Name.Equals("invoker_deafening_blast"))
             {
                 if (Slot2.Cooldown > 0)
                     return;
 
-                SendGameInput.G();
+                CastSpellSlot2();
                 return;
             }
 
             InvokeDeafeningBlast();
-            CastDeafeningBlast(state);
         }
 
         private static void InvokeColdsnap()
         {
-            SendGameInput.Q();
-            SendGameInput.Q();
-            SendGameInput.Q();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad1);
         }
 
         private static void InvokeGhostwalk()
         {
-            SendGameInput.Q();
-            SendGameInput.Q();
-            SendGameInput.W();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad2);
         }
 
         private static void InvokeIcewall()
         {
-            SendGameInput.Q();
-            SendGameInput.Q();
-            SendGameInput.E();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad3);
         }
 
         private static void InvokeTornado()
         {
-            SendGameInput.W();
-            SendGameInput.W();
-            SendGameInput.Q();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad4);
         }
 
         private static void InvokeEmp()
         {
-            SendGameInput.W();
-            SendGameInput.W();
-            SendGameInput.W();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad5);
         }
 
         private static void InvokeAlacrity()
         {
-            SendGameInput.W();
-            SendGameInput.W();
-            SendGameInput.E();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad6);
         }
 
-        private static void InvokeForgeSpirits()
+        private static void InvokeForgeSpirit()
         {
-            SendGameInput.E();
-            SendGameInput.E();
-            SendGameInput.Q();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad7);
         }
 
         private static void InvokeMeteor()
         {
-            SendGameInput.E();
-            SendGameInput.E();
-            SendGameInput.W();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad8);
         }
 
         private static void InvokeSunstrike()
         {
-            SendGameInput.E();
-            SendGameInput.E();
-            SendGameInput.E();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad9);
         }
 
         public static void InvokeDeafeningBlast()
         {
-            SendGameInput.Q();
-            SendGameInput.W();
-            SendGameInput.E();
-            SendGameInput.R();
+            SendGameInput.SendKeyAsInput(Keys.NumPad0);
+        }
+
+        public static void CastSpellSlot1()
+        {
+            SendGameInput.SendKeyAsInput(Keys.Divide);
+        }
+
+        public static void CastSpellSlot2()
+        {
+            SendGameInput.SendKeyAsInput(Keys.Multiply);
         }
     }
 }
