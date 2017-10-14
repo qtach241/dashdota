@@ -8,10 +8,14 @@ t::
 SendInput dd
 return
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; R: Pop items + Duel macro
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 r::
 SendInput {XButton2}
 SendInput {XButton2}
 SendInput {WheelUp}
 SendInput {WheelUp}
-SendInput ddr
+SendInput dr
 return

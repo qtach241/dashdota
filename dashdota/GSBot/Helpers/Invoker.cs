@@ -6,48 +6,6 @@ namespace GSBot.Helpers
 {
     public class Invoker
     {
-        private enum Spells
-        {
-            None,
-            Coldsnap,
-            Ghostwalk,
-            Icewall,
-            Tornado,
-            Emp,
-            Alacrity,
-            Forge,
-            Meteor,
-            Sunstrike,
-            DeafeningBlast
-        }
-
-        private enum ComboState
-        {
-            Waiting,
-            CastMeteor,
-            WaitForMeteorCastFinish,
-            CastDeafeningBlast,
-            WaitForDeafeningBlastFinish,
-            InvokeSunstrike,
-            CastSunstrike,
-            WaitForSunstrikeFinish,
-        }
-
-        static Spells SpellSlot1 = Spells.None;
-        static Spells SpellSlot2 = Spells.None;
-
-        static ComboState comboState;
-
-        /// <summary>
-        /// Deafening Blast, Meteor, Sunstrike combo
-        /// </summary>
-        /// <param name="state"></param>
-        public static void Combo(MasterState state)
-        {
-            switch (comboState)
-            {
-            }
-        }
 
         public static void CastColdsnap(MasterState state)
         {
