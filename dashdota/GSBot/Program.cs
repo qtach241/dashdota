@@ -5,16 +5,19 @@ using System.Threading;
 using System.Reflection;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 using Microsoft.Win32;
 using GSClient;
 using GSBot.Helpers;
 using GSBot.Models;
+using KeystrokeClient;
 
 namespace GSBot
 {
     class Program
     {
         static GameStateListener _gsl;
+        static KeystrokeListener _ksl;
         static MasterState state = new MasterState();
 
         public delegate void HeroProfile(MasterState state);
@@ -55,6 +58,8 @@ namespace GSBot
                 Console.ReadLine();
                 Environment.Exit(0);
             }
+
+            _ksl = new KeystrokeListener();
 
             ConsoleLog("GSBot successfully initialized. Listening for GameState data...");
         }
@@ -126,6 +131,15 @@ namespace GSBot
 
             if (state.ArmletToggleIsAble)
                 Armlet.ToggleArmlet(state);
+
+            if (state.sPreviousHeroName == "npc_dota_hero_kunkka")
+            {
+                if (!state.sKunkkaReturnFlag && state.KunkkaReturnFlag)
+                {
+                    SIClass.SendGameInput.SendKeyAsInput(Keys.NumPad0);
+                }
+                state.sKunkkaReturnFlag = state.KunkkaReturnFlag;
+            }
         }
 
         /// <summary>
@@ -174,6 +188,8 @@ namespace GSBot
                                 case "npc_dota_hero_chaos_knight":
                                 case "npc_dota_hero_dragon_knight":
                                 case "npc_dota_hero_huskar":
+                                //case "npc_dota_hero_invoker":
+                                case "npc_dota_hero_kunkka":
                                 case "npc_dota_hero_legion_commander":
                                 case "npc_dota_hero_life_stealer":
                                 case "npc_dota_hero_magnataur":
@@ -187,6 +203,61 @@ namespace GSBot
                                 case "npc_dota_hero_treant":
                                     profile += new HeroProfile(AudioAlerts.StackCamps);
                                     Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
+                                    break;
+                                case "npc_dota_hero_invoker":
+                                    ConsoleLog("Loading keyboard hooks for Invoker. Press ESC to return to GSBot.");
+                                    _ksl.CreateKeyboardHook((character) =>
+                                    {
+                                        switch (character.KeyCode)
+                                        {
+                                            case KeyCode.Escape:
+                                                ConsoleLog("ESC detected. Unloading keyboard hooks and returning to GSBot.");
+                                                Application.ExitThread();
+                                                break;
+
+                                            case KeyCode.Q:
+                                                Invoker.CastDeafeningBlast(state);
+                                                break;
+
+                                            case KeyCode.W:
+                                                Invoker.CastMeteor(state);
+                                                break;
+
+                                            case KeyCode.E:
+                                                Invoker.CastSunstrike(state);
+                                                break;
+
+                                            case KeyCode.PageUp:
+                                                Invoker.CastAlacrity(state);
+                                                break;
+
+                                            case KeyCode.PageDown:
+                                                Invoker.CastForgeSpirit(state);
+                                                break;
+
+                                            case KeyCode.D1:
+                                                Invoker.CastIcewall(state);
+                                                break;
+
+                                            case KeyCode.D2:
+                                                Invoker.CastTornado(state);
+                                                break;
+
+                                            case KeyCode.D3:
+                                                Invoker.CastEmp(state);
+                                                break;
+
+                                            case KeyCode.D4:
+                                                Invoker.CastColdsnap(state);
+                                                break;
+
+                                            case KeyCode.D5:
+                                                Invoker.CastGhostwalk(state);
+                                                break;
+                                        }
+                                    });
+                                    Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
+                                    Application.Run();
                                     break;
                                 default:
                                     Process.Start(scriptsDir + "ahk_default");

@@ -17,7 +17,6 @@ namespace GSBot.Helpers
 
             if (state.ArmletToggleFlag && (state.SessionPackets > (state.sPreviousTogglePacket + 10)))
             {
-                //SendGameInput.T();
                 SendGameInput.SendKeyAsInput(Keys.T);
                 //Console.WriteLine("Toggling Armlet");
                 state.sPreviousTogglePacket = state.SessionPackets;

@@ -63,6 +63,8 @@ namespace GSBot.Models
             /* Update Flags */
             PullReadyFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 38));
             PullCountdownFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 43));
+
+            KunkkaReturnFlag = Abilities[0].Cooldown > 0 && ((Abilities[0].Level == 4 && Abilities[0].Cooldown <= 9) || (Abilities[0].Level == 3 && Abilities[0].Cooldown <= 11) || (Abilities[0].Level == 2 && Abilities[0].Cooldown <= 13) || (Abilities[0].Level == 1 && Abilities[0].Cooldown <= 15));
         }
 
         private static bool IsEven(int value)
@@ -85,6 +87,7 @@ namespace GSBot.Models
         public int LastHealth { get; set; }
         public int LastDamageTaken { get; set; }
         public int LastChunkDamageTaken { get; set; }
+        public bool KunkkaReturnFlag { get; set; } = false;
 
         public class Ability
         {

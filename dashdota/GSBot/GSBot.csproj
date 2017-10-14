@@ -71,6 +71,7 @@
     <None Include="Scripts\ahk_npc_dota_hero_dragon_knight.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_huskar.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_invoker.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_kunkka.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_legion_commander.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_life_stealer.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
@@ -96,6 +97,10 @@
     <ProjectReference Include="..\GSClient\GSClient.csproj">
       <Project>{570ebdce-aa6b-4553-85bb-7b62ccbf182d}</Project>
       <Name>GSClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeystrokeClient\KeystrokeClient.csproj">
+      <Project>{44122093-9cc4-4572-a602-0e4af527c258}</Project>
+      <Name>KeystrokeClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\SIClass\SIClass.csproj">
       <Project>{c397b2ad-aaa2-4e58-9254-37ca68189fa2}</Project>

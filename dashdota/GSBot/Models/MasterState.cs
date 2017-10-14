@@ -16,5 +16,6 @@ namespace GSBot.Models
         public int sPreviousTogglePacket { get; set; }
         public bool sPullReadyFlag { get; set; }
         public bool sPullCountdownFlag { get; set; }
+        public bool sKunkkaReturnFlag { get; set; }
     }
 }

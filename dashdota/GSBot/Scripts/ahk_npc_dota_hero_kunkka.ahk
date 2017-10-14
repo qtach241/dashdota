@@ -1,11 +1,9 @@
 #Include _common.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Pop items + Call macro
+;; Numpad0: Cast X Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-q::
-SendInput {XButton2}
-SendInput {WheelUp}
-SendInput ddq
+Numpad0::
+SendInput e
 return

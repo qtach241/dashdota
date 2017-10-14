@@ -45,6 +45,10 @@ Numpad0::
 InvokeDeafeningBlast()
 return
 
+6::
+TryCombo()
+return
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Spell Invoke Helpers
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,5 +110,59 @@ InvokeSunstrike()
 InvokeDeafeningBlast()
 {
 	SendInput qwer
+	return
+}
+
+TryCombo()
+{
+	SendInput t
+	Click
+	Sleep, 500
+	SendInput g
+	Click
+	Sleep, 500
+	InvokeSunstrike()
+	Sleep, 500
+	SendInput t
+	Click
+	Sleep, 500
+	SendInput d
+	Sleep, 500
+	SendInput t
+	Click
+	Sleep, 500
+	SendInput g
+	Click
+	Sleep, 500
+	InvokeDeafeningBlast()
+	Sleep, 500
+	SendInput t
+	Click
+	return
+}
+
+TryCombo2()
+{
+	SendInput t
+	Click
+	SendInput g
+	Click
+	Sleep, 500
+	InvokeMeteor()
+	Sleep, 500
+	SendInput t
+	Click
+	Sleep, 1000
+	SendInput d
+	Sleep, 500
+	SendInput t
+	Click
+	SendInput g
+	Click
+	Sleep, 1000
+	InvokeDeafeningBlast()
+	Sleep, 1000
+	SendInput t
+	Click
 	return
 }
