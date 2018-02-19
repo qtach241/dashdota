@@ -1,27 +1,21 @@
-#Include _common.ahk
-#Include _common_bottlecrow.ahk
-#Include _common_camera.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Spam click Q ability
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-~q::
-SpamClickOn("q", 200, 20)
+Generic := new Hero("Generic")
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; W: Spam click W ability
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;----------------------------------------- Universal Hotkeys ---------------------------------------
 
-~w::
-SpamClickOn("w", 200, 20)
-return
+*MButton::	Generic.AttackCancel(0.05)
+!PgUp::		Generic.SelectDire()
+!PgDn::		Generic.SelectRadiant()
+PgUp::		Generic.CycleAllyUp()
+PgDn::		Generic.CycleAllyDown()
+Capslock::	Generic.OpenShop()
+F8:: 		Generic.DirectionalMove(1)
+End::		Generic.DirectionalForce()
+!End::		Generic.DirectionalForceTp()
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Spam click E ability
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
-~e::
-SpamClickOn("e", 200, 20)
-return
+
+#Include ahk_meta.ahk

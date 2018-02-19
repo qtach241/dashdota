@@ -63,6 +63,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Scripts\ahk_default.ahk" />
+    <None Include="Scripts\ahk_meta.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_alchemist.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_axe.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_bristleback.ahk" />
@@ -85,6 +86,9 @@
     <None Include="Scripts\ahk_npc_dota_hero_skywrath_mage.ahk" />
     <None Include="Scripts\Compiler\BuildAllScripts.cmd" />
     <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
+    <None Include="Scripts\dota.ahk" />
+    <None Include="Scripts\Libraries\game.ahk" />
+    <None Include="Scripts\settings.ini" />
     <None Include="Scripts\_common.ahk" />
     <None Include="Scripts\Include\_helpers.ahk" />
     <None Include="Scripts\Include\_globals.ahk" />
