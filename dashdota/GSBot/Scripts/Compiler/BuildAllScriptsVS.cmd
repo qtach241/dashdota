@@ -5,6 +5,8 @@ echo Ahk Output Location: %~f3
 
 if not exist %~f3 mkdir %~f3
 
+copy %~f2settings.ini %~f3
+
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in "%~f2ahk_default.ahk" /out %~f3ahk_default.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_alchemist.ahk /out %~f3ahk_npc_dota_hero_alchemist.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_axe.ahk /out %~f3ahk_npc_dota_hero_axe.exe

@@ -77,7 +77,7 @@ namespace GSBot
                 //string gsifolder = regKey.GetValue("SteamPath") +
                 //                   @"\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration";
 
-                string gsFolder = @"C:\Program Files (x86)\SteamLibrary\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration";
+                string gsFolder = @"C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration";
                 Directory.CreateDirectory(gsFolder);
                 string gsFile = gsFolder + @"\gamestate_integration_gsbot.cfg";
 

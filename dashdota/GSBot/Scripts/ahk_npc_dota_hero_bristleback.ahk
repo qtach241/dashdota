@@ -1,14 +1,25 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Tread Swap + Quill Spray
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Bristleback := new Hero("Bristleback")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Bristleback.AttackCancel(0.05)
+!PgUp::		Bristleback.SelectDire()
+!PgDn::		Bristleback.SelectRadiant()
+PgUp::		Bristleback.CycleAllyUp()
+PgDn::		Bristleback.CycleAllyDown()
+Capslock::	Bristleback.OpenShop()
+F8:: 		Bristleback.DirectionalMove(1)
+End::		Bristleback.DirectionalForce()
+!End::		Bristleback.DirectionalForceTp()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 e::
-SendInput {XButton2}
-Sleep, 100
-SendInput w
-Sleep, 100
-SendInput {XButton2}
-SendInput {XButton2}
+HeroTreadSwitchStrength(Bristleback, 1, 2, 10)
 return
+
+
+#Include ahk_meta.ahk
