@@ -24,7 +24,7 @@ namespace GSBot
 
         static string versionStr = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         static string buildStr = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime.ToString();
-        static string scriptsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Scripts/bin/";
+        static string scriptsDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Scripts\\bin";
 
         /// <summary>
         /// Main initialization routine.
@@ -166,7 +166,7 @@ namespace GSBot
 
                         // Reset delegate
                         profile = delegate { };
-
+                        
                         foreach (Process s in script_process)
                         {
                             ConsoleLog("Unloading: " + s.ProcessName);
@@ -179,6 +179,9 @@ namespace GSBot
                         if (!string.IsNullOrEmpty(state.sPreviousHeroName))
                         {
                             ConsoleLog("Loading hero script: " + state.sPreviousHeroName);
+                            ProcessStartInfo psi = new ProcessStartInfo();
+                            psi.WorkingDirectory = scriptsDir;
+
                             switch (state.sPreviousHeroName)
                             {
                                 case "npc_dota_hero_alchemist":
@@ -202,7 +205,7 @@ namespace GSBot
                                 case "npc_dota_hero_slark":
                                 case "npc_dota_hero_treant":
                                     profile += new HeroProfile(AudioAlerts.StackCamps);
-                                    Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
+                                    psi.FileName = "ahk_" + state.sPreviousHeroName;
                                     break;
                                 case "npc_dota_hero_invoker":
                                     ConsoleLog("Loading keyboard hooks for Invoker. Press ESC to return to GSBot.");
@@ -256,13 +259,15 @@ namespace GSBot
                                                 break;
                                         }
                                     });
-                                    Process.Start(scriptsDir + "ahk_" + state.sPreviousHeroName);
+                                    psi.FileName = "ahk_" + state.sPreviousHeroName;
+                                    Process invokerProcess = Process.Start(psi);
                                     Application.Run();
                                     break;
                                 default:
-                                    Process.Start(scriptsDir + "ahk_default");
+                                    psi.FileName = "ahk_default";
                                     break;
                             }
+                            Process process = Process.Start(psi);
                         }
                     }
 
