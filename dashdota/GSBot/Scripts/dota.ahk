@@ -12,9 +12,13 @@ class Team
 class Hud
 {
 	; XY coordinates of the 5 allied hero icons at the top of the hud.
-	static AllyIcons := {(Team.Radiant): {0: {x: 760, y: 20}, 1: {x: 840, y: 20}, 2: {x: 930, y: 20}, 3: {x: 1010, y: 20}, 4: {x: 1090, y: 20}}, (Team.Dire): {0: {x: 1450, y: 20}, 1: {x: 1540, y: 20}, 2: {x: 1620, y: 20}, 3: {x: 1710, y: 20}, 4: {x: 1790, y: 20}}}
+	static AllyIcons := {(Team.Radiant): {0: {x: 760, y: 20}, 1: {x: 840, y: 20}, 2: {x: 930, y: 20}, 3: {x: 1010, y: 20}, 4: {x: 1090, y: 20}}
+	, (Team.Dire): {0: {x: 1450, y: 20}, 1: {x: 1540, y: 20}, 2: {x: 1620, y: 20}, 3: {x: 1710, y: 20}, 4: {x: 1790, y: 20}}}
 	
 	; XY coordinates of the 6 inventory slots + 3 backpack slots for three hero types (4/5/6 spells).
+	static InventoryIcons := {4: [{x: 1520, y: 1290}, {x: 1605, y: 1290}, {x: 1695, y: 1290}, {x: 1520, y: 1350}, {x: 1605, y: 1350}, {x: 1695, y: 1350}, {x: 1520, y: 1400}, {x: 1605, y: 1400}, {x: 1695, y: 1400}]
+	, 5: [{x: 1540, y: 1290}, {x: 1625, y: 1290}, {x: 1715, y: 1290}, {x: 1540, y: 1350}, {x: 1625, y: 1350}, {x: 1715, y: 1350}, {x: 1540, y: 1400}, {x: 1625, y: 1400}, {x: 1715, y: 1400}]
+	, 6: [{x: 1580, y: 1290}, {x: 1670, y: 1290}, {x: 1755, y: 1290}, {x: 1580, y: 1350}, {x: 1670, y: 1350}, {x: 1755, y: 1350}, {x: 1580, y: 1400}, {x: 1670, y: 1400}, {x: 1755, y: 1400}]}
 }
 
 class Hero
@@ -124,4 +128,6 @@ class Hero
 	DirectionalForceTp := Func("HeroDirectionalForceTp")
 	CycleAllyUp := Func("HeroCycleAllyUp")
 	CycleAllyDown := Func("HeroCycleAllyDown")
+	MoveItem := Func("HeroMoveItem")
+	TranquilSwap := Func("HeroTranquilSwap")
 }
