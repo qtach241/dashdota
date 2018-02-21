@@ -117,3 +117,31 @@ HeroCycleAllyDown(hero)
 	hero.AllyFocusDown()
 	HeroAllyFocus(hero)
 }
+
+HeroMoveItem(hero, src, dst)
+{
+	BlockInput, MouseMove
+	MouseGetPos, xCurPos, yCurPos
+	MouseMove, % Hud.InventoryIcons[hero.SpellCount][src].x, % Hud.InventoryIcons[hero.SpellCount][src].y, 0
+	Click, Down
+	MouseMove, % Hud.InventoryIcons[hero.SpellCount][dst].x, % Hud.InventoryIcons[hero.SpellCount][dst].y, 2
+	Click, Up
+	MouseMove, xCurPos, yCurPos
+	BlockInput, MouseMoveOff
+}
+
+HeroTranquilSwap(hero, src, dst)
+{
+	BlockInput, MouseMove
+	MouseGetPos, xCurPos, yCurPos
+	MouseMove, % Hud.InventoryIcons[hero.SpellCount][src].x, % Hud.InventoryIcons[hero.SpellCount][src].y, 0
+	Click, Down
+	MouseMove, % Hud.InventoryIcons[hero.SpellCount][dst].x, % Hud.InventoryIcons[hero.SpellCount][dst].y, 2
+	Click, Up
+	Sleep, 200
+	Click, Down
+	MouseMove, % Hud.InventoryIcons[hero.SpellCount][src].x, % Hud.InventoryIcons[hero.SpellCount][src].y, 2
+	Click, Up
+	MouseMove, xCurPos, yCurPos
+	BlockInput, MouseMoveOff
+}
