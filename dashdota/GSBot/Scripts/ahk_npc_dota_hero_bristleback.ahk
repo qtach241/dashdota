@@ -18,7 +18,7 @@ End::		Bristleback.DirectionalForce()
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 e::
-HeroTreadSwitchStrength(Bristleback, 1, 2, 10)
+Bristleback.TreadSwap(1, 2, 10)
 return
 
 
