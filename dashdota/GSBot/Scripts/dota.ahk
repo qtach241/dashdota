@@ -21,6 +21,13 @@ class Hud
 	, 6: [{x: 1580, y: 1290}, {x: 1670, y: 1290}, {x: 1755, y: 1290}, {x: 1580, y: 1350}, {x: 1670, y: 1350}, {x: 1755, y: 1350}, {x: 1580, y: 1400}, {x: 1670, y: 1400}, {x: 1755, y: 1400}]}
 }
 
+class Treads
+{
+	static Strength := Func("HeroTreadSwapStrength")
+	static Agility := Func("HeroTreadSwapAgility")
+	static Intelligence := Func("HeroTreadSwapStrength")
+}
+
 class Hero
 {
 	__Init()
@@ -60,6 +67,10 @@ class Hero
 		IniRead, OutputVar, settings.ini, Hotkeys, DIRECTIONAL_FORCE
 		this.DirectionalForceKey := OutputVar
 		
+		IniRead, OutputVarDefault, settings.ini, Hero_Default, PRIMARY_ATTRIBUTE
+		IniRead, OutputVar, settings.ini, Hero_%hero%, PRIMARY_ATTRIBUTE, %OutputVarDefault%
+		this.PrimaryAttribute := OutputVar
+		
 		IniRead, OutputVarDefault, settings.ini, Hero_Default, ABILITY_COUNT
 		IniRead, OutputVar, settings.ini, Hero_%hero%, ABILITY_COUNT, %OutputVarDefault%
 		this.SpellCount := OutputVar
@@ -71,10 +82,15 @@ class Hero
 		IniRead, OutputVarDefault, settings.ini, Hero_Default, TURN_TIME_MS
 		IniRead, OutputVar, settings.ini, Hero_%hero%, TURN_TIME_MS, %OutputVarDefault%
 		this.BaseTurnTime := OutputVar
+		
+		this.TreadSwap := Treads[this.PrimaryAttribute]
 	}
 	
 	; Display name of the current hero.
 	static Name := ""
+	
+	; Primary attribute of the current hero.
+	static PrimaryAttribute := ""
 	
 	; Number of spell slots (4/5/6).
 	static SpellCount := ""

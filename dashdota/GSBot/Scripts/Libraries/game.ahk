@@ -78,7 +78,7 @@ HeroDirectionalForceTp(hero)
 	hero.UseItem(5)
 }
 
-HeroTreadSwitchStrength(hero, spell, item, delay)
+HeroTreadSwapStrength(hero, spell, item, delay)
 {
 	hero.UseItem(item)
 	Sleep, %delay%
@@ -88,7 +88,7 @@ HeroTreadSwitchStrength(hero, spell, item, delay)
 	hero.UseItem(item)
 }
 
-HeroTreadSwitchAgility(hero, spell, item, delay)
+HeroTreadSwapAgility(hero, spell, item, delay)
 {
 	hero.UseItem(item)
 	hero.UseItem(item)
