@@ -14,6 +14,7 @@ Capslock::	Bristleback.OpenShop()
 F8:: 		Bristleback.DirectionalMove(1)
 End::		Bristleback.DirectionalForce()
 !End::		Bristleback.DirectionalForceTp()
+o::			Bristleback.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

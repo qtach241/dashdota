@@ -14,6 +14,7 @@ Capslock::	Alchemist.OpenShop()
 F8:: 		Alchemist.DirectionalMove(1)
 End::		Alchemist.DirectionalForce()
 !End::		Alchemist.DirectionalForceTp()
+o::			Alchemist.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
