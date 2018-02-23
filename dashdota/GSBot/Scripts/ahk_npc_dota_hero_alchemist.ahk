@@ -18,8 +18,8 @@ End::		Alchemist.DirectionalForce()
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 t::
-Alchemist.UseItem(4)
-Alchemist.UseItem(4)
+Alchemist.UseItem(Item.LowerL)
+Alchemist.UseItem(Item.LowerL)
 return
 
 

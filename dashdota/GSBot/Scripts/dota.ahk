@@ -9,6 +9,29 @@ class Team
 	static Dire := 1
 }
 
+class Ability
+{
+	static Q := 0
+	static W := 1
+	static E := 2
+	static Sub1 := 3
+	static Sub2 := 4
+	static Ultimate := 5
+}
+
+class Item
+{
+	static UpperL := 0
+	static UpperM := 1
+	static UpperR := 2
+	static LowerL := 3
+	static LowerM := 4
+	static LowerR := 5
+	static BackpackL := 6
+	static BackpackM := 7
+	static BackpackR := 8
+}
+
 class Hud
 {
 	; XY coordinates of the 5 allied hero icons at the top of the hud.
@@ -16,9 +39,9 @@ class Hud
 	, (Team.Dire): {0: {x: 1450, y: 20}, 1: {x: 1540, y: 20}, 2: {x: 1620, y: 20}, 3: {x: 1710, y: 20}, 4: {x: 1790, y: 20}}}
 	
 	; XY coordinates of the 6 inventory slots + 3 backpack slots for three hero types (4/5/6 spells).
-	static InventoryIcons := {4: [{x: 1520, y: 1290}, {x: 1605, y: 1290}, {x: 1695, y: 1290}, {x: 1520, y: 1350}, {x: 1605, y: 1350}, {x: 1695, y: 1350}, {x: 1520, y: 1400}, {x: 1605, y: 1400}, {x: 1695, y: 1400}]
-	, 5: [{x: 1540, y: 1290}, {x: 1625, y: 1290}, {x: 1715, y: 1290}, {x: 1540, y: 1350}, {x: 1625, y: 1350}, {x: 1715, y: 1350}, {x: 1540, y: 1400}, {x: 1625, y: 1400}, {x: 1715, y: 1400}]
-	, 6: [{x: 1580, y: 1290}, {x: 1670, y: 1290}, {x: 1755, y: 1290}, {x: 1580, y: 1350}, {x: 1670, y: 1350}, {x: 1755, y: 1350}, {x: 1580, y: 1400}, {x: 1670, y: 1400}, {x: 1755, y: 1400}]}
+	static InventoryIcons := {4: {0: {x: 1520, y: 1290}, 1: {x: 1605, y: 1290}, 2: {x: 1695, y: 1290}, 3: {x: 1520, y: 1350}, 4: {x: 1605, y: 1350}, 5: {x: 1695, y: 1350}, 6: {x: 1520, y: 1400}, 7: {x: 1605, y: 1400}, 8: {x: 1695, y: 1400}}
+	, 5: {0: {x: 1540, y: 1290}, 1: {x: 1625, y: 1290}, 2: {x: 1715, y: 1290}, 3: {x: 1540, y: 1350}, 4: {x: 1625, y: 1350}, 5: {x: 1715, y: 1350}, 6: {x: 1540, y: 1400}, 7: {x: 1625, y: 1400}, 8: {x: 1715, y: 1400}}
+	, 6: {0: {x: 1580, y: 1290}, 1: {x: 1670, y: 1290}, 2: {x: 1755, y: 1290}, 3: {x: 1580, y: 1350}, 4: {x: 1670, y: 1350}, 5: {x: 1755, y: 1350}, 6: {x: 1580, y: 1400}, 7: {x: 1670, y: 1400}, 8: {x: 1755, y: 1400}}}
 }
 
 class Treads

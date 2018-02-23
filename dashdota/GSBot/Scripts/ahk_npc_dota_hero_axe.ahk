@@ -18,11 +18,15 @@ End::		Axe.DirectionalForce()
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 q::
-Axe.UseItem(1)
-Axe.UseItem(2)
-Axe.UseItem(4)
-Axe.UseItem(4)
-Axe.CastSpell(0)
+Axe.UseItem(Item.UpperM)
+Axe.UseItem(Item.UpperR)
+Axe.UseItem(Item.LowerL)
+Axe.UseItem(Item.LowerL)
+Axe.CastSpell(Ability.Q)
+return
+
+g::
+Axe.TranquilSwap(Item.LowerL, Item.BackpackL)
 return
 
 

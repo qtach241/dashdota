@@ -18,7 +18,7 @@ End::		Bristleback.DirectionalForce()
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 e::
-Bristleback.TreadSwap(1, 2, 10)
+Bristleback.TreadSwap(Ability.W, Item.UpperR, 10)
 return
 
 
