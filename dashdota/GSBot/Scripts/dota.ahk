@@ -169,4 +169,5 @@ class Hero
 	CycleAllyDown := Func("HeroCycleAllyDown")
 	MoveItem := Func("HeroMoveItem")
 	TranquilSwap := Func("HeroTranquilSwap")
+	Shrine := Func("HeroShrine")
 }

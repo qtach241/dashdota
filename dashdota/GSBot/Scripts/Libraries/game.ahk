@@ -120,14 +120,10 @@ HeroCycleAllyDown(hero)
 
 HeroMoveItem(hero, src, dst)
 {
-	BlockInput, MouseMove
-	MouseGetPos, xCurPos, yCurPos
 	MouseMove, % Hud.InventoryIcons[hero.SpellCount][src].x, % Hud.InventoryIcons[hero.SpellCount][src].y, 0
 	Click, Down
 	MouseMove, % Hud.InventoryIcons[hero.SpellCount][dst].x, % Hud.InventoryIcons[hero.SpellCount][dst].y, 2
 	Click, Up
-	MouseMove, xCurPos, yCurPos
-	BlockInput, MouseMoveOff
 }
 
 HeroTranquilSwap(hero, src, dst)
@@ -142,6 +138,26 @@ HeroTranquilSwap(hero, src, dst)
 	Click, Down
 	MouseMove, % Hud.InventoryIcons[hero.SpellCount][src].x, % Hud.InventoryIcons[hero.SpellCount][src].y, 2
 	Click, Up
+	MouseMove, xCurPos, yCurPos
+	BlockInput, MouseMoveOff
+}
+
+HeroShrine(hero)
+{
+	BlockInput, MouseMove
+	MouseGetPos, xCurPos, yCurPos
+	hero.MoveItem(Item.UpperL, Item.BackpackL)
+	hero.MoveItem(Item.UpperM, Item.BackpackM)
+	hero.MoveItem(Item.UpperR, Item.BackpackR)
+	hero.MoveItem(Item.LowerL, Item.BackpackL)
+	hero.MoveItem(Item.LowerM, Item.BackpackM)
+	hero.MoveItem(Item.LowerR, Item.BackpackR)
+	hero.MoveItem(Item.UpperL, Item.BackpackL)
+	hero.MoveItem(Item.UpperM, Item.BackpackM)
+	hero.MoveItem(Item.UpperR, Item.BackpackR)
+	hero.MoveItem(Item.LowerL, Item.UpperL)
+	hero.MoveItem(Item.LowerM, Item.UpperM)
+	hero.MoveItem(Item.LowerR, Item.UpperR)
 	MouseMove, xCurPos, yCurPos
 	BlockInput, MouseMoveOff
 }

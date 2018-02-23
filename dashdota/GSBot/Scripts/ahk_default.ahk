@@ -14,6 +14,7 @@ Capslock::	Generic.OpenShop()
 F8:: 		Generic.DirectionalMove(1)
 End::		Generic.DirectionalForce()
 !End::		Generic.DirectionalForceTp()
+o::			Generic.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
