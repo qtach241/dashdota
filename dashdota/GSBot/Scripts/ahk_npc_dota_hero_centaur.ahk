@@ -18,7 +18,7 @@ End::		Centaur.DirectionalForce()
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 g::
-Centaur.TranquilSwap(4, 7)
+Centaur.TranquilSwap(Item.LowerL, Item.BackpackL)
 return
 
 

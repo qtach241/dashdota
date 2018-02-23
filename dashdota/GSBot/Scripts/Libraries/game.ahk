@@ -67,15 +67,15 @@ HeroDirectionalMove(hero, count)
 HeroDirectionalForce(hero)
 {
 	hero.DirectionalMove(10)
-	hero.UseItem(2)
-	hero.UseItem(2)
+	hero.UseItem(Item.UpperR)
+	hero.UseItem(Item.UpperR)
 }
 
 HeroDirectionalForceTp(hero)
 {
 	HeroDirectionalForce(hero)
-	hero.UseItem(5)
-	hero.UseItem(5)
+	hero.UseItem(Item.LowerR)
+	hero.UseItem(Item.LowerR)
 }
 
 HeroTreadSwapStrength(hero, spell, item, delay)
