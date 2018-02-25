@@ -1,10 +1,37 @@
-﻿#Include _common.ahk
+﻿#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Directional Pounce
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Slark := new Hero("Slark")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Slark.AttackCancel(0.05)
+!PgUp::		Slark.SelectDire()
+!PgDn::		Slark.SelectRadiant()
+PgUp::		Slark.CycleAllyUp()
+PgDn::		Slark.CycleAllyDown()
+Capslock::	Slark.OpenShop()
+F8:: 		Slark.DirectionalMove(1)
+End::		Slark.DirectionalForce()
+!End::		Slark.DirectionalForceTp()
+o::			Slark.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Directional pounce
+
+w::
+Slark.DirectionalMove(10)
+Slark.CastSpell(Ability.W)
+return
+
+; Dark pact + directional pounce
 
 e::
-DirectionalMove(10)
-SendInput w
+Slark.CastSpell(Ability.Q)
+Slark.DirectionalMove(10)
+Slark.CastSpell(Ability.W)
 return
+
+
+#Include ahk_meta.ahk

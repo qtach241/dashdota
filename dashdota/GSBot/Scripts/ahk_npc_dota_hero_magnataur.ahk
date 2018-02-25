@@ -1,26 +1,22 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; T: Directional Move to Saved Location + RP Skewer Combo
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-t::
-SendInput {F1}
-MouseMove, xMagnus, yMagnus, 0
-DirectionalMove(1)
-SendInput rrrrrrr
-Loop, 10
-{
-	SendInput e
-	Sleep, 20
-	Click
-}
+Magnus := new Hero("Magnataur")
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; G: Save Current Mouse and Camera Position
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;----------------------------------------- Universal Hotkeys ---------------------------------------
 
-g::
-SaveMouseCameraPos(xMagnus, yMagnus)
-return
+*MButton::	Magnus.AttackCancel(0.05)
+!PgUp::		Magnus.SelectDire()
+!PgDn::		Magnus.SelectRadiant()
+PgUp::		Magnus.CycleAllyUp()
+PgDn::		Magnus.CycleAllyDown()
+Capslock::	Magnus.OpenShop()
+F8:: 		Magnus.DirectionalMove(1)
+End::		Magnus.DirectionalForce()
+!End::		Magnus.DirectionalForceTp()
+o::			Magnus.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+
+#Include ahk_meta.ahk

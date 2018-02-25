@@ -1,10 +1,31 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Repel the highest priority core
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Omniknight := new Hero("Omniknight")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Omniknight.AttackCancel(0.05)
+!PgUp::		Omniknight.SelectDire()
+!PgDn::		Omniknight.SelectRadiant()
+PgUp::		Omniknight.CycleAllyUp()
+PgDn::		Omniknight.CycleAllyDown()
+Capslock::	Omniknight.OpenShop()
+F8:: 		Omniknight.DirectionalMove(1)
+End::		Omniknight.DirectionalForce()
+!End::		Omniknight.DirectionalForceTp()
+o::			Omniknight.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Self heal and repel
 
 e::
-SendInput w
-MoveClickMouse(xPos_1, yPos_1, 1)
+Omniknight.CastSpell(Ability.Q)
+Omniknight.CastSpell(Ability.Q)
+Omniknight.CastSpell(Ability.W)
+Omniknight.CastSpell(Ability.W)
 return
+
+
+#Include ahk_meta.ahk

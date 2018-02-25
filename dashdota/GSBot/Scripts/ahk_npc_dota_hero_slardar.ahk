@@ -1,29 +1,42 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; W: Cancel crush on release
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Slardar := new Hero("Slardar")
+return
 
-;;~w::
-;;CancelOnRelease("w", 350)
-;;return
+;----------------------------------------- Universal Hotkeys ---------------------------------------
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Force Blink Crush macro
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+*MButton::	Slardar.AttackCancel(0.05)
+!PgUp::		Slardar.SelectDire()
+!PgDn::		Slardar.SelectRadiant()
+PgUp::		Slardar.CycleAllyUp()
+PgDn::		Slardar.CycleAllyDown()
+Capslock::	Slardar.OpenShop()
+F8:: 		Slardar.DirectionalMove(1)
+End::		Slardar.DirectionalForce()
+!End::		Slardar.DirectionalForceTp()
+o::			Slardar.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Long jump (force blink crush)
 
 e::
-DirectionalForce()
-Sleep, 450
-SendInput {Home}
+Slardar.DirectionalMove(1)
+Sleep, (Slardar.BaseTurnTime + 100)
+Slardar.UseItem(Item.UpperR)
+Slardar.UseItem(Item.UpperR)
+Sleep, 500
+Slardar.UseItem(Item.UpperL)
 Click
-SendInput w
+Slardar.CastSpell(Ability.W)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; T: Armlet Toggle
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Armlet Toggle
 
 t::
-SendInput dd
+Slardar.UseItem(Item.LowerM)
+Slardar.UseItem(Item.LowerM)
 return
+
+
+#Include ahk_meta.ahk

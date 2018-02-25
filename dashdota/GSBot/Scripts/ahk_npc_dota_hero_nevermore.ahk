@@ -1,28 +1,43 @@
-﻿#Include _common.ahk
+﻿#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Directional Raze
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Shadowfiend := new Hero("Nevermore")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Shadowfiend.AttackCancel(0.05)
+!PgUp::		Shadowfiend.SelectDire()
+!PgDn::		Shadowfiend.SelectRadiant()
+PgUp::		Shadowfiend.CycleAllyUp()
+PgDn::		Shadowfiend.CycleAllyDown()
+Capslock::	Shadowfiend.OpenShop()
+F8:: 		Shadowfiend.DirectionalMove(1)
+End::		Shadowfiend.DirectionalForce()
+!End::		Shadowfiend.DirectionalForceTp()
+o::			Shadowfiend.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Directional Raze
 
 $q::
-DirectionalMove(1)
-SendInput q
+Shadowfiend.DirectionalMove(1)
+Shadowfiend.CastSpell(Ability.Q)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; W: Directional Raze
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Directional Raze
 
 $w::
-DirectionalMove(1)
-SendInput w
+Shadowfiend.DirectionalMove(1)
+Shadowfiend.CastSpell(Ability.W)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Directional Raze
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Directional Raze
 
 $e::
-DirectionalMove(1)
-SendInput e
+Shadowfiend.DirectionalMove(1)
+Shadowfiend.CastSpell(Ability.E)
 return
+
+
+#Include ahk_meta.ahk
