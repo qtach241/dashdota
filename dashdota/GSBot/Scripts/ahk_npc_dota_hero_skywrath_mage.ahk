@@ -1,17 +1,42 @@
-﻿#Include _common.ahk
+﻿#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Spam Cast Arcane Bolt
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Skywrath := new Hero("Skywrath_Mage")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Skywrath.AttackCancel(0.05)
+!PgUp::		Skywrath.SelectDire()
+!PgDn::		Skywrath.SelectRadiant()
+PgUp::		Skywrath.CycleAllyUp()
+PgDn::		Skywrath.CycleAllyDown()
+Capslock::	Skywrath.OpenShop()
+F8:: 		Skywrath.DirectionalMove(1)
+End::		Skywrath.DirectionalForce()
+!End::		Skywrath.DirectionalForceTp()
+o::			Skywrath.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Spam click Q
 
 ~q::
-SpamClickOn("q", 200, 20)
+Skywrath.SpamClick(Ability.Q, 0.4, 0.02)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Spam Cast Silence
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Spam click E
 
 ~e::
-SpamClickOn("e", 200, 20)
+Skywrath.SpamClick(Ability.E, 0.4, 0.02)
 return
+
+
+; Ult also fires W
+
+r::
+Skywrath.CastSpell(Ability.W)
+Skywrath.CastSpell(Ability.Ultimate)
+return
+
+
+#Include ahk_meta.ahk

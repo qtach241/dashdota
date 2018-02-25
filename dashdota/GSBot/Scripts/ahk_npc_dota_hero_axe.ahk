@@ -18,6 +18,8 @@ o::			Axe.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
+; Pop items and call
+
 q::
 Axe.UseItem(Item.UpperM)
 Axe.UseItem(Item.UpperR)

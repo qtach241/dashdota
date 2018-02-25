@@ -18,6 +18,8 @@ o::			Bristleback.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
+; Tread swap and quill spray
+
 e::
 Bristleback.TreadSwap(Ability.W, Item.UpperR, 10)
 return

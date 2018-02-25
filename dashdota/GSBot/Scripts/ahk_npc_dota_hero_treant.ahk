@@ -1,29 +1,22 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Q: Heal the highest priority core
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-q::
-SendInput e
-MoveClickMouse(xPos_1, yPos_1, 1)
+Treant := new Hero("Treant")
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; G: Plant Branch + Enchant + Aghs Tree Ult
-;; Tree must be in the "d" item slot
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;----------------------------------------- Universal Hotkeys ---------------------------------------
 
-g::
-Loop, 10
-{
-	SendInput d
-	Click
-}
-Loop, 10
-{
-	SendInput t
-	Click
-}
-SendInput rrrrr
-return
+*MButton::	Treant.AttackCancel(0.05)
+!PgUp::		Treant.SelectDire()
+!PgDn::		Treant.SelectRadiant()
+PgUp::		Treant.CycleAllyUp()
+PgDn::		Treant.CycleAllyDown()
+Capslock::	Treant.OpenShop()
+F8:: 		Treant.DirectionalMove(1)
+End::		Treant.DirectionalForce()
+!End::		Treant.DirectionalForceTp()
+o::			Treant.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+
+#Include ahk_meta.ahk

@@ -1,29 +1,47 @@
-#Include _common.ahk
+#Include dota.ahk
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; T: Armlet Toggle
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Legion := new Hero("Legion_Commander")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Legion.AttackCancel(0.05)
+!PgUp::		Legion.SelectDire()
+!PgDn::		Legion.SelectRadiant()
+PgUp::		Legion.CycleAllyUp()
+PgDn::		Legion.CycleAllyDown()
+Capslock::	Legion.OpenShop()
+F8:: 		Legion.DirectionalMove(1)
+End::		Legion.DirectionalForce()
+!End::		Legion.DirectionalForceTp()
+o::			Legion.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+; Armlet Toggle
 
 t::
-SendInput dd
+Legion.UseItem(Item.LowerM)
+Legion.UseItem(Item.LowerM)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; E: Self-cast W
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Self-cast W
 
 e::
-SendInput ww
+Legion.CastSpell(Ability.W)
+Legion.CastSpell(Ability.W)
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; R: Pop items + Duel macro
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Pop items and duel
 
 r::
-SendInput {XButton2}
-SendInput {XButton2}
-SendInput {WheelUp}
-SendInput {WheelUp}
-SendInput dr
+Legion.UseItem(Item.UpperM)
+Legion.UseItem(Item.UpperM)
+Legion.UseItem(Item.UpperR)
+Legion.UseItem(Item.LowerL)
+Legion.UseItem(Item.LowerM)
+Legion.CastSpell(Ability.Ultimate)
 return
+
+
+#Include ahk_meta.ahk

@@ -18,6 +18,8 @@ o::			Centaur.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
+; Tranquil swap
+
 g::
 Centaur.TranquilSwap(Item.LowerL, Item.BackpackL)
 return

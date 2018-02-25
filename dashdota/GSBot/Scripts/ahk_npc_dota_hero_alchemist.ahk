@@ -18,9 +18,11 @@ o::			Alchemist.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
+; Armlet Toggle
+
 t::
-Alchemist.UseItem(Item.LowerL)
-Alchemist.UseItem(Item.LowerL)
+Alchemist.UseItem(Item.LowerM)
+Alchemist.UseItem(Item.LowerM)
 return
 
 
