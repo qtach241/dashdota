@@ -162,6 +162,7 @@ class Hero
 	UseItem := Func("HeroUseItem")
 	OpenShop := Func("HeroShopCapslock")
 	AttackCancel := Func("HeroAttackCancel")
+	SpamClick := Func("HeroSpamClick")
 	DirectionalMove := Func("HeroDirectionalMove")
 	DirectionalForce := Func("HeroDirectionalForce")
 	DirectionalForceTp := Func("HeroDirectionalForceTp")

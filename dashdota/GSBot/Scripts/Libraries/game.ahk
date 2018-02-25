@@ -53,6 +53,22 @@ HeroAttackCancel(hero, tsec)
 	}
 }
 
+HeroSpamClick(hero, spell, hold, interval)
+{
+	if (spell > 2)
+		return
+	
+	Sleep, (hold*1000)
+	Loop
+	{
+		KeyWait, % hero.Abilities[spell], T%interval%
+		if (ErrorLevel = 0)
+			break
+		hero.CastSpell(spell)
+		Click
+	}
+}
+
 HeroDirectionalMove(hero, count)
 {
 	key := % hero.DirectionalMoveKey
