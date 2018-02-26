@@ -89,13 +89,6 @@
     <None Include="Scripts\dota.ahk" />
     <None Include="Scripts\Libraries\game.ahk" />
     <None Include="Scripts\settings.ini" />
-    <None Include="Scripts\_common.ahk" />
-    <None Include="Scripts\Include\_helpers.ahk" />
-    <None Include="Scripts\Include\_globals.ahk" />
-    <None Include="Scripts\Include\_helpers_backpack.ahk" />
-    <None Include="Scripts\Include\_helpers_camera.ahk" />
-    <None Include="Scripts\_common_bottlecrow.ahk" />
-    <None Include="Scripts\_common_camera.ahk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GSClient\GSClient.csproj">

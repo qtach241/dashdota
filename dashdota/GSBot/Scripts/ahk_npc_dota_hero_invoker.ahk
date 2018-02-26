@@ -1,7 +1,25 @@
-#Include _common.ahk
+#Include dota.ahk
 
-NumpadDiv::t
-NumpadMult::g
+Invoker := new Hero("Invoker")
+return
+
+;----------------------------------------- Universal Hotkeys ---------------------------------------
+
+*MButton::	Invoker.AttackCancel(0.05)
+;!PgUp::		Invoker.SelectDire()
+;!PgDn::		Invoker.SelectRadiant()
+;PgUp::		Invoker.CycleAllyUp()
+;PgDn::		Invoker.CycleAllyDown()
+Capslock::	Invoker.OpenShop()
+F8:: 		Invoker.DirectionalMove(1)
+End::		Invoker.DirectionalForce()
+!End::		Invoker.DirectionalForceTp()
+o::			Invoker.Shrine()
+
+;--------------------------------------- Hero Specific Hotkeys -------------------------------------
+
+NumpadDiv::PgUp
+NumpadMult::PgDn
 XButton2::4
 WheelUp::5
 
@@ -49,68 +67,96 @@ return
 TryCombo()
 return
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Spell Invoke Helpers
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Helpers
 
 InvokeColdSnap()
 {
 	SendInput qqqr
-	return
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeGhostWalk()
 {
 	SendInput qqwr
-	return
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeIcewall()
 {
 	SendInput qqer
-	return
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeTornado()
 {
 	SendInput wwqr
-	return
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeEmp()
 {
 	SendInput wwwr
-	return
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeAlacrity()
 {
 	SendInput wwer
-	return
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeForgeSpirit()
 {
 	SendInput eeqr
-	return
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeMeteor()
 {
 	SendInput eewr
-	return
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeSunstrike()
 {
 	SendInput eeer
-	return
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 InvokeDeafeningBlast()
 {
 	SendInput qwer
-	return
+	Invoker.CastSpell(Ability.Q)
+	Invoker.CastSpell(Ability.W)
+	Invoker.CastSpell(Ability.E)
+	Invoker.CastSpell(Ability.Ultimate)
 }
 
 TryCombo()
@@ -166,3 +212,6 @@ TryCombo2()
 	Click
 	return
 }
+
+
+#Include ahk_meta.ahk
