@@ -21,8 +21,8 @@ o::			Huskar.Shrine()
 ; Armlet Toggle
 
 t::
-Huskar.UseItem(Item.LowerM)
-Huskar.UseItem(Item.LowerM)
+Huskar.UseItem(Item.LowerR)
+Huskar.UseItem(Item.LowerR)
 return
 
 

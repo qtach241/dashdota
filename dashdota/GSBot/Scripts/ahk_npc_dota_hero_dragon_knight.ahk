@@ -21,8 +21,8 @@ o::			DragonKnight.Shrine()
 ; Armlet Toggle
 
 t::
-DragonKnight.UseItem(Item.LowerM)
-DragonKnight.UseItem(Item.LowerM)
+DragonKnight.UseItem(Item.LowerR)
+DragonKnight.UseItem(Item.LowerR)
 return
 
 

@@ -190,6 +190,7 @@ namespace GSBot
                                 case "npc_dota_hero_centaur":
                                 case "npc_dota_hero_chaos_knight":
                                 case "npc_dota_hero_dragon_knight":
+                                case "npc_dota_hero_enigma":
                                 case "npc_dota_hero_huskar":
                                 //case "npc_dota_hero_invoker":
                                 case "npc_dota_hero_kunkka":

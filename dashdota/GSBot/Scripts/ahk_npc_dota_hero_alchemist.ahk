@@ -21,8 +21,8 @@ o::			Alchemist.Shrine()
 ; Armlet Toggle
 
 t::
-Alchemist.UseItem(Item.LowerM)
-Alchemist.UseItem(Item.LowerM)
+Alchemist.UseItem(Item.LowerR)
+Alchemist.UseItem(Item.LowerR)
 return
 
 

@@ -21,8 +21,8 @@ o::			WraithKing.Shrine()
 ; Armlet Toggle
 
 t::
-WraithKing.UseItem(Item.LowerM)
-WraithKing.UseItem(Item.LowerM)
+WraithKing.UseItem(Item.LowerR)
+WraithKing.UseItem(Item.LowerR)
 return
 
 

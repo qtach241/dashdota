@@ -14,6 +14,7 @@ copy %~f2settings.ini %~f3
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_centaur.ahk /out %~f3ahk_npc_dota_hero_centaur.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_chaos_knight.ahk /out %~f3ahk_npc_dota_hero_chaos_knight.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_dragon_knight.ahk /out %~f3ahk_npc_dota_hero_dragon_knight.exe
+%~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_enigma.ahk /out %~f3ahk_npc_dota_hero_enigma.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_huskar.ahk /out %~f3ahk_npc_dota_hero_huskar.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_invoker.ahk /out %~f3ahk_npc_dota_hero_invoker.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_kunkka.ahk /out %~f3ahk_npc_dota_hero_kunkka.exe

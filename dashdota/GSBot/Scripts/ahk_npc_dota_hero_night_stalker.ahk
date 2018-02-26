@@ -21,8 +21,8 @@ o::			Nightstalker.Shrine()
 ; Armlet Toggle
 
 t::
-Nightstalker.UseItem(Item.LowerM)
-Nightstalker.UseItem(Item.LowerM)
+Nightstalker.UseItem(Item.LowerR)
+Nightstalker.UseItem(Item.LowerR)
 return
 
 

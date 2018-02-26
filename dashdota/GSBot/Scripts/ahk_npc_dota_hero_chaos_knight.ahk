@@ -21,8 +21,8 @@ o::			ChaosKnight.Shrine()
 ; Armlet Toggle
 
 t::
-ChaosKnight.UseItem(Item.LowerM)
-ChaosKnight.UseItem(Item.LowerM)
+ChaosKnight.UseItem(Item.LowerR)
+ChaosKnight.UseItem(Item.LowerR)
 return
 
 

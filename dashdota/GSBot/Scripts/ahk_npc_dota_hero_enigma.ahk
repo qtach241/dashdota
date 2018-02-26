@@ -22,7 +22,7 @@ o::			Enigma.Shrine()
 r::
 Enigma.CastSpell(Ability.E)
 Click
-Enigma.UseItem(Item.LowerL)
+Enigma.UseItem(Item.LowerR)
 Enigma.CastSpell(Ability.Ultimate)
 return
 
