@@ -28,8 +28,8 @@ Axe.UseItem(Item.LowerL)
 Axe.CastSpell(Ability.Q)
 return
 
-g::
-Axe.TranquilSwap(Item.LowerL, Item.BackpackL)
+t::
+Axe.TranquilSwap(Item.LowerR, Item.BackpackR)
 return
 
 

@@ -21,8 +21,8 @@ o::			Lifestealer.Shrine()
 ; Armlet Toggle
 
 t::
-Lifestealer.UseItem(Item.LowerM)
-Lifestealer.UseItem(Item.LowerM)
+Lifestealer.UseItem(Item.LowerR)
+Lifestealer.UseItem(Item.LowerR)
 return
 
 

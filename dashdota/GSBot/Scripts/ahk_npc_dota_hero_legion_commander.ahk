@@ -21,8 +21,8 @@ o::			Legion.Shrine()
 ; Armlet Toggle
 
 t::
-Legion.UseItem(Item.LowerM)
-Legion.UseItem(Item.LowerM)
+Legion.UseItem(Item.LowerR)
+Legion.UseItem(Item.LowerR)
 return
 
 ;; Self-cast W
@@ -36,10 +36,10 @@ return
 
 r::
 Legion.UseItem(Item.UpperM)
-Legion.UseItem(Item.UpperM)
 Legion.UseItem(Item.UpperR)
 Legion.UseItem(Item.LowerL)
-Legion.UseItem(Item.LowerM)
+Legion.UseItem(Item.LowerL)
+Legion.UseItem(Item.LowerR)
 Legion.CastSpell(Ability.Ultimate)
 return
 

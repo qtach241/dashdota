@@ -18,197 +18,157 @@ o::			Invoker.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
-NumpadDiv::PgUp
-NumpadMult::PgDn
-XButton2::4
-WheelUp::5
+;NumpadDiv::PgUp
+;NumpadMult::PgDn
+;XButton2::4
+;WheelUp::5
 
-Numpad1::
-InvokeColdSnap()
-return
-
-Numpad2::
-InvokeGhostWalk()
-return
-
-Numpad3::
-InvokeIcewall()
-return
-
-Numpad4::
-InvokeTornado()
-return
-
-Numpad5::
-InvokeEmp()
-return
-
-Numpad6::
-InvokeAlacrity()
-return
-
-Numpad7::
-InvokeForgeSpirit()
-return
-
-Numpad8::
-InvokeMeteor()
-return
-
-Numpad9::
-InvokeSunstrike()
-return
-
-Numpad0::
-InvokeDeafeningBlast()
-return
+Numpad1::InvokeColdSnap(Invoker)
+Numpad2::InvokeGhostWalk(Invoker)
+Numpad3::InvokeIcewall(Invoker)
+Numpad4::InvokeTornado(Invoker)
+Numpad5::InvokeEmp(Invoker)
+Numpad6::InvokeAlacrity(Invoker)
+Numpad7::InvokeForgeSpirit(Invoker)
+Numpad8::InvokeMeteor(Invoker)
+Numpad9::InvokeSunstrike(Invoker)
+Numpad0::InvokeDeafeningBlast(Invoker)
 
 6::
-TryCombo()
+TryCombo(Invoker)
 return
 
 ; Helpers
 
-InvokeColdSnap()
+InvokeColdSnap(hero)
 {
-	SendInput qqqr
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeGhostWalk()
+InvokeGhostWalk(hero)
 {
-	SendInput qqwr
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeIcewall()
+InvokeIcewall(hero)
 {
-	SendInput qqer
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeTornado()
+InvokeTornado(hero)
 {
-	SendInput wwqr
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeEmp()
+InvokeEmp(hero)
 {
-	SendInput wwwr
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeAlacrity()
+InvokeAlacrity(hero)
 {
-	SendInput wwer
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeForgeSpirit()
+InvokeForgeSpirit(hero)
 {
-	SendInput eeqr
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeMeteor()
+InvokeMeteor(hero)
 {
-	SendInput eewr
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeSunstrike()
+InvokeSunstrike(hero)
 {
-	SendInput eeer
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-InvokeDeafeningBlast()
+InvokeDeafeningBlast(hero)
 {
-	SendInput qwer
-	Invoker.CastSpell(Ability.Q)
-	Invoker.CastSpell(Ability.W)
-	Invoker.CastSpell(Ability.E)
-	Invoker.CastSpell(Ability.Ultimate)
+	hero.CastSpell(Ability.Q)
+	hero.CastSpell(Ability.W)
+	hero.CastSpell(Ability.E)
+	hero.CastSpell(Ability.Ultimate)
 }
 
-TryCombo()
+TryCombo(hero)
 {
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
 	Sleep, 500
-	SendInput g
+	hero.CastSpell(Ability.Sub2)
 	Click
 	Sleep, 500
-	InvokeSunstrike()
+	InvokeSunstrike(hero)
 	Sleep, 500
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
 	Sleep, 500
-	SendInput d
+	hero.UseItem(Item.LowerR)
 	Sleep, 500
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
 	Sleep, 500
-	SendInput g
+	hero.CastSpell(Ability.Sub2)
 	Click
 	Sleep, 500
-	InvokeDeafeningBlast()
+	InvokeDeafeningBlast(hero)
 	Sleep, 500
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
-	return
 }
 
-TryCombo2()
+TryCombo2(hero)
 {
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
-	SendInput g
+	hero.CastSpell(Ability.Sub2)
 	Click
 	Sleep, 500
-	InvokeMeteor()
+	InvokeMeteor(hero)
 	Sleep, 500
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
 	Sleep, 1000
-	SendInput d
+	hero.UseItem(Item.LowerR)
 	Sleep, 500
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
-	SendInput g
+	hero.CastSpell(Ability.Sub2)
 	Click
 	Sleep, 1000
-	InvokeDeafeningBlast()
+	InvokeDeafeningBlast(hero)
 	Sleep, 1000
-	SendInput t
+	hero.CastSpell(Ability.Sub1)
 	Click
 	return
 }

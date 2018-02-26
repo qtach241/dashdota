@@ -20,8 +20,8 @@ o::			Centaur.Shrine()
 
 ; Tranquil swap
 
-g::
-Centaur.TranquilSwap(Item.LowerL, Item.BackpackL)
+t::
+Centaur.TranquilSwap(Item.LowerR, Item.BackpackR)
 return
 
 

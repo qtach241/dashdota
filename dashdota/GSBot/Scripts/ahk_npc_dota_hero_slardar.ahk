@@ -31,11 +31,10 @@ Click
 Slardar.CastSpell(Ability.W)
 return
 
-; Armlet Toggle
+; Tranquil swap
 
 t::
-Slardar.UseItem(Item.LowerM)
-Slardar.UseItem(Item.LowerM)
+Slardar.TranquilSwap(Item.LowerR, Item.BackpackR)
 return
 
 

@@ -21,7 +21,7 @@ o::			Bristleback.Shrine()
 ; Tread swap and quill spray
 
 e::
-Bristleback.TreadSwap(Ability.W, Item.UpperR, 10)
+Bristleback.TreadSwap(Ability.W, Item.LowerR, 10)
 return
 
 
