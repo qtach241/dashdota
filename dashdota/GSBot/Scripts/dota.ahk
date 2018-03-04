@@ -62,34 +62,7 @@ class Hero
 	{
 		this.Name := hero
 		
-		i := 0
-		while (i < 6)
-		{
-			IniRead, OutputVar, settings.ini, Keybinds, ABILITY_CAST_%i%
-			this.Abilities[i] := OutputVar
-			IniRead, OutputVar, settings.ini, Keybinds, ITEM_CAST_%i%
-			this.Items[i] := OutputVar
-			i++
-		}
-		
-		IniRead, OutputVar, settings.ini, Keybinds, SELECT_HERO
-		this.SelectHeroKey := OutputVar
-		
-		IniRead, OutputVar, settings.ini, Keybinds, SELECT_COURIER
-		this.SelectCrowKey := OutputVar
-		
-		IniRead, OutputVar, settings.ini, Keybinds, DIRECTIONAL_MOVE
-		this.DirectionalMoveKey := OutputVar
-		
-		IniRead, OutputVar, settings.ini, Hotkeys, ATTACK_CANCEL
-		this.AttackCancelKey := OutputVar
-		
-		IniRead, OutputVar, settings.ini, Hotkeys, TOGGLE_SHOP_PANEL
-		this.ShopKey := OutputVar
-		
-		IniRead, OutputVar, settings.ini, Hotkeys, DIRECTIONAL_FORCE
-		this.DirectionalForceKey := OutputVar
-		
+		; Hero Attributes
 		IniRead, OutputVarDefault, settings.ini, Hero_Default, PRIMARY_ATTRIBUTE
 		IniRead, OutputVar, settings.ini, Hero_%hero%, PRIMARY_ATTRIBUTE, %OutputVarDefault%
 		this.PrimaryAttribute := OutputVar
@@ -106,6 +79,74 @@ class Hero
 		IniRead, OutputVar, settings.ini, Hero_%hero%, TURN_TIME_MS, %OutputVarDefault%
 		this.BaseTurnTime := OutputVar
 		
+		; In-game keybind arrays
+		i := 0
+		while (i < 6)
+		{
+			IniRead, OutputVarDefault, settings.ini, Keybinds, ABILITY_CAST_%i%
+			IniRead, OutputVar, settings.ini, Keybinds_%hero%, ABILITY_CAST_%i%, %OutputVarDefault%
+			this.Abilities[i] := OutputVar
+			
+			IniRead, OutputVarDefault, settings.ini, Keybinds, ITEM_CAST_%i%
+			IniRead, OutputVar, settings.ini, Keybinds_%hero%, ITEM_CAST_%i%, %OutputVarDefault%
+			this.Items[i] := OutputVar
+			
+			IniRead, OutputVarDefault, settings.ini, Keybinds, CONTROL_GROUP_%i%
+			IniRead, OutputVar, settings.ini, Keybinds_%hero%, CONTROL_GROUP_%i%, %OutputVarDefault%
+			this.ControlGroups[i] := OutputVar
+			
+			IniRead, OutputVarDefault, settings.ini, Keybinds, CAMERA_POSITION_%i%
+			IniRead, OutputVar, settings.ini, Keybinds_%hero%, CAMERA_POSITION_%i%, %OutputVarDefault%
+			this.CameraPositions[i] := OutputVar
+			
+			i++
+		}
+		
+		; In-game keybinds
+		IniRead, OutputVar, settings.ini, Keybinds, SELECT_HERO
+		this.SelectHeroKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, SELECT_ALL_UNITS
+		this.SelectAllUnitsKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, SELECT_ALL_OTHER_UNITS
+		this.SelectAllOtherUnitsKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, SELECT_NEXT_UNIT
+		this.SelectNextUnitKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, MOVE
+		this.MoveKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, ATTACK_MOVE
+		this.AttackMoveKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, DIRECTIONAL_MOVE
+		this.DirectionalMoveKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, PATROL
+		this.PatrolKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, CANCEL_ACTION
+		this.CancelKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, HOLD
+		this.HoldKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Keybinds, SELECT_COURIER
+		this.SelectCrowKey := OutputVar
+		
+		; External Hotkeys
+		IniRead, OutputVar, settings.ini, Hotkeys, ATTACK_CANCEL
+		this.AttackCancelKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Hotkeys, TOGGLE_SHOP_PANEL
+		this.ShopKey := OutputVar
+		
+		IniRead, OutputVar, settings.ini, Hotkeys, DIRECTIONAL_FORCE
+		this.DirectionalForceKey := OutputVar
+		
+		; Hero specific methods
 		this.TreadSwap := Treads[this.PrimaryAttribute]
 	}
 	
@@ -130,14 +171,50 @@ class Hero
 	; Value specifying which of the 5 hero icons to select next.
 	static AllyFocus := 0
 	
+	; Array of current hero's ability keybinds.
+	static Abilities := []
+	
+	; Array of current hero's item keybinds.
+	static Items := []
+	
+	; Array of current hero's control group keybinds.
+	static ControlGroups := []
+	
+	; Array of current hero's camera position keybinds.
+	static CameraPositions := []
+	
 	; Keybind to select hero / center camera on hero.
 	static SelectHeroKey := ""
 	
-	; Keybind to select courier.
-	static SelectCrowKey := ""
+	; Keybind to select all controlled units.
+	static SelectAllUnitsKey := ""
+	
+	; Keybind to select all controlled units except hero.
+	static SelectAllOtherUnitsKey := ""
+	
+	; Keybind to select next control group. 
+	static SelectNextUnitKey := ""
+	
+	; Keybind to move.
+	static MoveKey := ""
+	
+	; Keybind to attack move.
+	static AttackMoveKey := ""
 	
 	; Keybind to move directionally without pathing.
 	static DirectionalMoveKey := ""
+	
+	; Keybind to patrol.
+	static PatrolKey := ""
+	
+	; Keybind to cancel current action.
+	static CancelKey := ""
+	
+	; Keybind to hold.
+	static HoldKey := ""
+	
+	; Keybind to select courier.
+	static SelectCrowKey := ""
 	
 	; Hotkey to cancel attack during csing.
 	static AttackCancelKey := ""
@@ -148,27 +225,38 @@ class Hero
 	; Hotkey to trigger directional forcestaff.
 	static DirectionalForceKey := ""
 	
-	; Array of current hero's ability keybinds.
-	static Abilities := []
+	; Selection methods
+	SelectHero := Func("HeroSelectHero")
+	SelectAllUnits := Func("HeroSelectAllUnits")
+	SelectAllOtherUnits := Func("HeroSelectAllOtherUnits")
+	SelectNextUnit := Func("HeroSelectNextUnit")
+	SelectControlGroup := Func("HeroSelectControlGroup")
+	SelectRadiant := Func("HeroSelectRadiant")
+	SelectDire := Func("HeroSelectDire")
 	
-	; Array of current hero's item keybinds.
-	static Items := []
+	; Basic hero movement
+	MoveClick := Func("HeroMove")
+	AttackMove := Func("HeroAttackMove")
+	ShiftAttackMove := Func("HeroShiftAttackMove")
+	Patrol := Func("HeroPatrol")
+	Stop := Func("HeroCancel")
+	Hold := Func("HeroHold")
 	
-	SelectRadiant := Func("SelectTeamRadiant")
-	SelectDire := Func("SelectTeamDire")
-	AllyFocusUp := Func("HeroAllyFocusUp")
-	AllyFocusDown := Func("HeroAllyFocusDown")
+	; Combat
 	CastSpell := Func("HeroCastSpell")
 	UseItem := Func("HeroUseItem")
-	OpenShop := Func("HeroShopCapslock")
 	AttackCancel := Func("HeroAttackCancel")
 	SpamClick := Func("HeroSpamClick")
 	DirectionalMove := Func("HeroDirectionalMove")
 	DirectionalForce := Func("HeroDirectionalForce")
 	DirectionalForceTp := Func("HeroDirectionalForceTp")
+	
+	; Interface and camera
+	OpenShop := Func("HeroShopCapslock")
 	CycleAllyUp := Func("HeroCycleAllyUp")
 	CycleAllyDown := Func("HeroCycleAllyDown")
-	MoveItem := Func("HeroMoveItem")
 	TranquilSwap := Func("HeroTranquilSwap")
 	Shrine := Func("HeroShrine")
+	SetCameraPosition := Func("HeroSetCameraPosition")
+	GotoCameraPosition := Func("HeroGotoCameraPosition")
 }
