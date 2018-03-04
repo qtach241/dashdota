@@ -32,6 +32,26 @@ class Item
 	static BackpackR := 8
 }
 
+class ControlGroup
+{
+	static Group1 := 0
+	static Group2 := 1
+	static Group3 := 2
+	static Group4 := 3
+	static Group5 := 4
+	static Group6 := 5
+}
+
+class Camera
+{
+	static Position1 := 0
+	static Position2 := 1
+	static Position3 := 2
+	static Position4 := 3
+	static Position5 := 4
+	static Position6 := 5
+}
+
 class Hud
 {
 	; XY coordinates of the 5 allied hero icons at the top of the hud.
@@ -146,6 +166,9 @@ class Hero
 		IniRead, OutputVar, settings.ini, Hotkeys, DIRECTIONAL_FORCE
 		this.DirectionalForceKey := OutputVar
 		
+		IniRead, OutputVar, settings.ini, Hotkeys, SCORE_BOARD
+		this.ScoreboardKey := OutputVar
+		
 		; Hero specific methods
 		this.TreadSwap := Treads[this.PrimaryAttribute]
 	}
@@ -224,6 +247,9 @@ class Hero
 	
 	; Hotkey to trigger directional forcestaff.
 	static DirectionalForceKey := ""
+	
+	; Hotkey to open scoreboard.
+	static ScoreboardKey := ""
 	
 	; Selection methods
 	SelectHero := Func("HeroSelectHero")
