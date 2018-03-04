@@ -255,6 +255,7 @@ class Hero
 	OpenShop := Func("HeroShopCapslock")
 	CycleAllyUp := Func("HeroCycleAllyUp")
 	CycleAllyDown := Func("HeroCycleAllyDown")
+	MoveItem := Func("HeroMoveItem")
 	TranquilSwap := Func("HeroTranquilSwap")
 	Shrine := Func("HeroShrine")
 	SetCameraPosition := Func("HeroSetCameraPosition")

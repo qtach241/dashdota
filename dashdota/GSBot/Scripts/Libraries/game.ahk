@@ -326,7 +326,7 @@ HeroAllyFocus(hero)
 ;---------------------------------------------------------------------------------------------------
 HeroCycleAllyUp(hero)
 {
-	hero.AllyFocusUp()
+	HeroAllyFocusUp(hero)
 	HeroAllyFocus(hero)
 }
 
@@ -338,7 +338,7 @@ HeroCycleAllyUp(hero)
 ;---------------------------------------------------------------------------------------------------
 HeroCycleAllyDown(hero)
 {
-	hero.AllyFocusDown()
+	HeroAllyFocusDown(hero)
 	HeroAllyFocus(hero)
 }
 
