@@ -14,7 +14,7 @@ Capslock::	Skywrath.OpenShop()
 F8:: 		Skywrath.DirectionalMove(1)
 End::		Skywrath.DirectionalForce()
 !End::		Skywrath.DirectionalForceTp()
-o::			Skywrath.Shrine()
+F9:: 		Skywrath.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

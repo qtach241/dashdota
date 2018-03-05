@@ -14,7 +14,7 @@ Capslock::	DragonKnight.OpenShop()
 F8:: 		DragonKnight.DirectionalMove(1)
 End::		DragonKnight.DirectionalForce()
 !End::		DragonKnight.DirectionalForceTp()
-o::			DragonKnight.Shrine()
+F9:: 		DragonKnight.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

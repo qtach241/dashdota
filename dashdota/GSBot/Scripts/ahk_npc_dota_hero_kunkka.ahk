@@ -14,7 +14,7 @@ Capslock::	Kunkka.OpenShop()
 F8:: 		Kunkka.DirectionalMove(1)
 End::		Kunkka.DirectionalForce()
 !End::		Kunkka.DirectionalForceTp()
-o::			Kunkka.Shrine()
+F9:: 		Kunkka.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

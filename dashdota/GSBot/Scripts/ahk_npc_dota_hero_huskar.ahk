@@ -14,7 +14,7 @@ Capslock::	Huskar.OpenShop()
 F8:: 		Huskar.DirectionalMove(1)
 End::		Huskar.DirectionalForce()
 !End::		Huskar.DirectionalForceTp()
-o::			Huskar.Shrine()
+F9:: 		Huskar.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

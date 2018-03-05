@@ -14,7 +14,7 @@ Capslock::	Shadowfiend.OpenShop()
 F8:: 		Shadowfiend.DirectionalMove(1)
 End::		Shadowfiend.DirectionalForce()
 !End::		Shadowfiend.DirectionalForceTp()
-o::			Shadowfiend.Shrine()
+F9:: 		Shadowfiend.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

@@ -14,7 +14,7 @@ Capslock::	Lifestealer.OpenShop()
 F8:: 		Lifestealer.DirectionalMove(1)
 End::		Lifestealer.DirectionalForce()
 !End::		Lifestealer.DirectionalForceTp()
-o::			Lifestealer.Shrine()
+F9:: 		Lifestealer.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

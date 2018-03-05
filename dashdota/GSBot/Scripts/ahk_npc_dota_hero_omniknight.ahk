@@ -14,7 +14,7 @@ Capslock::	Omniknight.OpenShop()
 F8:: 		Omniknight.DirectionalMove(1)
 End::		Omniknight.DirectionalForce()
 !End::		Omniknight.DirectionalForceTp()
-o::			Omniknight.Shrine()
+F9:: 		Omniknight.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

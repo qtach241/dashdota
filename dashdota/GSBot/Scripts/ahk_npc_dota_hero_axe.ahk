@@ -14,7 +14,7 @@ Capslock::	Axe.OpenShop()
 F8:: 		Axe.DirectionalMove(1)
 End::		Axe.DirectionalForce()
 !End::		Axe.DirectionalForceTp()
-o::			Axe.Shrine()
+F9:: 		Axe.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

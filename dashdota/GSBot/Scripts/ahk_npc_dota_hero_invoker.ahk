@@ -14,7 +14,7 @@ Capslock::	Invoker.OpenShop()
 F8:: 		Invoker.DirectionalMove(1)
 End::		Invoker.DirectionalForce()
 !End::		Invoker.DirectionalForceTp()
-o::			Invoker.Shrine()
+F9:: 		Invoker.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

@@ -14,7 +14,7 @@ Capslock::	Centaur.OpenShop()
 F8:: 		Centaur.DirectionalMove(1)
 End::		Centaur.DirectionalForce()
 !End::		Centaur.DirectionalForceTp()
-o::			Centaur.Shrine()
+F9:: 		Centaur.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

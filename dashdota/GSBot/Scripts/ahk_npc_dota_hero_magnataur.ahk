@@ -14,7 +14,7 @@ Capslock::	Magnus.OpenShop()
 F8:: 		Magnus.DirectionalMove(1)
 End::		Magnus.DirectionalForce()
 !End::		Magnus.DirectionalForceTp()
-o::			Magnus.Shrine()
+F9:: 		Magnus.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

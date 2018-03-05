@@ -14,7 +14,7 @@ Capslock::	Slardar.OpenShop()
 F8:: 		Slardar.DirectionalMove(1)
 End::		Slardar.DirectionalForce()
 !End::		Slardar.DirectionalForceTp()
-o::			Slardar.Shrine()
+F9:: 		Slardar.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

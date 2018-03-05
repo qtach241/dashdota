@@ -14,7 +14,7 @@ Capslock::	Nightstalker.OpenShop()
 F8:: 		Nightstalker.DirectionalMove(1)
 End::		Nightstalker.DirectionalForce()
 !End::		Nightstalker.DirectionalForceTp()
-o::			Nightstalker.Shrine()
+F9:: 		Nightstalker.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
