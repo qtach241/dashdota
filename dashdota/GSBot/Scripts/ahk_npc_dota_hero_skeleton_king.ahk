@@ -14,7 +14,7 @@ Capslock::	WraithKing.OpenShop()
 F8:: 		WraithKing.DirectionalMove(1)
 End::		WraithKing.DirectionalForce()
 !End::		WraithKing.DirectionalForceTp()
-o::			WraithKing.Shrine()
+F9:: 		WraithKing.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

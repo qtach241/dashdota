@@ -14,7 +14,7 @@ Capslock::	Legion.OpenShop()
 F8:: 		Legion.DirectionalMove(1)
 End::		Legion.DirectionalForce()
 !End::		Legion.DirectionalForceTp()
-o::			Legion.Shrine()
+F9:: 		Legion.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

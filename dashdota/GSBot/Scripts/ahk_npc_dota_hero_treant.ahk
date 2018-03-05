@@ -14,7 +14,7 @@ Capslock::	Treant.OpenShop()
 F8:: 		Treant.DirectionalMove(1)
 End::		Treant.DirectionalForce()
 !End::		Treant.DirectionalForceTp()
-o::			Treant.Shrine()
+F9:: 		Treant.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

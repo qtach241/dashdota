@@ -14,7 +14,7 @@ Capslock::	Slark.OpenShop()
 F8:: 		Slark.DirectionalMove(1)
 End::		Slark.DirectionalForce()
 !End::		Slark.DirectionalForceTp()
-o::			Slark.Shrine()
+F9:: 		Slark.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

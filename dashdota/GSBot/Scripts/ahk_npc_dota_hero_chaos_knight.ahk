@@ -14,7 +14,7 @@ Capslock::	ChaosKnight.OpenShop()
 F8:: 		ChaosKnight.DirectionalMove(1)
 End::		ChaosKnight.DirectionalForce()
 !End::		ChaosKnight.DirectionalForceTp()
-o::			ChaosKnight.Shrine()
+F9:: 		ChaosKnight.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

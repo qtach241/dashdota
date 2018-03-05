@@ -14,11 +14,12 @@ Capslock::	Enigma.OpenShop()
 F8:: 		Enigma.DirectionalMove(1)
 End::		Enigma.DirectionalForce()
 !End::		Enigma.DirectionalForceTp()
-o::			Enigma.Shrine()
+F9:: 		Enigma.Shrine()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
 ; Midnight pulse + bkb black hole
+
 r::
 Enigma.CastSpell(Ability.E)
 Click
