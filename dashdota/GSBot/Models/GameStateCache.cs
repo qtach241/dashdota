@@ -9,6 +9,7 @@ namespace GSBot.Models
     public class GameStateCache
     {
         private readonly int chunkDamageThreshold = 10;
+        private readonly int ArmletSlot = 5;
 
         public GameStateCache()
         {
@@ -52,9 +53,9 @@ namespace GSBot.Models
                 PacketsSinceLastChunked = 0;
             }
 
-            HasArmlet = gs.Items.GetInventoryAt(3).Name == "item_armlet";
+            HasArmlet = gs.Items.GetInventoryAt(ArmletSlot).Name == "item_armlet";
 
-            ArmletToggleIsAble = HasArmlet && (gs.Items.GetInventoryAt(3).CanCast == true) && gs.Hero.IsAlive && !(gs.Hero.IsStunned || gs.Hero.IsHexed || gs.Hero.IsMuted);
+            ArmletToggleIsAble = HasArmlet && (gs.Items.GetInventoryAt(ArmletSlot).CanCast == true) && gs.Hero.IsAlive && !(gs.Hero.IsStunned || gs.Hero.IsHexed || gs.Hero.IsMuted);
 
             ArmletToggleFlag = ((gs.Hero.Health < LastChunkDamageTaken) || (gs.Hero.Health < 100 && PacketsSinceLastChunked == 0)) || gs.Hero.Health <= 2;
 
