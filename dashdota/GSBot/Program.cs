@@ -185,10 +185,16 @@ namespace GSBot
                             switch (state.sPreviousHeroName)
                             {
                                 case "npc_dota_hero_alchemist":
+                                case "npc_dota_hero_arc_warden":
                                 case "npc_dota_hero_axe":
+                                case "npc_dota_hero_beastmaster":
                                 case "npc_dota_hero_bristleback":
                                 case "npc_dota_hero_centaur":
                                 case "npc_dota_hero_chaos_knight":
+                                case "npc_dota_hero_chen":
+                                case "npc_dota_hero_crystal_maiden":
+                                case "npc_dota_hero_dark_seer":
+                                case "npc_dota_hero_disruptor":
                                 case "npc_dota_hero_dragon_knight":
                                 case "npc_dota_hero_enigma":
                                 case "npc_dota_hero_huskar":
@@ -197,14 +203,23 @@ namespace GSBot
                                 case "npc_dota_hero_legion_commander":
                                 case "npc_dota_hero_life_stealer":
                                 case "npc_dota_hero_magnataur":
+                                case "npc_dota_hero_morphling":
+                                case "npc_dota_hero_naga_siren":
                                 case "npc_dota_hero_nevermore":
                                 case "npc_dota_hero_night_stalker":
                                 case "npc_dota_hero_omniknight":
+                                case "npc_dota_hero_puck":
+                                case "npc_dota_hero_pugna":
                                 case "npc_dota_hero_skeleton_king":
                                 case "npc_dota_hero_skywrath_mage":
                                 case "npc_dota_hero_slardar":
                                 case "npc_dota_hero_slark":
+                                case "npc_dota_hero_sven":
+                                case "npc_dota_hero_tinker":
+                                case "npc_dota_hero_tiny":
                                 case "npc_dota_hero_treant":
+                                case "npc_dota_hero_warlock":
+                                case "npc_dota_hero_wisp":
                                     profile += new HeroProfile(AudioAlerts.StackCamps);
                                     psi.FileName = "ahk_" + state.sPreviousHeroName;
                                     break;
