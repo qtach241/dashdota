@@ -15,6 +15,7 @@ F8:: 		Tiny.DirectionalMove(1)
 End::		Tiny.DirectionalForce()
 !End::		Tiny.DirectionalForceTp()
 F9:: 		Tiny.Shrine()
+F11::		Tiny.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

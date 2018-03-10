@@ -15,6 +15,7 @@ F8:: 		Alchemist.DirectionalMove(1)
 End::		Alchemist.DirectionalForce()
 !End::		Alchemist.DirectionalForceTp()
 F9:: 		Alchemist.Shrine()
+F11::		Alchemist.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

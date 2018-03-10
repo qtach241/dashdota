@@ -15,6 +15,7 @@ F8:: 		ChaosKnight.DirectionalMove(1)
 End::		ChaosKnight.DirectionalForce()
 !End::		ChaosKnight.DirectionalForceTp()
 F9:: 		ChaosKnight.Shrine()
+F11::		ChaosKnight.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

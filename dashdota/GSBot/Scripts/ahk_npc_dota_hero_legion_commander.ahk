@@ -15,6 +15,7 @@ F8:: 		Legion.DirectionalMove(1)
 End::		Legion.DirectionalForce()
 !End::		Legion.DirectionalForceTp()
 F9:: 		Legion.Shrine()
+F11::		Legion.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

@@ -15,6 +15,7 @@ F8:: 		Sven.DirectionalMove(1)
 End::		Sven.DirectionalForce()
 !End::		Sven.DirectionalForceTp()
 F9:: 		Sven.Shrine()
+F11::		Sven.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

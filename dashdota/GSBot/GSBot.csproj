@@ -104,6 +104,7 @@
     <None Include="Scripts\Compiler\BuildAllScriptsVS.cmd" />
     <None Include="Scripts\dota.ahk" />
     <None Include="Scripts\Libraries\game.ahk" />
+    <None Include="Scripts\Libraries\strings.ahk" />
     <None Include="Scripts\settings.ini" />
   </ItemGroup>
   <ItemGroup>

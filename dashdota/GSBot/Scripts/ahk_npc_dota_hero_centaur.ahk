@@ -15,6 +15,7 @@ F8:: 		Centaur.DirectionalMove(1)
 End::		Centaur.DirectionalForce()
 !End::		Centaur.DirectionalForceTp()
 F9:: 		Centaur.Shrine()
+F11::		Centaur.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

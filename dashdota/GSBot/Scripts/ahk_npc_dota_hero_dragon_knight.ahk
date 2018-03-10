@@ -15,6 +15,7 @@ F8:: 		DragonKnight.DirectionalMove(1)
 End::		DragonKnight.DirectionalForce()
 !End::		DragonKnight.DirectionalForceTp()
 F9:: 		DragonKnight.Shrine()
+F11::		DragonKnight.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

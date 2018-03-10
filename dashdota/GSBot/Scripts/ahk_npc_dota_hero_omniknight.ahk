@@ -15,6 +15,7 @@ F8:: 		Omniknight.DirectionalMove(1)
 End::		Omniknight.DirectionalForce()
 !End::		Omniknight.DirectionalForceTp()
 F9:: 		Omniknight.Shrine()
+F11::		Omniknight.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

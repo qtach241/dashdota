@@ -15,6 +15,7 @@ F8:: 		Morphling.DirectionalMove(1)
 End::		Morphling.DirectionalForce()
 !End::		Morphling.DirectionalForceTp()
 F9:: 		Morphling.Shrine()
+F11::		Morphling.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

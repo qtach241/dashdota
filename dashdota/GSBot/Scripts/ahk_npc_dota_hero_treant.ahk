@@ -15,6 +15,7 @@ F8:: 		Treant.DirectionalMove(1)
 End::		Treant.DirectionalForce()
 !End::		Treant.DirectionalForceTp()
 F9:: 		Treant.Shrine()
+F11::		Treant.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

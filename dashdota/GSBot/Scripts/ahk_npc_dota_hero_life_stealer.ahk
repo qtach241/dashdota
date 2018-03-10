@@ -15,6 +15,7 @@ F8:: 		Lifestealer.DirectionalMove(1)
 End::		Lifestealer.DirectionalForce()
 !End::		Lifestealer.DirectionalForceTp()
 F9:: 		Lifestealer.Shrine()
+F11::		Lifestealer.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

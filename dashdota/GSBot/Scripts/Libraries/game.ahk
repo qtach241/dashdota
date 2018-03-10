@@ -476,3 +476,14 @@ HeroGotoCameraPosition(hero, index)
 {
 	SendInput, % hero.CameraPositions[index]
 }
+
+;---------------------------------------------------------------------------------------------------
+; Name: HeroDisplayHelp
+; Parameters:
+;	hero - global hero object.
+; Description: Display the help text associated with the hero.
+;---------------------------------------------------------------------------------------------------
+HeroDisplayHelp(hero)
+{
+	MsgBox, % hero.HelpText
+}

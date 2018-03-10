@@ -15,6 +15,7 @@ F8:: 		Skywrath.DirectionalMove(1)
 End::		Skywrath.DirectionalForce()
 !End::		Skywrath.DirectionalForceTp()
 F9:: 		Skywrath.Shrine()
+F11::		Skywrath.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

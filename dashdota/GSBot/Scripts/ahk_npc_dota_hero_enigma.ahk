@@ -15,6 +15,7 @@ F8:: 		Enigma.DirectionalMove(1)
 End::		Enigma.DirectionalForce()
 !End::		Enigma.DirectionalForceTp()
 F9:: 		Enigma.Shrine()
+F11::		Enigma.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

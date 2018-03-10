@@ -15,6 +15,7 @@ F8:: 		Axe.DirectionalMove(1)
 End::		Axe.DirectionalForce()
 !End::		Axe.DirectionalForceTp()
 F9:: 		Axe.Shrine()
+F11::		Axe.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

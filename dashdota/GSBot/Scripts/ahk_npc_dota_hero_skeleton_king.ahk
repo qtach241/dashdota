@@ -15,6 +15,7 @@ F8:: 		WraithKing.DirectionalMove(1)
 End::		WraithKing.DirectionalForce()
 !End::		WraithKing.DirectionalForceTp()
 F9:: 		WraithKing.Shrine()
+F11::		WraithKing.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

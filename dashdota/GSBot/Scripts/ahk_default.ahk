@@ -15,6 +15,7 @@ F8:: 		gHero.DirectionalMove(1)
 End::		gHero.DirectionalForce()
 !End::		gHero.DirectionalForceTp()
 F9:: 		gHero.Shrine()
+F11::		gHero.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

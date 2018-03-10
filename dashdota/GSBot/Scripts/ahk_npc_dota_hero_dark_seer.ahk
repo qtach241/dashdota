@@ -15,6 +15,7 @@ F8:: 		Darkseer.DirectionalMove(1)
 End::		Darkseer.DirectionalForce()
 !End::		Darkseer.DirectionalForceTp()
 F9:: 		Darkseer.Shrine()
+F11::		Darkseer.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

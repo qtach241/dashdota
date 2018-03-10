@@ -15,6 +15,7 @@ F8:: 		ArcWarden.DirectionalMove(1)
 End::		ArcWarden.DirectionalForce()
 !End::		ArcWarden.DirectionalForceTp()
 F9:: 		ArcWarden.Shrine()
+F11::		ArcWarden.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

@@ -15,6 +15,7 @@ F8:: 		CrystalMaiden.DirectionalMove(1)
 End::		CrystalMaiden.DirectionalForce()
 !End::		CrystalMaiden.DirectionalForceTp()
 F9:: 		CrystalMaiden.Shrine()
+F11::		CrystalMaiden.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

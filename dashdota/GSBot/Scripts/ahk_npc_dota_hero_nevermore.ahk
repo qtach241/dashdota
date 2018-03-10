@@ -15,6 +15,7 @@ F8:: 		Shadowfiend.DirectionalMove(1)
 End::		Shadowfiend.DirectionalForce()
 !End::		Shadowfiend.DirectionalForceTp()
 F9:: 		Shadowfiend.Shrine()
+F11::		Shadowfiend.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
