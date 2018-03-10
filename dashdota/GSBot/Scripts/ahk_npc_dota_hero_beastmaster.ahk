@@ -15,6 +15,7 @@ F8:: 		Beastmaster.DirectionalMove(1)
 End::		Beastmaster.DirectionalForce()
 !End::		Beastmaster.DirectionalForceTp()
 F9:: 		Beastmaster.Shrine()
+F11::		Beastmaster.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

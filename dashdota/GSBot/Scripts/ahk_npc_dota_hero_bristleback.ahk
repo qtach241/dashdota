@@ -15,6 +15,7 @@ F8:: 		Bristleback.DirectionalMove(1)
 End::		Bristleback.DirectionalForce()
 !End::		Bristleback.DirectionalForceTp()
 F9:: 		Bristleback.Shrine()
+F11::		Bristleback.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

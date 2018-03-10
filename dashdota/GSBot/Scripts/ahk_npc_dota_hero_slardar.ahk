@@ -15,6 +15,7 @@ F8:: 		Slardar.DirectionalMove(1)
 End::		Slardar.DirectionalForce()
 !End::		Slardar.DirectionalForceTp()
 F9:: 		Slardar.Shrine()
+F11::		Slardar.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

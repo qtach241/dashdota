@@ -15,6 +15,7 @@ F8:: 		Kunkka.DirectionalMove(1)
 End::		Kunkka.DirectionalForce()
 !End::		Kunkka.DirectionalForceTp()
 F9:: 		Kunkka.Shrine()
+F11::		Kunkka.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

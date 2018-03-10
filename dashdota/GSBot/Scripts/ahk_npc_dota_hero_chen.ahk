@@ -6,15 +6,12 @@ return
 ;----------------------------------------- Universal Hotkeys ---------------------------------------
 
 *MButton::	Chen.AttackCancel(0.05)
-;!PgUp::		Chen.SelectDire()
-;!PgDn::		Chen.SelectRadiant()
-;PgUp::		Chen.CycleAllyUp()
-;PgDn::		Chen.CycleAllyDown()
 Capslock::	Chen.OpenShop()
 F8:: 		Chen.DirectionalMove(1)
 End::		Chen.DirectionalForce()
 !End::		Chen.DirectionalForceTp()
 F9:: 		Chen.Shrine()
+F11::		Chen.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

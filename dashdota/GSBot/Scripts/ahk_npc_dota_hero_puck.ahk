@@ -6,15 +6,12 @@ return
 ;----------------------------------------- Universal Hotkeys ---------------------------------------
 
 *MButton::	Puck.AttackCancel(0.05)
-;!PgUp::		Puck.SelectDire()
-;!PgDn::		Puck.SelectRadiant()
-;PgUp::		Puck.CycleAllyUp()
-;PgDn::		Puck.CycleAllyDown()
 Capslock::	Puck.OpenShop()
 F8:: 		Puck.DirectionalMove(1)
 End::		Puck.DirectionalForce()
 !End::		Puck.DirectionalForceTp()
 F9:: 		Puck.Shrine()
+F11::		Puck.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

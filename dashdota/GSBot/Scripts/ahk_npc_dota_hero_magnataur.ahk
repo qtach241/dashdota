@@ -15,6 +15,7 @@ F8:: 		Magnus.DirectionalMove(1)
 End::		Magnus.DirectionalForce()
 !End::		Magnus.DirectionalForceTp()
 F9:: 		Magnus.Shrine()
+F11::		Magnus.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

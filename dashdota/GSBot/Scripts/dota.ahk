@@ -2,6 +2,7 @@
 #IfWinActive Dota
 
 #Include Libraries/game.ahk
+#Include Libraries/strings.ahk
 
 class Team
 {
@@ -81,6 +82,7 @@ class Hero
 	__New(hero)
 	{
 		this.Name := hero
+		this.HelpText := TooltipDescriptions[hero]
 		
 		; Hero Attributes
 		IniRead, OutputVarDefault, settings.ini, Hero_Default, PRIMARY_ATTRIBUTE
@@ -175,6 +177,9 @@ class Hero
 	
 	; Display name of the current hero.
 	static Name := ""
+	
+	; The help text associated with this hero.
+	static HelpText := ""
 	
 	; Primary attribute of the current hero.
 	static PrimaryAttribute := ""
@@ -286,4 +291,7 @@ class Hero
 	Shrine := Func("HeroShrine")
 	SetCameraPosition := Func("HeroSetCameraPosition")
 	GotoCameraPosition := Func("HeroGotoCameraPosition")
+	
+	; Miscellaneous
+	DisplayHelp := Func("HeroDisplayHelp")
 }

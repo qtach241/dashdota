@@ -15,6 +15,7 @@ F8:: 		Nightstalker.DirectionalMove(1)
 End::		Nightstalker.DirectionalForce()
 !End::		Nightstalker.DirectionalForceTp()
 F9:: 		Nightstalker.Shrine()
+F11::		Nightstalker.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

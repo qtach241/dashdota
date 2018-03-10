@@ -15,6 +15,7 @@ F8:: 		Pugna.DirectionalMove(1)
 End::		Pugna.DirectionalForce()
 !End::		Pugna.DirectionalForceTp()
 F9:: 		Pugna.Shrine()
+F11::		Pugna.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

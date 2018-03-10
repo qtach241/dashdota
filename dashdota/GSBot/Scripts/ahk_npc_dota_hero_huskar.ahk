@@ -15,6 +15,7 @@ F8:: 		Huskar.DirectionalMove(1)
 End::		Huskar.DirectionalForce()
 !End::		Huskar.DirectionalForceTp()
 F9:: 		Huskar.Shrine()
+F11::		Huskar.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

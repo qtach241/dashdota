@@ -6,15 +6,12 @@ return
 ;----------------------------------------- Universal Hotkeys ---------------------------------------
 
 *MButton::	Invoker.AttackCancel(0.05)
-;!PgUp::		Invoker.SelectDire()
-;!PgDn::		Invoker.SelectRadiant()
-;PgUp::		Invoker.CycleAllyUp()
-;PgDn::		Invoker.CycleAllyDown()
 Capslock::	Invoker.OpenShop()
 F8:: 		Invoker.DirectionalMove(1)
 End::		Invoker.DirectionalForce()
 !End::		Invoker.DirectionalForceTp()
 F9:: 		Invoker.Shrine()
+F11::		Invoker.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

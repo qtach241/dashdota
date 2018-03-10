@@ -15,6 +15,7 @@ F8:: 		Disruptor.DirectionalMove(1)
 End::		Disruptor.DirectionalForce()
 !End::		Disruptor.DirectionalForceTp()
 F9:: 		Disruptor.Shrine()
+F11::		Disruptor.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

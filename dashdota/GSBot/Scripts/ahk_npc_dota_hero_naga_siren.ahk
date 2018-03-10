@@ -15,6 +15,7 @@ F8:: 		Naga.DirectionalMove(1)
 End::		Naga.DirectionalForce()
 !End::		Naga.DirectionalForceTp()
 F9:: 		Naga.Shrine()
+F11::		Naga.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

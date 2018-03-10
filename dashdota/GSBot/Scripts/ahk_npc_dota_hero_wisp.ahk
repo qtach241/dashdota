@@ -15,6 +15,7 @@ F8:: 		Io.DirectionalMove(1)
 End::		Io.DirectionalForce()
 !End::		Io.DirectionalForceTp()
 F9:: 		Io.Shrine()
+F11::		Io.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

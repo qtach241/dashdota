@@ -15,6 +15,7 @@ F8:: 		Warlock.DirectionalMove(1)
 End::		Warlock.DirectionalForce()
 !End::		Warlock.DirectionalForceTp()
 F9:: 		Warlock.Shrine()
+F11::		Warlock.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 

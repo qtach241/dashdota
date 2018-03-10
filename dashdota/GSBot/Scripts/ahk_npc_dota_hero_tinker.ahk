@@ -15,6 +15,7 @@ F8:: 		Tinker.DirectionalMove(1)
 End::		Tinker.DirectionalForce()
 !End::		Tinker.DirectionalForceTp()
 F9:: 		Tinker.Shrine()
+F11::		Tinker.DisplayHelp()
 
 ;--------------------------------------- Hero Specific Hotkeys -------------------------------------
 
