@@ -27,6 +27,7 @@ copy %~f2settings.ini %~f3
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_legion_commander.ahk /out %~f3ahk_npc_dota_hero_legion_commander.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_life_stealer.ahk /out %~f3ahk_npc_dota_hero_life_stealer.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_magnataur.ahk /out %~f3ahk_npc_dota_hero_magnataur.exe
+%~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_mirana.ahk /out %~f3ahk_npc_dota_hero_mirana.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_morphling.ahk /out %~f3ahk_npc_dota_hero_morphling.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_naga_siren.ahk /out %~f3ahk_npc_dota_hero_naga_siren.exe
 %~f1Ahk2Exe.exe /bin %~f1AutoHotkeySC.bin /in %~f2ahk_npc_dota_hero_nevermore.ahk /out %~f3ahk_npc_dota_hero_nevermore.exe

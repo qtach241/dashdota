@@ -28,5 +28,15 @@ Enigma.UseItem(Item.LowerR)
 Enigma.CastSpell(Ability.Ultimate)
 return
 
+; Refresh + Midnight pulse + bkb blackhole
+
+t::
+Enigma.UseItem(Item.LowerL)
+Enigma.CastSpell(Ability.E)
+Click
+Enigma.UseItem(Item.LowerR)
+Enigma.CastSpell(Ability.Ultimate)
+return
+
 
 #Include ahk_meta.ahk

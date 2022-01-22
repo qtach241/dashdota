@@ -17,5 +17,15 @@ namespace GSBot.Models
         public bool sPullReadyFlag { get; set; }
         public bool sPullCountdownFlag { get; set; }
         public bool sKunkkaReturnFlag { get; set; }
+        public MorphState sMorphlingState { get; set; }
+    }
+
+    public enum MorphState
+    {
+        Idle,
+        StartMorphAgility,
+        StartMorphStrength,
+        WaitMorphAgility,
+        WaitMorphStrength,
     }
 }
