@@ -54,6 +54,7 @@
     <Compile Include="Helpers\Armlet.cs" />
     <Compile Include="Helpers\AudioAlerts.cs" />
     <Compile Include="Helpers\Invoker.cs" />
+    <Compile Include="Helpers\Morphling.cs" />
     <Compile Include="Models\GameStateCache.cs" />
     <Compile Include="Models\MasterState.cs" />
     <Compile Include="Program.cs" />
@@ -83,6 +84,7 @@
     <None Include="Scripts\ahk_npc_dota_hero_legion_commander.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_life_stealer.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_magnataur.ahk" />
+    <None Include="Scripts\ahk_npc_dota_hero_mirana.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_morphling.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_naga_siren.ahk" />
     <None Include="Scripts\ahk_npc_dota_hero_nevermore.ahk" />

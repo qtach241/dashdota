@@ -10,6 +10,7 @@ namespace GSBot.Models
     {
         private readonly int chunkDamageThreshold = 10;
         private readonly int ArmletSlot = 5;
+        private readonly int LinkensSlot = 5;
 
         public GameStateCache()
         {
@@ -27,6 +28,7 @@ namespace GSBot.Models
 
             ClockTime = gs?.Map?.ClockTime;
             HeroName = gs?.Hero?.Name;
+            HealthPercent = (int)gs?.Hero?.HealthPercent;
 
             if (ClockTime != null)
             {
@@ -38,6 +40,7 @@ namespace GSBot.Models
                 Abilities[i].Name = gs.Abilities[i].Name;
                 Abilities[i].Level = gs.Abilities[i].Level;
                 Abilities[i].CanCast = gs.Abilities[i].CanCast;
+                Abilities[i].CanCastActual = gs.Abilities[i].CanCast && !gs.Hero.IsStunned && !gs.Hero.IsSilenced && !gs.Hero.IsHexed;
                 Abilities[i].IsPassive = gs.Abilities[i].IsPassive;
                 Abilities[i].Cooldown = gs.Abilities[i].Cooldown;
                 Abilities[i].IsUltimate = gs.Abilities[i].IsUltimate;
@@ -66,6 +69,8 @@ namespace GSBot.Models
             PullCountdownFlag = ((GameClock.Minutes < 30) && IsEven(GameClock.Minutes) && (GameClock.Seconds > 43));
 
             KunkkaReturnFlag = Abilities[0].Cooldown > 0 && ((Abilities[0].Level == 4 && Abilities[0].Cooldown <= 9) || (Abilities[0].Level == 3 && Abilities[0].Cooldown <= 11) || (Abilities[0].Level == 2 && Abilities[0].Cooldown <= 13) || (Abilities[0].Level == 1 && Abilities[0].Cooldown <= 15));
+
+            LinkensDown = (gs.Items.GetInventoryAt(LinkensSlot).Name == "item_linkens_sphere") && (gs.Items.GetInventoryAt(LinkensSlot).Cooldown > 0);
         }
 
         private static bool IsEven(int value)
@@ -75,6 +80,7 @@ namespace GSBot.Models
 
         public int SessionPackets { get; set; } = 0;
         public string HeroName { get; set; }
+        public int HealthPercent { get; set; }
         public int? ClockTime { get; set; }
         public TimeSpan GameClock { get; set; }
         public bool PullReadyFlag { get; set; } = false;
@@ -89,12 +95,14 @@ namespace GSBot.Models
         public int LastDamageTaken { get; set; }
         public int LastChunkDamageTaken { get; set; }
         public bool KunkkaReturnFlag { get; set; } = false;
+        public bool LinkensDown { get; set; } = false;
 
         public class Ability
         {
             public string Name { get; set; }
             public int Level { get; set; } = 0;
             public bool CanCast { get; set; } = false;
+            public bool CanCastActual { get; set; } = false;
             public bool IsPassive { get; set; } = false;
             public int Cooldown { get; set; } = 0;
             public bool IsUltimate { get; set; } = false;

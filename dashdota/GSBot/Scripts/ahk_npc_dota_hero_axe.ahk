@@ -26,6 +26,8 @@ Axe.UseItem(Item.UpperM)
 Axe.UseItem(Item.UpperR)
 Axe.UseItem(Item.LowerL)
 Axe.UseItem(Item.LowerL)
+Axe.UseItem(Item.LowerR)
+Axe.UseItem(Item.LowerR)
 Axe.CastSpell(Ability.Q)
 return
 

@@ -13,7 +13,7 @@ namespace GSBot.Helpers
         /// <param name="state"></param>
         public static void ToggleArmlet(MasterState state)
         {
-            //Console.WriteLine($"H: {gameStateCache.LastHealth}, D: {gameStateCache.LastDamageTaken}, C: {gameStateCache.LastChunkDamageTaken}, PSLC: {gameStateCache.PacketsSinceLastChunked}");
+            //Console.WriteLine($"H: {state.LastHealth}, D: {state.LastDamageTaken}, C: {state.LastChunkDamageTaken}, PSLC: {state.PacketsSinceLastChunked}");
 
             if (state.ArmletToggleFlag && (state.SessionPackets > (state.sPreviousTogglePacket + 10)))
             {

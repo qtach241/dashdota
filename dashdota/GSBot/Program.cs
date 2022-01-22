@@ -132,6 +132,11 @@ namespace GSBot
             if (state.ArmletToggleIsAble)
                 Armlet.ToggleArmlet(state);
 
+            if (state.sPreviousHeroName == "npc_dota_hero_morphling")
+            {
+                Morphling.Morph(state);
+            }
+
             if (state.sPreviousHeroName == "npc_dota_hero_kunkka")
             {
                 if (!state.sKunkkaReturnFlag && state.KunkkaReturnFlag)
@@ -203,6 +208,7 @@ namespace GSBot
                                 case "npc_dota_hero_legion_commander":
                                 case "npc_dota_hero_life_stealer":
                                 case "npc_dota_hero_magnataur":
+                                case "npc_dota_hero_mirana":
                                 case "npc_dota_hero_morphling":
                                 case "npc_dota_hero_naga_siren":
                                 case "npc_dota_hero_nevermore":
